@@ -15,4 +15,4 @@ st.dataframe(df)
 
 # Visualisasi
 kategori = df['Katagori'].value_counts()
-st.bar_chart(kategori, title='Kategori Pertanyaan')
+st.bar_chart(kategori)
