@@ -26,3 +26,8 @@ st.plotly_chart(fig)
 jenis_kelamin = df['Jenis Kelamin '].value_counts()
 fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'])
 st.plotly_chart(fig_jk)
+
+# Visualisasi jenis akun
+jenis_akun = df['Jenis Akun'].value_counts()
+fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title="Persentase Jenis Akun")
+st.plotly_chart(fig_akun)
