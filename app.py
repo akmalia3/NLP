@@ -20,4 +20,4 @@ st.bar_chart(kategori)
 # Visualisasi sumber data
 sumber = df['Sumber'].value_counts()
 fig = px.pie(sumber)
-st.pyplot(fig)
+st.plotly_chart(fig)
