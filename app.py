@@ -23,6 +23,6 @@ fig = px.pie(values=sumber)
 st.plotly_chart(fig)
 
 # Visuaisasi jenis kelamin
-jenis_kelamin = df['Jenis Kelamin'].value_counts()
+jenis_kelamin = df['Jenis Kelamin '].value_counts()
 fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'])
 st.plotly_chart(fig_jk)
