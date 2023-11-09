@@ -13,6 +13,11 @@ df = df.drop(['Unnamed: 0'], axis=1)
 
 st.dataframe(df)
 
-# Visualisasi
+# Visualisasi Kategori
 kategori = df['Katagori'].value_counts()
 st.bar_chart(kategori)
+
+# Visualisasi sumber data
+sumber = df['Sumber'].value_counts()
+fig = px.pie(sumber)
+st.plotly(fig)
