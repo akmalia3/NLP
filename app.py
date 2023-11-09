@@ -31,3 +31,7 @@ st.plotly_chart(fig_jk)
 jenis_akun = df['Jenis Akun'].value_counts()
 fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title="Persentase Jenis Akun")
 st.plotly_chart(fig_akun)
+
+# Visualisasi tanggal komentar
+fig_tgl = px.area(df['Tanggal'])
+st.plotly_chart(fig_tgl)
