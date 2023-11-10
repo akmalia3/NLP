@@ -32,7 +32,7 @@ midle_column.plotly_chart(fig_jk, use_container_width=True)
 
 # Visualisasi Kategori
 kategori = df['Katagori'].value_counts()
-chart_kategori = px.bar(kategori, x="Kategori", y="Jumlah Pertanyaan", title="Kategori Pertanyaan")
+chart_kategori = px.bar(kategori, title="Kategori Pertanyaan")
 st.plotly_chart(chart_kategori, use_container_width=True)
 
 # Visualisasi tanggal komentar
