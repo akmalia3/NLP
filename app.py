@@ -38,4 +38,4 @@ fig_tgl = px.area(df['Tanggal'])
 
 left_column2, right_column2 = st.columns(2)
 left_column2.bar_chart(kategori, use_container_width=True)
-right_column2..plotly_chart(fig_tgl, use_container_width=True)
+right_column2.plotly_chart(fig_tgl, use_container_width=True)
