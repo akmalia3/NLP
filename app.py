@@ -1,9 +1,9 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 #import wordcloud
-#from wordcloud import WordCloud
+from wordcloud import WordCloud
 
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
