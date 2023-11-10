@@ -1,8 +1,8 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+import streamlit-wordcloud as wordcloud
 
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
@@ -47,7 +47,7 @@ fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title='P
 st.plotly_chart(fig_sentiment)
 
 # wordcloud
-wordcloud = WordCloud().generate(df['ngrams'])
-plt.imshow(wordcloud)
+wordCloud = wordcloud().generate(df['ngrams'])
+plt.imshow(wordCloud)
 st.pyplot()
 
