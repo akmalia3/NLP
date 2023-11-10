@@ -5,7 +5,7 @@ import plotly.express as px
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
 
-excel_file = "data-preprocessing.xlsx"
+excel_file = "dataset.xlsx"
 sheet_name = "sentiment-analysis"
 
 df = pd.read_excel(excel_file)
