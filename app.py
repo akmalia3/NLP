@@ -28,12 +28,14 @@ fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], title="Pe
 left_column, right_column, midle_column = st.columns(3)
 left_column.plotly_chart(fig, use_container_width=True)
 right_column.plotly_chart(fig_akun, use_container_width=True)
-midle_column.plotly_chart(fig_jk)
+midle_column.plotly_chart(fig_jk, use_container_width=True)
 
 # Visualisasi Kategori
 kategori = df['Katagori'].value_counts()
-st.bar_chart(kategori)
 
 # Visualisasi tanggal komentar
 fig_tgl = px.area(df['Tanggal'])
-st.plotly_chart(fig_tgl)
+
+left_column2, right_column2 = st.columns(2)
+left_column2.bar_chart(kategori, use_container_width=True)
+right_column2..plotly_chart(fig_tgl, use_container_width=True)
