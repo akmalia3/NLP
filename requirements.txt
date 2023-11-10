@@ -3,4 +3,4 @@ plotly
 pandas
 streamlit
 wordcloud
-matplotlib
+matplotlib==3.8.1
