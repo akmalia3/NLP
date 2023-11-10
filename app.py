@@ -19,7 +19,7 @@ st.bar_chart(kategori)
 
 # Visualisasi sumber data
 sumber = df['Sumber'].value_counts()
-fig = px.pie(values=sumber, names=['Twitter','Instagram','X'], title="Persentase Jenis Kelamin User")
+fig = px.pie(values=sumber, names=['Twitter','Instagram','X'], title="Persentase Sumber Data")
 
 # Visualisasi jenis akun
 jenis_akun = df['Jenis Akun'].value_counts()
