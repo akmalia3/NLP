@@ -22,7 +22,7 @@ jenis_akun = df['Jenis Akun'].value_counts()
 fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title="Persentase Jenis Akun")
 
 # Visuaisasi jenis kelamin
-jenis_kelamin = df['Jenis Kelamin'].value_counts()
+jenis_kelamin = df['Jenis Kelamin '].value_counts()
 fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], title="Persentase Jenis Kelamin User")
 
 left_column, right_column, midle_column = st.columns(3)
