@@ -19,18 +19,20 @@ st.bar_chart(kategori)
 
 # Visualisasi sumber data
 sumber = df['Sumber'].value_counts()
-fig = px.pie(values=sumber)
-st.plotly_chart(fig)
+fig = px.pie(values=sumber, names=['Twitter','Instagram','X'], title="Persentase Jenis Kelamin User")
+
+# Visualisasi jenis akun
+jenis_akun = df['Jenis Akun'].value_counts()
+fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title="Persentase Jenis Akun")
+
+left_column, right_column = st.column(2)
+left_column.plotly_chart(fig, use_container_width=True)
+right_column.plotly_chart(fig_akun, use_container_width=True)
 
 # Visuaisasi jenis kelamin
 jenis_kelamin = df['Jenis Kelamin '].value_counts()
 fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'])
 st.plotly_chart(fig_jk)
-
-# Visualisasi jenis akun
-jenis_akun = df['Jenis Akun'].value_counts()
-fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title="Persentase Jenis Akun")
-st.plotly_chart(fig_akun)
 
 # Visualisasi tanggal komentar
 fig_tgl = px.area(df['Tanggal'])
