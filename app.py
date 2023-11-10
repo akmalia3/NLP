@@ -36,6 +36,10 @@ chart_kategori = px.bar(kategori, title="Kategori Pertanyaan")
 st.plotly_chart(chart_kategori, use_container_width=True)
 
 # Visualisasi tanggal komentar
-fig_tgl = px.area(df['Tanggal'])
-st.plotly_chart(fig_tgl, x="Waktu", y="Jumlah Pertanyaan", use_container_width=True, title="Waktu")
+fig_tgl = px.area(df['Tanggal'],  title="Waktu")
+st.plotly_chart(fig_tgl, use_container_width=True)
 
+# Visualisasi hasil sentiment
+sentiment = df['sentiment'].value_counts()
+fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title='Persentase Hasil Sentiment')
+st.plotly_chart(fig_sentiment)
