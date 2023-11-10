@@ -32,9 +32,9 @@ midle_column.plotly_chart(fig_jk, use_container_width=True)
 
 # Visualisasi Kategori
 kategori = df['Katagori'].value_counts()
-st.bar_chart(kategori, use_container_width=True)
+st.bar_chart(kategori, x="Kategori", y="Jumlah Pertanyaan", use_container_width=True, title="Kategori Pertanyaan")
 
 # Visualisasi tanggal komentar
 fig_tgl = px.area(df['Tanggal'])
-st.plotly_chart(fig_tgl, use_container_width=True)
+st.plotly_chart(fig_tgl, x="Waktu", y="Jumlah Pertanyaan", use_container_width=True, title="Waktu")
 
