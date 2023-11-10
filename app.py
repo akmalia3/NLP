@@ -28,7 +28,7 @@ fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], title="Pe
 left_column, right_column, midle_column = st.columns(3)
 left_column.plotly_chart(fig, use_container_width=True)
 right_column.plotly_chart(fig_akun, use_container_width=True)
-midle_column.st.plotly_chart(fig_jk)
+midle_column.plotly_chart(fig_jk)
 
 # Visualisasi Kategori
 kategori = df['Katagori'].value_counts()
