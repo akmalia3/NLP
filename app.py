@@ -25,7 +25,7 @@ fig = px.pie(values=sumber, names=['Twitter','Instagram','X'], title="Persentase
 jenis_akun = df['Jenis Akun'].value_counts()
 fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title="Persentase Jenis Akun")
 
-left_column, right_column = st.column(2)
+left_column, right_column = st.columns(2)
 left_column.plotly_chart(fig, use_container_width=True)
 right_column.plotly_chart(fig_akun, use_container_width=True)
 
