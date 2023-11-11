@@ -3,6 +3,7 @@ import streamlit as st
 import plotly.express as px
 import wordcloud
 import swifter
+import matplotlib.pyplot as plt
 
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
@@ -56,6 +57,6 @@ def ngrams(text):
 ngrams_data = df['text_stemming'].swifter.apply(ngrams)
 ngrams_visualize = ' '.join(ngrams_data)
 wordcloud = WordCloud().generate(ngrams_visualize)
-px.imshow(wordcloud)
+plt.imshow(wordcloud)
 st.plotly_chart()
 
