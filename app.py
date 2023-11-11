@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+import wordcloud
 from wordcloud import WordCloud
 
 st.header('Sentiment Analysis')
