@@ -1,7 +1,6 @@
-wordcloud
+wordcloud==1.8.1
 openpyxl
 plotly
 pandas
 streamlit
-wordcloud
 matplotlib==3.8.1
