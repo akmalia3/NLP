@@ -47,8 +47,14 @@ st.plotly_chart(fig_sentiment)
 
 # wordcloud
 from wordcloud import WordCloud
-ngram = ' '.join(df['ngrams'])
-wordcloud = WordCloud().generate(ngram)
+
+def ngrams(text):
+    text = ' '.join([str(e) for e in text])
+    return ''.join(text).strip() 
+
+ngrams_data = df['text_stemming'].swifter.apply(ngrams)
+ngrams_visualize = ' '.join(ngrams_data)
+wordcloud = WordCloud().generate(ngrams_visualize)
 px.imshow(wordcloud)
 st.plotly_chart()
 
