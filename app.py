@@ -58,5 +58,5 @@ ngrams_data = df['text_stemming'].swifter.apply(ngrams)
 ngrams_visualize = ' '.join(ngrams_data)
 wordcloud = WordCloud().generate(ngrams_visualize)
 plt.imshow(wordcloud)
-st.plotly_chart()
+st.pyplot()
 
