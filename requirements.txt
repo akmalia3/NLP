@@ -1,6 +1,0 @@
-wordcloud==1.8.1
-openpyxl
-plotly
-pandas
-streamlit
-matplotlib==3.8.1
