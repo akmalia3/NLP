@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 import wordcloud
+import swifter
 
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
