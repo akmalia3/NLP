@@ -47,7 +47,8 @@ st.plotly_chart(fig_sentiment)
 
 # wordcloud
 from wordcloud import WordCloud
-wordcloud = WordCloud().generate(df['ngrams'])
+ngram = ' '.join(df['ngrams'])
+wordcloud = WordCloud().generate(ngram)
 px.imshow(wordcloud)
 st.plotly_chart()
 
