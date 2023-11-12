@@ -7,3 +7,4 @@ plotly
 streamlit
 swifter
 wordcloud==1.8.1
+Pillow
