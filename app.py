@@ -56,5 +56,7 @@ wordcloud = WordCloud(width = 2000, height = 1334,
                       collocations=False, normalize_plurals=False,
                       collocation_threshold = 2).generate(ngram)
 plt.imshow(wordcloud, interpolation='bilinear')
-st.pyplot(plt)
+plt.axis("off")
+plt.show()
+st.pyplot()
 
