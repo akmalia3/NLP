@@ -50,11 +50,12 @@ st.plotly_chart(fig_sentiment)
 # wordcloud
 from wordcloud import WordCloud
 
-ngram = ' '.join(str(df['ngrams']))
-wordcloud = WordCloud(width = 2000, height = 1334,
-                      random_state=1, background_color='black',colormap='Pastel1',
-                      collocations=False, normalize_plurals=False,
-                      collocation_threshold = 2).generate(ngram)
+text = 'Fun, fun, awesome, awesome, tubular, astounding, superb, great, amazing, amazing, amazing, amazing'
+
+# Create and generate a word cloud image:
+wordcloud = WordCloud().generate(text)
+
+# Display the generated image:
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.show()
