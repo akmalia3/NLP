@@ -86,8 +86,9 @@ fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_freq, use_container_width=True)
 
 # frequent word positive
+df['ngrams'].fillna(' ', inplace=True)
+df['sentiment'].fillna(' ', inplace=True)
 pos_review = df['ngrams'][df["sentiment"] == 'positive'].tolist()
-pos_review.fillna(' ')
 pos = ''.join(pos_review)
 
 text = pos.split()
