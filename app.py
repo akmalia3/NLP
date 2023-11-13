@@ -146,3 +146,7 @@ plt.axis("off")
 plt.show()
 st.pyplot()
 
+wc = WordCloud().fit_words({"A": 2, "B": 2, "C": 3})
+
+st.image(wc.to_array())
+
