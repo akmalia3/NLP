@@ -9,6 +9,11 @@ st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
 
 st.sidebar.header('Side Bar')
+sumber_data = st.slider.multiselect(
+            "Sumber Data: ",
+            options=df['Sumber'].unique(),
+            default=df['Sumber'].unique()
+)
 
 excel_file = "dataset.xlsx"
 sheet_name = "sentiment-analysis"
