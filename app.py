@@ -13,7 +13,7 @@ st.sidebar.header('Side Bar')
 excel_file = "dataset.xlsx"
 sheet_name = "sentiment-analysis"
 
-df = pd.read_excel(excel_file, usecols='A:F')
+df = pd.read_excel(excel_file, usecols='A:G')
 df = df.drop(['Unnamed: 0'], axis=1)
 
 st.dataframe(df)
