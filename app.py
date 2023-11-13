@@ -48,6 +48,7 @@ fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title='P
 st.plotly_chart(fig_sentiment)
 
 # wordcloud
+'''
 from wordcloud import WordCloud
 def ngrams(text):
     text = ' '.join([str(e) for e in text]) # ubah nested list menjadi string
@@ -67,12 +68,11 @@ plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.show()
 st.pyplot()
+'''
 
 # frequents word
 from collections import Counter
 
-text = ngram.str.split(' ').str.join(' ')
-freq = Counter(text)
-data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
+data = pd.read_csv('word-frequents.csv')
 st.dataframe(data)
 
