@@ -144,7 +144,5 @@ wordcloud = WordCloud().generate(ngram)
 plt.figure(figsize=(10,10))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
-plt.savefig('word.jpg')
-#st.pyplot(a)
-img = Image.open('word.jpg')
+st.pyplot()
 
