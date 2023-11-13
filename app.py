@@ -73,9 +73,6 @@ st.pyplot()
 # frequents word
 from collections import Counter
 
-#data = pd.read_csv('word-frequents.csv')
-#data = data.drop(['Unnamed: 0'], axis=1)
-
 df['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df['ngrams'])
 
@@ -89,6 +86,19 @@ fig_freq = px.bar(data.head(40), x='frequent', y='word',
 fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_freq, use_container_width=True)
 
+# frequent bigrams
+df['bigrams'].fillna(' ', inplace=True)
+bigram = ''.join(df['bigrams'])
+
+text_bi = bigram.split()
+freq_bi = Counter(text_bi)
+data_bi = pd.DataFrame(freq_bi.most_common(), columns=['word', 'frequent'])
+data_bi.style.background_gradient(cmap='Blues')
+
+fig_bi = px.bar(data_bi.head(40), x='frequent', y='word',
+            color='frequent', title="Top 40 Words Bigrams")
+fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig_bi, use_container_width=True)
 
 # frequent ngram word positive
 df['ngrams'].fillna(' ', inplace=True)
