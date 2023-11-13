@@ -84,3 +84,13 @@ fig_freq = px.bar(data.head(40), x='frequent', y='word',
             color='frequent', title="Top 40 Words")
 fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_freq, use_container_width=True)
+
+# frequent word positive
+pos_review = df['ngrams'][df["sentiment"] == 'positive'].tolist()
+pos = ''.join(pos_review)
+
+text = pos.split()
+freq = Counter(text)
+data2 = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
+data2.style.background_gradient(cmap='Blues')
+st.dataframe(data2)
