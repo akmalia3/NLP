@@ -54,7 +54,7 @@ ngram = df['ngrams']
 
 from collections import Counter
 
-text = ngram.split()
+text = df['ngrams'].str.split(' ').str.join(' ')
 freq = Counter(text)
 data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
 st.dataframe(data)
