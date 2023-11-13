@@ -140,12 +140,12 @@ ngram = ' '.join(df['ngrams'])
 
 wordcloud = WordCloud().generate(ngram)
 
-a, ax = plt.subplots()
-
 #visualisasi
-#plt.figure(figsize=(10,10))
-ax.imshow(wordcloud, interpolation='bilinear')
-ax.axis("off")
-#plt.show()
-st.pyplot(a)
+plt.figure(figsize=(10,10))
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+plt.savefig('word.jpg')
+#st.pyplot(a)
+img = Image.open('word.jpg')
+return img
 
