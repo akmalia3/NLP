@@ -47,29 +47,6 @@ sentiment = df['sentiment'].value_counts()
 fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title='Persentase Hasil Sentiment')
 st.plotly_chart(fig_sentiment)
 
-# wordcloud
-'''
-from wordcloud import WordCloud
-def ngrams(text):
-    text = ' '.join([str(e) for e in text]) # ubah nested list menjadi string
-    return ''.join(text).strip()
-
-df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
-ngram = ' '.join(df['ngrams'])
-
-wordcloud = WordCloud(width = 2000, height = 1334,
-                      random_state=1, background_color='black',colormap='Pastel1',
-                      collocations=False, normalize_plurals=False,
-                      collocation_threshold = 2).generate(ngram)
-
-visualisasi
-plt.figure(figsize=(10,10))
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-st.pyplot()
-'''
-
 # frequents word
 from collections import Counter
 
@@ -143,3 +120,26 @@ neg_freq = px.bar(data3.head(30), x='frequent', y='word',
             color='frequent', title="Top 30 Words Positive")
 neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(neg_freq, use_container_width=True)
+
+# wordcloud
+'''
+from wordcloud import WordCloud
+def ngrams(text):
+    text = ' '.join([str(e) for e in text]) # ubah nested list menjadi string
+    return ''.join(text).strip()
+
+df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
+ngram = ' '.join(df['ngrams'])
+'''
+wordcloud = WordCloud(width = 2000, height = 1334,
+                      random_state=1, background_color='black',colormap='Pastel1',
+                      collocations=False, normalize_plurals=False,
+                      collocation_threshold = 2).generate(ngram)
+
+#visualisasi
+plt.figure(figsize=(10,10))
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+plt.show()
+st.pyplot()
+
