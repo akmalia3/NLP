@@ -66,6 +66,7 @@ plt.figure(figsize=(10,10))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.show()
+st.pyplot()
 
 # frequents word
 from collections import Counter
