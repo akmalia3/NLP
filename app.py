@@ -49,6 +49,9 @@ st.plotly_chart(fig_sentiment)
 
 # wordcloud
 from wordcloud import WordCloud
+
+ngram = df['ngrams']
+
 from collections import Counter
 
 text = ngram.split()
