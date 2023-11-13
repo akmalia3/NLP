@@ -87,6 +87,7 @@ st.plotly_chart(fig_freq, use_container_width=True)
 
 # frequent word positive
 pos_review = df['ngrams'][df["sentiment"] == 'positive'].tolist()
+pos_review.fillna(' ')
 pos = ''.join(pos_review)
 
 text = pos.split()
