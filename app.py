@@ -77,9 +77,6 @@ data = pd.read_csv('word-frequents.csv')
 data = data.drop(['Unnamed: 0'], axis=1)
 st.dataframe(data)
 
-# visualisasi frequent word
-import plotly.express as px
-
 fig_freq = px.bar(data.head(40), x='frequent', y='word',
             color='frequent', title="Top 40 Words")
 fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
@@ -96,3 +93,8 @@ freq = Counter(text)
 data2 = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
 data2.style.background_gradient(cmap='Blues')
 st.dataframe(data2)
+
+pos_freq = px.bar(data2.head(40), x='frequent', y='word',
+            color='frequent', title="Top 40 Words Positive")
+pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig_freq, use_container_width=True)
