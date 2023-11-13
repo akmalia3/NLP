@@ -9,8 +9,7 @@ st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
 
 excel_file = "dataset.xlsx"
-
-df = pd.read_excel(excel_file, usecols='A:G')
+df = pd.read_excel(excel_file)
 df = df.drop(['Unnamed: 0'], axis=1)
 st.dataframe(df)
 
