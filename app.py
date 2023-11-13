@@ -100,6 +100,15 @@ fig_bi = px.bar(data_bi.head(40), x='frequent', y='word',
 fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_bi, use_container_width=True)
 
+# frequent trigram
+df['trigrams'].fillna(' ', inplace=True)
+trigram = ''.join(df['trigrams'])
+
+text_tri = trigram.split()
+freq_tri = Counter(text_tri)
+data_tri = pd.DataFrame(freq_tri.most_common(), columns=['word', 'frequent'])
+data_tri.style.background_gradient(cmap='Blues')
+
 # frequent ngram word positive
 df['ngrams'].fillna(' ', inplace=True)
 df['sentiment'].fillna(' ', inplace=True)
