@@ -53,7 +53,7 @@ def ngrams(text):
     text = ' '.join([str(e) for e in text]) # ubah nested list menjadi string
     return ''.join(text).strip()
 
-df['ngrams'] = df['review_stemming'].swifter.apply(ngrams)
+df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
 ngrams = ' '.join(df['ngrams'])
 
 wordcloud = WordCloud(width = 2000, height = 1334,
