@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
 
+st.sidebar.header('Side Bar')
+
 excel_file = "dataset.xlsx"
 sheet_name = "sentiment-analysis"
 
