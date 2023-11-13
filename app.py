@@ -73,26 +73,32 @@ st.pyplot()
 # frequents word
 from collections import Counter
 
-data = pd.read_csv('word-frequents.csv')
-data = data.drop(['Unnamed: 0'], axis=1)
-st.dataframe(data)
+#data = pd.read_csv('word-frequents.csv')
+#data = data.drop(['Unnamed: 0'], axis=1)
+
+ngram = ''.join(df['ngrams'])
+
+text = ngram.split()
+freq = Counter(text)
+data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
+data.style.background_gradient(cmap='Blues')
 
 fig_freq = px.bar(data.head(40), x='frequent', y='word',
             color='frequent', title="Top 40 Words")
 fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_freq, use_container_width=True)
 
-# frequent word positive
+
+# frequent ngram word positive
 df['ngrams'].fillna(' ', inplace=True)
 df['sentiment'].fillna(' ', inplace=True)
 pos_review = df['ngrams'][df["sentiment"] == 'positive'].tolist()
 pos = ''.join(pos_review)
 
-text = pos.split()
-freq = Counter(text)
-data2 = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
+text_pos = pos.split()
+freq_pos = Counter(text_pos)
+data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
 data2.style.background_gradient(cmap='Blues')
-st.dataframe(data2)
 
 pos_freq = px.bar(data2.head(30), x='frequent', y='word',
             color='frequent', title="Top 30 Words Positive")
@@ -107,7 +113,6 @@ text_neg = neg.split()
 freq_neg = Counter(text_neg)
 data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
 data3.style.background_gradient(cmap='Blues')
-st.dataframe(data3)
 
 neg_freq = px.bar(data3.head(30), x='frequent', y='word',
             color='frequent', title="Top 30 Words Positive")
