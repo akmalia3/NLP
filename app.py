@@ -9,7 +9,7 @@ st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
 
 st.sidebar.header('Side Bar')
-sumber_data = st.slider.multiselect(
+sumber_data = st.sidebar.multiselect(
             "Sumber Data: ",
             options=df['Sumber'].unique(),
             default=df['Sumber'].unique()
