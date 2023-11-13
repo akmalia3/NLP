@@ -54,7 +54,7 @@ def ngrams(text):
     return ''.join(text).strip()
 
 df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
-ngrams = ' '.join(df['ngrams'])
+ngram = ' '.join(df['ngrams'])
 
 wordcloud = WordCloud(width = 2000, height = 1334,
                       random_state=1, background_color='black',colormap='Pastel1',
@@ -71,7 +71,7 @@ st.pyplot()
 # frequents word
 from collections import Counter
 
-text = df['ngrams'].str.split(' ').str.join(' ')
+text = ngram.str.split(' ').str.join(' ')
 freq = Counter(text)
 data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
 st.dataframe(data)
