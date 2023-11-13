@@ -49,9 +49,25 @@ st.plotly_chart(fig_sentiment)
 
 # wordcloud
 from wordcloud import WordCloud
+def ngrams(text):
+    text = ' '.join([str(e) for e in text]) # ubah nested list menjadi string
+    return ''.join(text).strip()
 
-ngram = df['ngrams']
+df['ngrams'] = df['review_stemming'].swifter.apply(ngrams)
+ngrams = ' '.join(df['ngrams'])
 
+wordcloud = WordCloud(width = 2000, height = 1334,
+                      random_state=1, background_color='black',colormap='Pastel1',
+                      collocations=False, normalize_plurals=False,
+                      collocation_threshold = 2).generate(ngrams)
+
+# visualisasi
+plt.figure(figsize=(10,10))
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+plt.show()
+
+# frequents word
 from collections import Counter
 
 text = df['ngrams'].str.split(' ').str.join(' ')
