@@ -26,8 +26,7 @@ fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title="Persentase Je
 
 # Visuaisasi jenis kelamin
 jenis_kelamin = df['Jenis Kelamin '].value_counts()
-fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], title="Persentase Jenis Kelamin User"
-               color=['#39A7FF','#E95793'])
+fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], title="Persentase Jenis Kelamin User")
 
 left_column, right_column, midle_column = st.columns(3)
 left_column.plotly_chart(fig, use_container_width=True)
@@ -117,8 +116,7 @@ freq_neg = Counter(text_neg)
 data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
 data3.style.background_gradient(cmap='Blues')
 
-neg_freq = px.bar(data3.head(30), x='frequent', y='word',
-            color='frequent', title="Top 30 Words Positive", color="strength")
+neg_freq = px.bar(data3.head(30), x='frequent', y='word', title="Top 30 Words Negative")
 neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(neg_freq, use_container_width=True)
 
