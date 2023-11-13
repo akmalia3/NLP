@@ -94,7 +94,22 @@ data2 = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
 data2.style.background_gradient(cmap='Blues')
 st.dataframe(data2)
 
-pos_freq = px.bar(data2.head(40), x='frequent', y='word',
-            color='frequent', title="Top 40 Words Positive")
+pos_freq = px.bar(data2.head(30), x='frequent', y='word',
+            color='frequent', title="Top 30 Words Positive")
 pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(pos_freq, use_container_width=True)
+
+# frequent word negative
+neg_review = df['ngrams'][df["sentiment"] == 'negative'].tolist()
+neg = ''.join(neg_review)
+
+text_neg = neg.split()
+freq_neg = Counter(text_neg)
+data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
+data3.style.background_gradient(cmap='Blues')
+st.dataframe(data3)
+
+neg_freq = px.bar(data3.head(30), x='frequent', y='word',
+            color='frequent', title="Top 30 Words Positive")
+neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
+st.plotly_chart(neg_freq, use_container_width=True)
