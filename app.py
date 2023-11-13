@@ -62,7 +62,7 @@ wordcloud = WordCloud(width = 2000, height = 1334,
                       collocations=False, normalize_plurals=False,
                       collocation_threshold = 2).generate(ngram)
 
-# visualisasi
+visualisasi
 plt.figure(figsize=(10,10))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
@@ -74,5 +74,6 @@ st.pyplot()
 from collections import Counter
 
 data = pd.read_csv('word-frequents.csv')
+data = data.drop(['Unnamed: 0'], axis=1)
 st.dataframe(data)
 
