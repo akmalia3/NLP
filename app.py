@@ -136,18 +136,16 @@ def ngrams(text):
 
 df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
 ngram = ' '.join(df['ngrams'])
+'''
 
 wordcloud = WordCloud().generate(ngram)
 
+a, ax = plt.subplots()
+
 #visualisasi
 #plt.figure(figsize=(10,10))
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-st.pyplot()
-'''
-
-wc = WordCloud().fit_words({"A": 2, "B": 2, "C": 3})
-
-st.image(wc.to_array())
+ax.imshow(wordcloud, interpolation='bilinear')
+ax.axis("off")
+#plt.show()
+st.pyplot(a)
 
