@@ -76,6 +76,7 @@ from collections import Counter
 #data = pd.read_csv('word-frequents.csv')
 #data = data.drop(['Unnamed: 0'], axis=1)
 
+df['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df['ngrams'])
 
 text = ngram.split()
