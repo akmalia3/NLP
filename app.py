@@ -135,7 +135,7 @@ ngram = ' '.join(df['ngrams'])
 wordcloud = WordCloud().generate(ngram)
 
 #visualisasi
-plt.figure(figsize=(10,10))
+#plt.figure(figsize=(10,10))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.show()
