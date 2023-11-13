@@ -8,6 +8,12 @@ import matplotlib.pyplot as plt
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
 
+df = pd.read_excel(excel_file, usecols='A:G')
+df = df.drop(['Unnamed: 0'], axis=1)
+
+st.dataframe(df)
+
+# Sidebar
 st.sidebar.header('Side Bar')
 sumber_data = st.sidebar.multiselect(
             "Sumber Data: ",
@@ -17,11 +23,6 @@ sumber_data = st.sidebar.multiselect(
 
 excel_file = "dataset.xlsx"
 sheet_name = "sentiment-analysis"
-
-df = pd.read_excel(excel_file, usecols='A:G')
-df = df.drop(['Unnamed: 0'], axis=1)
-
-st.dataframe(df)
 
 # Visualisasi sumber data
 sumber = df['Sumber'].value_counts()
