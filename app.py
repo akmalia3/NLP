@@ -147,5 +147,4 @@ plt.axis("off")
 plt.savefig('word.jpg')
 #st.pyplot(a)
 img = Image.open('word.jpg')
-return img
 
