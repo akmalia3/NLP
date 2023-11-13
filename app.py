@@ -122,8 +122,9 @@ neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(neg_freq, use_container_width=True)
 
 # wordcloud
-'''
+
 from wordcloud import WordCloud
+'''
 def ngrams(text):
     text = ' '.join([str(e) for e in text]) # ubah nested list menjadi string
     return ''.join(text).strip()
