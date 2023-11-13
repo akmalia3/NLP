@@ -26,7 +26,8 @@ fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title="Persentase Je
 
 # Visuaisasi jenis kelamin
 jenis_kelamin = df['Jenis Kelamin '].value_counts()
-fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], title="Persentase Jenis Kelamin User")
+fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], title="Persentase Jenis Kelamin User"
+               color=['#39A7FF','#E95793'])
 
 left_column, right_column, midle_column = st.columns(3)
 left_column.plotly_chart(fig, use_container_width=True)
