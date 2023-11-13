@@ -132,10 +132,7 @@ def ngrams(text):
 df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
 ngram = ' '.join(df['ngrams'])
 '''
-wordcloud = WordCloud(width = 2000, height = 1334,
-                      random_state=1, background_color='black',colormap='Pastel1',
-                      collocations=False, normalize_plurals=False,
-                      collocation_threshold = 2).generate(ngram)
+wordcloud = WordCloud().generate(ngram)
 
 #visualisasi
 plt.figure(figsize=(10,10))
