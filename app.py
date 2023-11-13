@@ -109,6 +109,11 @@ freq_tri = Counter(text_tri)
 data_tri = pd.DataFrame(freq_tri.most_common(), columns=['word', 'frequent'])
 data_tri.style.background_gradient(cmap='Blues')
 
+fig_tri = px.bar(data_tri.head(40), x='frequent', y='word',
+            color='frequent', title="Top 40 Words Trigrams")
+fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig_tri, use_container_width=True)
+
 # frequent ngram word positive
 df['ngrams'].fillna(' ', inplace=True)
 df['sentiment'].fillna(' ', inplace=True)
