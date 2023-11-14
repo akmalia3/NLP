@@ -30,6 +30,7 @@ df_selection = df.query("Sumber == @sumber_data")
 col1, col2 = st.columns(2)
 
 with col1:
+    st.markdown('<div style="border: 1px solid #e6e6e6; padding: 10px; border-radius: 5px;">', unsafe_allow_html=True)
     st.markdown('Data')
     st.dataframe(df_selection)
 
