@@ -4,6 +4,7 @@ import plotly.express as px
 import wordcloud
 import swifter
 import matplotlib.pyplot as plt
+import streamlit_wordcloud as wordcloud
 
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
@@ -136,7 +137,6 @@ def ngrams(text):
 
 df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
 ngram = ' '.join(df['ngrams'])
-'''
 
 wordcloud = WordCloud().generate(ngram)
 
@@ -145,4 +145,7 @@ plt.figure(figsize=(10,10))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 st.pyplot()
-
+'''
+words = ['halo','hai','halo', 'good', 'morning','halo']
+return_obj = wordcloud.visualize(words)
+st.write(return_obj)
