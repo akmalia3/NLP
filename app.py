@@ -135,7 +135,7 @@ def ngrams(text):
 
 df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
 ngram = ' '.join(df['ngrams'])
-'''
+
 word_list = df['ngrams'].values.tolist()
 count_word = Counter(word_list)
 wordcloud = WordCloud().generate_from_frequencies(count_word)
@@ -146,3 +146,15 @@ plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.show()
 st.pyplot()
+'''
+
+df['ngrams'].fillna(' ', inplace=True)
+ngram = ''.join(df['ngrams'])
+
+wordcloud = WordCloud().generate(ngram)
+
+#visualisasi
+plt.figure(figsize=(10,10))
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+plt.show()
