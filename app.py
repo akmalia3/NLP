@@ -26,7 +26,7 @@ st.dataframe(df_selection)
 
 # Visualisasi hasil sentiment
 sentiment = df_selection['sentiment'].value_counts()
-fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], template='gridon'
+fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], template='gridon',
                        title=f'Persentase Hasil Sentiment pada {sumber_data}')
 st.plotly_chart(fig_sentiment)
 
