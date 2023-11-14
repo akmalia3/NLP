@@ -39,6 +39,36 @@ with col2:
                        title=f'Persentase Hasil Sentiment pada {sumber_data}')
     st.plotly_chart(fig_sentiment)
 
+# frequents word
+df['ngrams'].fillna(' ', inplace=True)
+ngram = ''.join(df['ngrams'])
+
+# Display left and right side
+left, right = st.columns([0.45,0.45])
+
+with left:
+            wordcloud = WordCloud(width = 2000, height = 1334,
+                      random_state=1, background_color='white',colormap='Pastel1',#'PuBu_r',
+                      collocations=False, normalize_plurals=False,
+                      collocation_threshold = 2).generate(ngram)
+            plt.figure(figsize=(10,10))
+            plt.imshow(wordcloud, interpolation='bilinear')
+            plt.axis("off")
+            plt.show()
+            st.subheader('wordcloud')
+            st.pyplot(plt, use_container_width=True)
+
+with right:
+            text = ngram.split()
+            freq = Counter(text)
+            data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
+
+            fig_freq = px.bar(data.head(20), x='frequent', y='word',
+                              color='frequent', template='gridon', height=500)
+            fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
+            st.subheader('frequent word')
+            st.plotly_chart(fig_freq, use_container_width=True)
+
 # Visualisasi jenis akun
 jenis_akun = df_selection['Jenis Akun'].value_counts()
 fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
@@ -61,36 +91,6 @@ st.plotly_chart(chart_kategori, use_container_width=True)
 # Visualisasi tanggal komentar
 fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
 st.plotly_chart(fig_tgl, use_container_width=True)
-
-# frequents word
-df['ngrams'].fillna(' ', inplace=True)
-ngram = ''.join(df['ngrams'])
-
-# Display left and right side
-left, right = st.columns([0.45,0.45])
-
-with left:
-            wordcloud = WordCloud(width = 2000, height = 1334,
-                      random_state=1, background_color='white',colormap='PuBu_r',
-                      collocations=False, normalize_plurals=False,
-                      collocation_threshold = 2).generate(ngram)
-            plt.figure(figsize=(10,10))
-            plt.imshow(wordcloud, interpolation='bilinear')
-            plt.axis("off")
-            plt.show()
-            st.subheader('wordcloud')
-            st.pyplot(plt, use_container_width=True)
-
-with right:
-            text = ngram.split()
-            freq = Counter(text)
-            data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
-
-            fig_freq = px.bar(data.head(20), x='frequent', y='word',
-                              color='frequent', template='gridon', height=500)
-            fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
-            st.subheader('frequent word')
-            st.plotly_chart(fig_freq, use_container_width=True)
 
 # frequent bigrams
 df['bigrams'].fillna(' ', inplace=True)
