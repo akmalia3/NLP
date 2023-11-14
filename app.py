@@ -48,9 +48,8 @@ left, right = st.columns([0.45,0.45])
 
 with left:
             wordcloud = WordCloud(width = 2000, height = 1334,
-                      random_state=1, background_color='white',colormap='Pastel1',#'PuBu_r',
-                      collocations=False, normalize_plurals=False,
-                      collocation_threshold = 2).generate(ngram)
+                                  background_color='black',
+                                  colormap='Pastel1').generate(ngram)#'PuBu_r'
             plt.figure(figsize=(10,10))
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis("off")
