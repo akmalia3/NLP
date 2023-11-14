@@ -4,7 +4,8 @@ import plotly.express as px
 import wordcloud
 import swifter
 import matplotlib.pyplot as plt
-import streamlit_wordcloud as wordcloud
+from wordcloud import WordCloud
+from collections import Counter
 
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
@@ -54,8 +55,6 @@ fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title='P
 st.plotly_chart(fig_sentiment)
 
 # frequents word
-from collections import Counter
-
 df['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df['ngrams'])
 
@@ -129,7 +128,6 @@ st.plotly_chart(neg_freq, use_container_width=True)
 
 # wordcloud
 
-from wordcloud import WordCloud
 '''
 def ngrams(text):
     text = ' '.join([str(e) for e in text]) # ubah nested list menjadi string
@@ -137,7 +135,7 @@ def ngrams(text):
 
 df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
 ngram = ' '.join(df['ngrams'])
-
+'''
 wordcloud = WordCloud().generate(ngram)
 
 #visualisasi
@@ -145,7 +143,3 @@ plt.figure(figsize=(10,10))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 st.pyplot()
-'''
-words = ['halo','hai','halo', 'good', 'morning','halo']
-return_obj = wordcloud.visualize(words)
-st.write(return_obj)
