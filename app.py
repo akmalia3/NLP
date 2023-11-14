@@ -79,6 +79,10 @@ plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.show()
 '''
+
+df['ngrams'].fillna(' ', inplace=True)
+ngram = ''.join(df['ngrams'])
+
 # Display left and right side
 left, right = st.columns(2)
 
@@ -96,9 +100,6 @@ with left:
             st.pyplot(plt, use_container_width=True)
 
 with right:
-            df['ngrams'].fillna(' ', inplace=True)
-            ngram = ''.join(df['ngrams'])
-
             text = ngram.split()
             freq = Counter(text)
             data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
