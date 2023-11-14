@@ -6,6 +6,6 @@ pandas
 plotly
 streamlit
 swifter
-wordcloud==1.8.1
+wordcloud
 Pillow==10.1.0
 collections
