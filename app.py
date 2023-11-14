@@ -103,7 +103,7 @@ with right:
             freq = Counter(text)
             data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
 
-            fig_freq = px.bar(data.head(10), x='frequent', y='word', color='frequent')
+            fig_freq = px.bar(data.head(20), x='frequent', y='word', color='frequent')
             fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
             st.subheader('frequent word')
             st.plotly_chart(fig_freq, use_container_width=True)
