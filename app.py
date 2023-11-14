@@ -8,6 +8,8 @@ from collections import Counter
 
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
+st.set_page_config(layout="wide")
+st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
 excel_file = "dataset.xlsx"
 df = pd.read_excel(excel_file)
