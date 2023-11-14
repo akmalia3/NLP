@@ -40,8 +40,8 @@ with col2:
     st.plotly_chart(fig_sentiment)
 
 # frequents word
-df['ngrams'].fillna(' ', inplace=True)
-ngram = ''.join(df['ngrams'])
+df_selection['ngrams'].fillna(' ', inplace=True)
+ngram = ''.join(df_selection['ngrams'])
 
 # Display left and right side
 left, right = st.columns([0.45,0.45])
