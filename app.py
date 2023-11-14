@@ -50,7 +50,7 @@ with left:
             wordcloud = WordCloud(width = 2000, height = 1334,
                               random_state=1, background_color='black',colormap='Pastel1',
                               collocations=False, normalize_plurals=False,
-                              collocation_threshold = 2).generate(ngram)#'PuBu_r'
+                              collocation_threshold = 2, margin=0).generate(ngram)#'PuBu_r'
             plt.figure(figsize=(10,10))
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis("off")
