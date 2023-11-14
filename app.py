@@ -20,9 +20,7 @@ st.sidebar.header('Side Bar')
 sumber_data = st.radio("Sumber Data: ", 
                        options=df["Sumber"].unique())
 
-df_selection = df.query(
-  "Sumber Data == @sumber_data"
-)
+df_selection = df.query("Sumber == @sumber_data")
 
 st.dataframe(df_selection)
 
