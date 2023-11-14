@@ -18,7 +18,7 @@ st.dataframe(df)
 # Sidebar
 st.sidebar.header('Side Bar')
 sumber_data = st.sidebar(
-            st.radio("Sumber Data: ", ["Twitter","Instagram"])
+            radio("Sumber Data: ", ["Twitter","Instagram"])
 )
 
 # Visualisasi sumber data
