@@ -20,8 +20,7 @@ st.sidebar.header('Side Bar')
 sumber_data = st.sidebar(
             "Sumber Data: ",
             st.radio(
-            options=df['Sumber'].unique(),
-            default=df['Sumber'].unique())
+            options=df['Sumber'].unique())
 )
 
 # Visualisasi sumber data
