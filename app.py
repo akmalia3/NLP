@@ -68,7 +68,7 @@ fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_freq, use_container_width=True)
 
 # wordcloud
-wordcloud = WordCloud(width = 2000, height = 1334,
+wordcloud = WordCloud(width = 1600, height = 800,
                       random_state=1, background_color='white',colormap='PuBu_r',
                       collocations=False, normalize_plurals=False,
                       collocation_threshold = 2).generate(ngram)
