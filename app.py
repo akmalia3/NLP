@@ -20,7 +20,11 @@ st.sidebar.header('Side Bar')
 sumber_data = st.radio("Sumber Data: ", 
                        options=df["Sumber"].unique())
 
-df_selection = df.query()
+df_selection = df.query(
+  "Sumber Data == @sumber_data"
+)
+
+st.dataframe(df_selection)
 
 # Visualisasi sumber data
 sumber = df['Sumber'].value_counts()
