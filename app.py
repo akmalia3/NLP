@@ -54,32 +54,6 @@ fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title='P
 st.plotly_chart(fig_sentiment)
 
 # frequents word
-'''
-df['ngrams'].fillna(' ', inplace=True)
-ngram = ''.join(df['ngrams'])
-
-text = ngram.split()
-freq = Counter(text)
-data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
-data.style.background_gradient(cmap='Blues')
-
-fig_freq = px.bar(data.head(40), x='frequent', y='word',
-            color='frequent')
-fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
-st.plotly_chart(fig_freq, use_container_width=True)
-
-# wordcloud
-wordcloud = WordCloud(width = 2000, height = 2000,
-                      random_state=1, background_color='white',colormap='PuBu_r',
-                      collocations=False, normalize_plurals=False,
-                      collocation_threshold = 2).generate(ngram)
-#visualisasi
-plt.figure(figsize=(30,30))
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-'''
-
 df['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df['ngrams'])
 
