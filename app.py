@@ -44,12 +44,12 @@ chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}
 st.plotly_chart(chart_kategori, use_container_width=True)
 
 # Visualisasi tanggal komentar
-fig_tgl = px.area(df['Tanggal'],  title="Waktu")
+fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
 st.plotly_chart(fig_tgl, use_container_width=True)
 
 # Visualisasi hasil sentiment
-sentiment = df['sentiment'].value_counts()
-fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title='Persentase Hasil Sentiment')
+sentiment = df_selection['sentiment'].value_counts()
+fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title=f'Persentase Hasil Sentiment pada {sumber_data}')
 st.plotly_chart(fig_sentiment)
 
 # frequents word
