@@ -24,13 +24,9 @@ df_selection = df.query("Sumber == @sumber_data")
 
 st.dataframe(df_selection)
 
-# Visualisasi sumber data
-sumber = df['Sumber'].value_counts()
-fig = px.pie(values=sumber, names=['Twitter', 'Instagram'], title="Persentase Sumber Data")
-
 # Visualisasi jenis akun
 jenis_akun = df['Jenis Akun'].value_counts()
-fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title="Persentase Jenis Akun")
+fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {df_selection}")
 
 # Visuaisasi jenis kelamin
 jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
