@@ -68,7 +68,8 @@ fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_freq, use_container_width=True)
 
 # wordcloud
-wordcloud = WordCloud(random_state=1, background_color='white',colormap='PuBu_r',
+wordcloud = WordCloud(width = 2000, height = 1334,
+                      random_state=1, background_color='white',colormap='PuBu_r',
                       collocations=False, normalize_plurals=False,
                       collocation_threshold = 2).generate(ngram)
 #visualisasi
@@ -77,11 +78,10 @@ plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.show()
 
+# Display left and right side
 left, right = st.columns(2)
-
 left.subheader('wordcloud')
 left.pyplot(plt)
-
 right.subheader('frequent word')
 right.plotly_chart(fig_freq)
 
