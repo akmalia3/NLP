@@ -8,4 +8,3 @@ streamlit
 swifter
 wordcloud
 Pillow
-collections
