@@ -24,6 +24,12 @@ df_selection = df.query("Sumber == @sumber_data")
 
 st.dataframe(df_selection)
 
+# Visualisasi hasil sentiment
+sentiment = df_selection['sentiment'].value_counts()
+fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], template='gridon'
+                       title=f'Persentase Hasil Sentiment pada {sumber_data}')
+st.plotly_chart(fig_sentiment)
+
 # Visualisasi jenis akun
 jenis_akun = df_selection['Jenis Akun'].value_counts()
 fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
@@ -46,11 +52,6 @@ st.plotly_chart(chart_kategori, use_container_width=True)
 # Visualisasi tanggal komentar
 fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
 st.plotly_chart(fig_tgl, use_container_width=True)
-
-# Visualisasi hasil sentiment
-sentiment = df_selection['sentiment'].value_counts()
-fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title=f'Persentase Hasil Sentiment pada {sumber_data}')
-st.plotly_chart(fig_sentiment)
 
 # frequents word
 df['ngrams'].fillna(' ', inplace=True)
