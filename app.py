@@ -138,7 +138,8 @@ ngram = ' '.join(df['ngrams'])
 '''
 word_list = df['ngrams'].values.tolist()
 count_word = Counter(word_list)
-wordcloud = WordCloud().generate_from_frequencies(count_word)
+wordcloud = WordCloud()\
+.generate_from_frequencies(count_word)
 
 #visualisasi
 plt.figure(figsize=(10,10))
