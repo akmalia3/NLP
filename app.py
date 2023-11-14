@@ -26,7 +26,7 @@ st.dataframe(df_selection)
 
 # Visualisasi jenis akun
 jenis_akun = df['Jenis Akun'].value_counts()
-fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {df_selection}")
+fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
 
 # Visuaisasi jenis kelamin
 jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
