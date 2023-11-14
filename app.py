@@ -27,7 +27,7 @@ sumber_data = st.sidebar.radio("Sumber Data: ",
 
 df_selection = df.query("Sumber == @sumber_data")
 
-col1, col2 = st.container.columns(2)
+col1, col2 = st.columns(2)
 
 with col1:
     st.card('Data')
