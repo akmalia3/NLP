@@ -1,4 +1,4 @@
-matplotlib==3.8.1
+matplotlib
 nltk
 numpy
 openpyxl
@@ -7,5 +7,5 @@ plotly
 streamlit
 swifter
 wordcloud
-Pillow==10.1.0
+Pillow
 collections
