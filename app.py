@@ -70,11 +70,11 @@ ngram = ''.join(df['ngrams'])
 left, right = st.columns([0.45,0.45])
 
 with left:
-            wordcloud = WordCloud(width = 2000, height = 2000,
+            wordcloud = WordCloud(width = 2000, height = 1334,
                       random_state=1, background_color='white',colormap='PuBu_r',
                       collocations=False, normalize_plurals=False,
                       collocation_threshold = 2).generate(ngram)
-            plt.figure(figsize=(30,30))
+            plt.figure(figsize=(10,10))
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis("off")
             plt.show()
