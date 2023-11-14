@@ -126,3 +126,13 @@ neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(neg_freq, use_container_width=True)
 
 # wordcloud
+df['ngrams'].fillna(' ', inplace=True)
+ngram = ''.join(df['ngrams'])
+
+wordcloud = WordCloud().generate(ngram)
+
+#visualisasi
+plt.figure()
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+plt.show()
