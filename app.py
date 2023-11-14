@@ -129,7 +129,10 @@ st.plotly_chart(neg_freq, use_container_width=True)
 df['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df['ngrams'])
 
-wordcloud = WordCloud().generate(ngram)
+wordcloud = WordCloud(width = 2000, height = 1334,
+                      random_state=1, background_color='black',colormap='Pastel1',
+                      collocations=False, normalize_plurals=False,
+                      collocation_threshold = 2).generate(ngram)
 
 #visualisasi
 plt.figure()
