@@ -78,8 +78,8 @@ plt.axis("off")
 plt.show()
 
 left, right = st.columns(2)
-left.pyplot(plt, use_container_width=True)
-right.plotly_chart(fig_freq, use_container_width=True)
+left.pyplot(plt)
+right.plotly_chart(fig_freq)
 
 # frequent bigrams
 df['bigrams'].fillna(' ', inplace=True)
