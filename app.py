@@ -63,7 +63,7 @@ data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
 data.style.background_gradient(cmap='Blues')
 
 fig_freq = px.bar(data.head(40), x='frequent', y='word',
-            color='frequent', title="Top 40 Words")
+            color='frequent')
 fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_freq, use_container_width=True)
 
@@ -78,7 +78,11 @@ plt.axis("off")
 plt.show()
 
 left, right = st.columns(2)
+
+left.subheader('wordcloud')
 left.pyplot(plt)
+
+right.subheader('frequent word')
 right.plotly_chart(fig_freq)
 
 # frequent bigrams
