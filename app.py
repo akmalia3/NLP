@@ -8,7 +8,6 @@ from collections import Counter
 
 st.header('Sentiment Analysis')
 st.subheader('Was the data helpful?')
-st.set_page_config(layout='wide')
 
 excel_file = "dataset.xlsx"
 df = pd.read_excel(excel_file)
@@ -85,7 +84,7 @@ df['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df['ngrams'])
 
 # Display left and right side
-left, right = st.columns(2)
+left, right = st.columns([0.1,0.9])
 
 with left:
             wordcloud = WordCloud(width = 2000, height = 2000,
