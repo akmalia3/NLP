@@ -84,7 +84,7 @@ df['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df['ngrams'])
 
 # Display left and right side
-left, right = st.columns([0.1,0.9])
+left, right = st.columns([0.45,0.45])
 
 with left:
             wordcloud = WordCloud(width = 2000, height = 2000,
@@ -103,7 +103,8 @@ with right:
             freq = Counter(text)
             data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
 
-            fig_freq = px.bar(data.head(20), x='frequent', y='word', color='frequent')
+            fig_freq = px.bar(data.head(20), x='frequent', y='word',
+                              color='frequent', template='gridon', height=500)
             fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
             st.subheader('frequent word')
             st.plotly_chart(fig_freq, use_container_width=True)
