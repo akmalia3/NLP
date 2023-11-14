@@ -79,7 +79,7 @@ plt.axis("off")
 plt.show()
 
 # Display left and right side
-left, right = st.columns([1,1],gap='large')
+left, right = st.columns(2, gap='large')
 left.subheader('wordcloud')
 left.pyplot(plt)
 right.subheader('frequent word')
