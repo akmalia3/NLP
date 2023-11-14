@@ -149,3 +149,16 @@ plt.imshow(wordcloud_bigrams, interpolation='bilinear')
 plt.axis("off")
 plt.show()
 st.pyplot(plt)
+
+# wordcloud trigram
+wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
+                              random_state=1, background_color='black',colormap='Pastel1',
+                              collocations=False, normalize_plurals=False,
+                              collocation_threshold = 2).generate(trigram)
+
+# visualisasi dengan matplotlib
+plt.figure(figsize=(10,10))
+plt.imshow(wordcloud_trigrams, interpolation='bilinear')
+plt.axis("off")
+plt.show()
+st.pyplot(plt)
