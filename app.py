@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-import wordcloud
 import swifter
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
@@ -127,34 +126,3 @@ neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(neg_freq, use_container_width=True)
 
 # wordcloud
-
-'''
-def ngrams(text):
-    text = ' '.join([str(e) for e in text]) # ubah nested list menjadi string
-    return ''.join(text).strip()
-
-df['ngrams'] = df['text_stemming'].swifter.apply(ngrams)
-ngram = ' '.join(df['ngrams'])
-
-word_list = df['ngrams'].values.tolist()
-count_word = Counter(word_list)
-wordcloud = WordCloud().generate_from_frequencies(count_word)
-
-#visualisasi
-plt.figure(figsize=(10,10))
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-st.pyplot()
-'''
-
-df['ngrams'].fillna(' ', inplace=True)
-ngram = ''.join(df['ngrams'])
-
-wordcloud = WordCloud().generate(ngram)
-
-#visualisasi
-plt.figure(figsize=(10,10))
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.show()
