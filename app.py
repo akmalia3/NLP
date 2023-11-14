@@ -17,10 +17,11 @@ st.dataframe(df)
 
 # Sidebar
 st.sidebar.header('Side Bar')
-sumber_data = st.sidebar.multiselect(
+sumber_data = st.sidebar(
             "Sumber Data: ",
+            st.radio(
             options=df['Sumber'].unique(),
-            default=df['Sumber'].unique()
+            default=df['Sumber'].unique())
 )
 
 # Visualisasi sumber data
