@@ -81,9 +81,9 @@ plt.show()
 # Display left and right side
 left, right = st.columns(2, gap='large')
 left.subheader('wordcloud')
-left.pyplot(plt)
+left.pyplot(plt, use_container_width=True)
 right.subheader('frequent word')
-right.plotly_chart(fig_freq)
+right.plotly_chart(fig_freq, use_container_width=True)
 
 # frequent bigrams
 df['bigrams'].fillna(' ', inplace=True)
