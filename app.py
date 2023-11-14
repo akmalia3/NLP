@@ -19,7 +19,6 @@ st.set_page_config(
 excel_file = "dataset.xlsx"
 df = pd.read_excel(excel_file)
 df = df.drop(['Unnamed: 0'], axis=1)
-st.dataframe(df)
 
 # Sidebar
 st.sidebar.header('Side Bar')
@@ -28,13 +27,17 @@ sumber_data = st.radio("Sumber Data: ",
 
 df_selection = df.query("Sumber == @sumber_data")
 
-st.dataframe(df_selection)
+col1, col2 = st.columns(2)
 
-# Visualisasi hasil sentiment
-sentiment = df_selection['sentiment'].value_counts()
-fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], template='gridon',
+with col1:
+    st.dataframe(df_selection)
+
+with col2:
+    # Visualisasi hasil sentiment
+    sentiment = df_selection['sentiment'].value_counts()
+    fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], template='gridon',
                        title=f'Persentase Hasil Sentiment pada {sumber_data}')
-st.plotly_chart(fig_sentiment)
+    st.plotly_chart(fig_sentiment)
 
 # Visualisasi jenis akun
 jenis_akun = df_selection['Jenis Akun'].value_counts()
