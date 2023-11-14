@@ -73,7 +73,7 @@ wordcloud = WordCloud(width = 2000, height = 2000,
                       collocations=False, normalize_plurals=False,
                       collocation_threshold = 2).generate(ngram)
 #visualisasi
-plt.figure()
+plt.figure(figsize=(30,30))
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
 plt.show()
