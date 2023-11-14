@@ -17,7 +17,8 @@ st.dataframe(df)
 
 # Sidebar
 st.sidebar.header('Side Bar')
-sumber_data = st.radio("Sumber Data: ", [df["Sumber"].unique()])
+sumber_data = st.radio("Sumber Data: ", 
+                       options=df["Sumber"].unique())
 
 df_selection = df.query()
 
