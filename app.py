@@ -147,29 +147,32 @@ with n:
         st.plotly_chart(fig_freq, use_container_width=True)
 
 with bi:
-    wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
+    bi_left, bi_right = st.columns(2)
+    with bi_left:
+        wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
                                   random_state=1, background_color='black',colormap='Pastel1',
                                   collocations=False, normalize_plurals=False,
                                   collocation_threshold = 2).generate(bigram)
 
-    plt.figure(figsize=(10,10))
-    plt.imshow(wordcloud_bigrams, interpolation='bilinear')
-    plt.axis("off")
-    plt.show()
-    st.subheader('wordcloud')
-    st.pyplot(plt)
+        plt.figure(figsize=(10,10))
+        plt.imshow(wordcloud_bigrams, interpolation='bilinear')
+        plt.axis("off")
+        plt.show()
+        st.subheader('wordcloud')
+        st.pyplot(plt)
 
-#with bigram_right:
-    text_bi = bigram.split()
-    freq_bi = Counter(text_bi)
-    data_bi = pd.DataFrame(freq_bi.most_common(), columns=['word', 'frequent'])
-    data_bi.style.background_gradient(cmap='Blues')
+    with bi_right:
+        #with bigram_right:
+        text_bi = bigram.split()
+        freq_bi = Counter(text_bi)
+        data_bi = pd.DataFrame(freq_bi.most_common(), columns=['word', 'frequent'])
+        data_bi.style.background_gradient(cmap='Blues')
 
-    fig_bi = px.bar(data_bi.head(20), x='frequent', y='word',
+        fig_bi = px.bar(data_bi.head(20), x='frequent', y='word',
             color='frequent', template='seaborn')
-    fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
-    st.subheader('frequent bigram')
-    st.plotly_chart(fig_bi, use_container_width=True)
+        fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
+        st.subheader('frequent bigram')
+        st.plotly_chart(fig_bi, use_container_width=True)
 
 with tri:
     wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
