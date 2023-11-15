@@ -23,7 +23,8 @@ df = df.drop(['Unnamed: 0'], axis=1)
 
 # Sidebar
 st.sidebar.header('Dashboard')
-sumber_data = st.sidebar.radio("**Sumber Data : **", 
+st.sidebar.subheader('Sumber Data')
+sumber_data = st.sidebar.radio("Pilih Sumber Data", 
                        options=df["Sumber"].unique())
 
 df_selection = df.query("Sumber == @sumber_data")
