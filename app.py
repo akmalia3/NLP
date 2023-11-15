@@ -101,15 +101,32 @@ st.plotly_chart(fig_tgl, use_container_width=True)
 df['bigrams'].fillna(' ', inplace=True)
 bigram = ''.join(df['bigrams'])
 
-text_bi = bigram.split()
-freq_bi = Counter(text_bi)
-data_bi = pd.DataFrame(freq_bi.most_common(), columns=['word', 'frequent'])
-data_bi.style.background_gradient(cmap='Blues')
+# bigram right and left side
+bigram_left, bigram_right = st.columns(2)
 
-fig_bi = px.bar(data_bi.head(40), x='frequent', y='word',
+with bigram_left:
+    text_bi = bigram.split()
+    freq_bi = Counter(text_bi)
+    data_bi = pd.DataFrame(freq_bi.most_common(), columns=['word', 'frequent'])
+    data_bi.style.background_gradient(cmap='Blues')
+
+    fig_bi = px.bar(data_bi.head(40), x='frequent', y='word',
             color='frequent', title="Top 40 Words Bigrams")
-fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
-st.plotly_chart(fig_bi, use_container_width=True)
+    fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
+    st.plotly_chart(fig_bi, use_container_width=True)
+
+# wordcloud bigrams
+with bigram_right:
+    wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
+                              random_state=1, background_color='black',colormap='Pastel1',
+                              collocations=False, normalize_plurals=False,
+                              collocation_threshold = 2).generate(bigram)
+
+    plt.figure(figsize=(10,10))
+    plt.imshow(wordcloud_bigrams, interpolation='bilinear')
+    plt.axis("off")
+    plt.show()
+    st.pyplot(plt)
 
 # frequent trigram
 df['trigrams'].fillna(' ', inplace=True)
@@ -155,18 +172,6 @@ neg_freq = px.bar(data3.head(30), x='frequent', y='word', title="Top 30 Words Ne
 neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(neg_freq, use_container_width=True)
 
-# wordcloud bigrams
-wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
-                              random_state=1, background_color='black',colormap='Pastel1',
-                              collocations=False, normalize_plurals=False,
-                              collocation_threshold = 2).generate(bigram)
-
-# visualisasi dengan matplotlib
-plt.figure(figsize=(10,10))
-plt.imshow(wordcloud_bigrams, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-st.pyplot(plt)
 
 # wordcloud trigram
 wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
