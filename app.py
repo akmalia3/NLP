@@ -35,7 +35,7 @@ count = len(df_selection)
 
 b1, b2, b3, b4 = st.columns(4)
 b1.metric("Positive", len(pos), "Komentar")
-b2.metric("Negative", len(neg), "Komentar")
+b2.metric("Negative", len(neg), "- Komentar")
 b3.metric("Jumlah", count, "4%")
 
 col1, col2 = st.columns(2)
