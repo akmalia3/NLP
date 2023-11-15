@@ -141,7 +141,7 @@ data_tri = pd.DataFrame(freq_tri.most_common(), columns=['word', 'frequent'])
 data_tri.style.background_gradient(cmap='Blues')
 
 fig_tri = px.bar(data_tri.head(40), x='frequent', y='word',
-            color='frequent', title="Top 40 Words Trigrams")
+            color='frequent', title="Top 40 Words Trigrams", template='seaborn')
 fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_tri, use_container_width=True)
 
@@ -157,7 +157,7 @@ data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
 data2.style.background_gradient(cmap='Blues')
 
 pos_freq = px.bar(data2.head(30), x='frequent', y='word',
-            color='frequent', title="Top 30 Words Positive")
+            color='frequent', title="Top 30 Words Positive", template='simple_white')
 pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(pos_freq, use_container_width=True)
 
