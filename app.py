@@ -45,7 +45,7 @@ col1, col2 = st.columns(2)
     #st.markdown('</div>', unsafe_allow_html=True)
 
 with col1:
-    st.dataframe(df_selection)
+
     
 with col2:
     # Visualisasi hasil sentiment
