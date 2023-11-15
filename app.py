@@ -29,8 +29,8 @@ sumber_data = st.sidebar.radio("Pilih Sumber Data",
 
 df_selection = df.query("Sumber == @sumber_data")
 
-pos = df['sentiment'].loc[df['sentiment'] == 'positive']
-neg = df['sentiment'].loc[df['sentiment'] == 'negative']
+pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
+neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
 count = len(df_selection)
 
 b1, b2, b3, b4 = st.columns(4)
