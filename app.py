@@ -114,6 +114,7 @@ with bigram_left:
     plt.imshow(wordcloud_bigrams, interpolation='bilinear')
     plt.axis("off")
     plt.show()
+    st.subheader('wordcloud')
     st.pyplot(plt)
 
 with bigram_right:
@@ -122,9 +123,10 @@ with bigram_right:
     data_bi = pd.DataFrame(freq_bi.most_common(), columns=['word', 'frequent'])
     data_bi.style.background_gradient(cmap='Blues')
 
-    fig_bi = px.bar(data_bi.head(40), x='frequent', y='word',
-            color='frequent', title="Top 40 Words Bigrams")
+    fig_bi = px.bar(data_bi.head(20), x='frequent', y='word',
+            color='frequent', title="Top 20 Words Bigrams")
     fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
+    st.subheader('frequent bigram')
     st.plotly_chart(fig_bi, use_container_width=True)
 
 # wordcloud bigrams
