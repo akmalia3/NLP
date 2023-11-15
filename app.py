@@ -49,7 +49,7 @@ with col1:
 with col2:
     # Visualisasi hasil sentiment
     sentiment = df_selection['sentiment'].value_counts()
-    fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], template='plasma',
+    fig_sentiment = px.pie(values=sentiment, names=['positive','negative'],
                        title=f'Persentase Hasil Sentiment pada {sumber_data}')
     fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
     st.plotly_chart(fig_sentiment)
