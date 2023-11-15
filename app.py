@@ -75,29 +75,6 @@ with right:
             st.subheader('frequent word')
             st.plotly_chart(fig_freq, use_container_width=True)
 
-# Visualisasi jenis akun
-jenis_akun = df_selection['Jenis Akun'].value_counts()
-fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
-
-# Visuaisasi jenis kelamin
-jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
-fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], 
-                title=f"Persentase Jenis Kelamin User {sumber_data}", color=['#E95793', '#39A7FF'])
-
-# display right and left side
-right_column, midle_column = st.columns(2)
-right_column.plotly_chart(fig_akun, use_container_width=True)
-midle_column.plotly_chart(fig_jk, use_container_width=True)
-
-# Visualisasi Kategori
-kategori = df_selection['Katagori'].value_counts()
-chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
-st.plotly_chart(chart_kategori, use_container_width=True)
-
-# Visualisasi tanggal komentar
-fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
-st.plotly_chart(fig_tgl, use_container_width=True)
-
 # frequent bigrams
 df['bigrams'].fillna(' ', inplace=True)
 bigram = ''.join(df['bigrams'])
@@ -164,7 +141,34 @@ with trigrams_right:
     fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
     st.plotly_chart(fig_tri, use_container_width=True)
 
+jk_left, kt_right = st.columns(2)
 
+with jk_left:
+    # Visuaisasi jenis kelamin
+    jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
+    fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], 
+                title=f"Persentase Jenis Kelamin User {sumber_data}", template='plotly')
+    st.plotly_chart(fig_jk, use_container_width=True)
+    
+with kt_right:
+    # Visualisasi Kategori
+    kategori = df_selection['Katagori'].value_counts()
+    chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
+    st.plotly_chart(chart_kategori, use_container_width=True)
+    
+# Visualisasi jenis akun
+jenis_akun = df_selection['Jenis Akun'].value_counts()
+fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
+
+# Visuaisasi jenis kelamin
+jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
+fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], 
+                title=f"Persentase Jenis Kelamin User {sumber_data}", color=['#E95793', '#39A7FF'])
+st.plotly_chart(fig_akun, use_container_width=True)
+
+# Visualisasi tanggal komentar
+fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
+st.plotly_chart(fig_tgl, use_container_width=True)
 
 # frequent ngram word positive
 df['ngrams'].fillna(' ', inplace=True)
