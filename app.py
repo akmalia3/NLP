@@ -56,29 +56,25 @@ ngram = ''.join(df_selection['ngrams'])
 
 n, bi, tri = st.tabs(['ngrams', 'bigrams', 'trigrams'])
 with n:
-    #left, right = st.columns([0.45,0.45])
-    #with left:
-        wordcloud = WordCloud(width = 2000, height = 1334,
-                              random_state=1, background_color='black',#colormap='Pastel1',
-                              collocations=False, normalize_plurals=False,
-                              collocation_threshold = 2, mode='RGBA', 
-                                colormap='viridis').generate(ngram)#'PuBu_r'
-            plt.figure(figsize=(10,10))
-            plt.imshow(wordcloud, interpolation='bilinear')
-            plt.axis("off")
-            plt.show()
-            st.subheader('wordcloud')
-            st.pyplot(plt, use_container_width=True)
+    wordcloud = WordCloud(width = 2000, height = 1334,
+                          random_state=1, background_color='black',#colormap='Pastel1',
+                          collocations=False, normalize_plurals=False, collocation_threshold = 2, mode='RGBA', 
+                          colormap='viridis').generate(ngram)#'PuBu_r'
+    plt.figure(figsize=(10,10))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.show()
+    st.subheader('wordcloud')
+    st.pyplot(plt, use_container_width=True)
     #with right:
-            text = ngram.split()
-            freq = Counter(text)
-            data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
+    text = ngram.split()
+    freq = Counter(text)
+    data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
 
-            fig_freq = px.bar(data.head(20), x='frequent', y='word',
-                              color='frequent', template='gridon', height=500)
-            fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
-            st.subheader('frequent word')
-            st.plotly_chart(fig_freq, use_container_width=True)
+    fig_freq = px.bar(data.head(20), x='frequent', y='word',color='frequent', template='gridon', height=500)
+    fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
+    st.subheader('frequent word')
+    st.plotly_chart(fig_freq, use_container_width=True)
 
 with bi:
 # frequent bigrams
