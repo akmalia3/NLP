@@ -29,8 +29,13 @@ sumber_data = st.sidebar.radio("Pilih Sumber Data",
 
 df_selection = df.query("Sumber == @sumber_data")
 
-col1, col2 = st.columns(2)
+b1, b2, b3, b4 = st.columns(4)
+b1.metric("Temperature", "70 °F", "1.2 °F")
+b2.metric("Wind", "9 mph", "-8%")
+b3.metric("Humidity", "86%", "4%")
+b4.metric("Humidity", "86%", "4%")
 
+col1, col2 = st.columns(2)
 with col1:
     #st.markdown('<div style="border: 1px solid #e6e6e6; padding: 10px; border-radius: 5px;">', unsafe_allow_html=True)
     #st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
