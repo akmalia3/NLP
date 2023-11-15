@@ -29,11 +29,11 @@ sumber_data = st.sidebar.radio("Pilih Sumber Data",
 
 df_selection = df.query("Sumber == @sumber_data")
 
-pos_review = (df_selection["sentiment"] == 'positive').value_counts()
+pos_review = len(df_selection["sentiment"] == 'positive')
 count = len(df_selection)
 
 b1, b2, b3, b4 = st.columns(4)
-b1.metric("Positive", f"%", "1.2 °F")
+b1.metric("Positive", f"{pos_review} %", "1.2 °F")
 b2.metric("Negative", "9 mph", "-8%")
 b3.metric("Humidity", count, "4%")
 b4.metric("Humidity", "86%", "4%")
