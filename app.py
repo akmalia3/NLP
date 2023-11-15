@@ -33,7 +33,7 @@ pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
 neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
 count = len(df_selection)
 
-b1, b2, b3, b4 = st.columns(4)
+b1, b2, b3 = st.columns(3)
 b1.metric("Positive", len(pos), "Komentar")
 b2.metric("Negative", len(neg), "- Komentar")
 b3.metric("Jumlah", count, "4%")
