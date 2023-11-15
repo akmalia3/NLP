@@ -56,8 +56,8 @@ ngram = ''.join(df_selection['ngrams'])
 
 n, bi, tri = st.tabs(['ngrams', 'bigrams', 'trigrams'])
 with n:
-    left, right = st.columns([0.45,0.45])
-    with left:
+    #left, right = st.columns([0.45,0.45])
+    #with left:
         wordcloud = WordCloud(width = 2000, height = 1334,
                               random_state=1, background_color='black',#colormap='Pastel1',
                               collocations=False, normalize_plurals=False,
@@ -69,7 +69,7 @@ with n:
             plt.show()
             st.subheader('wordcloud')
             st.pyplot(plt, use_container_width=True)
-    with right:
+    #with right:
             text = ngram.split()
             freq = Counter(text)
             data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
@@ -86,9 +86,9 @@ df['bigrams'].fillna(' ', inplace=True)
 bigram = ''.join(df['bigrams'])
 
 # bigram right and left side
-bigram_left, bigram_right = st.columns(2)
+#bigram_left, bigram_right = st.columns(2)
 
-with bigram_left:
+#with bigram_left:
     wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
                               random_state=1, background_color='black',colormap='Pastel1',
                               collocations=False, normalize_plurals=False,
@@ -101,7 +101,7 @@ with bigram_left:
     st.subheader('wordcloud')
     st.pyplot(plt)
 
-with bigram_right:
+#with bigram_right:
     text_bi = bigram.split()
     freq_bi = Counter(text_bi)
     data_bi = pd.DataFrame(freq_bi.most_common(), columns=['word', 'frequent'])
@@ -120,9 +120,9 @@ trigram = ''.join(df['trigrams'])
 
 # trigrams lef and right side
 
-trigrams_left, trigrams_right = st.columns(2)
+#trigrams_left, trigrams_right = st.columns(2)
 
-with trigrams_left:
+#with trigrams_left:
     # wordcloud trigram
     wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
                               random_state=1, background_color='white',colormap='plasma',
@@ -135,7 +135,7 @@ with trigrams_left:
     plt.show()
     st.pyplot(plt)
 
-with trigrams_right:
+#with trigrams_right:
     text_tri = trigram.split()
     freq_tri = Counter(text_tri)
     data_tri = pd.DataFrame(freq_tri.most_common(), columns=['word', 'frequent'])
