@@ -56,14 +56,9 @@ ngram = ''.join(df_selection['ngrams'])
 
 n, bi, tri = st.tabs(['ngrams', 'bigrams', 'trigrams'])
 with n:
-# frequents word
-
-
-# Display left and right side
-left, right = st.columns([0.45,0.45])
-
-with left:
-            wordcloud = WordCloud(width = 2000, height = 1334,
+    left, right = st.columns([0.45,0.45])
+    with left:
+        wordcloud = WordCloud(width = 2000, height = 1334,
                               random_state=1, background_color='black',#colormap='Pastel1',
                               collocations=False, normalize_plurals=False,
                               collocation_threshold = 2, mode='RGBA', 
@@ -74,8 +69,7 @@ with left:
             plt.show()
             st.subheader('wordcloud')
             st.pyplot(plt, use_container_width=True)
-
-with right:
+    with right:
             text = ngram.split()
             freq = Counter(text)
             data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
