@@ -39,13 +39,13 @@ b2.metric("Negative", len(neg), "- Komentar")
 b3.metric("Jumlah", count, "4%")
 
 col1, col2 = st.columns(2)
-with col1:
-    #st.markdown('<div style="border: 1px solid #e6e6e6; padding: 10px; border-radius: 5px;">', unsafe_allow_html=True)
-    #st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
-    st.expander('Data'):
-    st.write(df_selection)
+
+with st.expander('Data'):
+    st.dataframe(df_selection)
     #st.markdown('</div>', unsafe_allow_html=True)
 
+with col1:
+    
 with col2:
     # Visualisasi hasil sentiment
     st.markdown(f'Persentase Hasil Sentiment pada {sumber_data}')
