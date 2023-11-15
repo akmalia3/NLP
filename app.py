@@ -44,12 +44,12 @@ b3.metric("Jumlah", count, "4%")
     #st.dataframe(df_selection)
     
 #with col2:
-    # Visualisasi hasil sentiment
-    st.markdown(f'Persentase Hasil Sentiment pada {sumber_data}')
-    sentiment = df_selection['sentiment'].value_counts()
-    fig_sentiment = px.pie(values=sentiment, names=['positive','negative'],)
-    fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
-    st.plotly_chart(fig_sentiment)
+# Visualisasi hasil sentiment
+st.markdown(f'Persentase Hasil Sentiment pada {sumber_data}')
+sentiment = df_selection['sentiment'].value_counts()
+fig_sentiment = px.pie(values=sentiment, names=['positive','negative'])
+fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
+st.plotly_chart(fig_sentiment)
 
 # frequents word
 df_selection['ngrams'].fillna(' ', inplace=True)
