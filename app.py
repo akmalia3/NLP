@@ -54,6 +54,14 @@ st.plotly_chart(fig_sentiment)
 df_selection['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df_selection['ngrams'])
 
+# frequent bigrams
+df['bigrams'].fillna(' ', inplace=True)
+bigram = ''.join(df['bigrams'])
+
+# frequent trigram
+df['trigrams'].fillna(' ', inplace=True)
+trigram = ''.join(df['trigrams'])
+
 n, bi, tri = st.tabs(['ngrams', 'bigrams', 'trigrams'])
 with n:
     wordcloud = WordCloud(width = 2000, height = 1334,
@@ -77,18 +85,10 @@ with n:
     st.plotly_chart(fig_freq, use_container_width=True)
 
 with bi:
-# frequent bigrams
-df['bigrams'].fillna(' ', inplace=True)
-bigram = ''.join(df['bigrams'])
-
-# bigram right and left side
-#bigram_left, bigram_right = st.columns(2)
-
-#with bigram_left:
     wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
-                              random_state=1, background_color='black',colormap='Pastel1',
-                              collocations=False, normalize_plurals=False,
-                              collocation_threshold = 2).generate(bigram)
+                                  random_state=1, background_color='black',colormap='Pastel1',
+                                  collocations=False, normalize_plurals=False,
+                                  collocation_threshold = 2).generate(bigram)
 
     plt.figure(figsize=(10,10))
     plt.imshow(wordcloud_bigrams, interpolation='bilinear')
@@ -110,16 +110,6 @@ bigram = ''.join(df['bigrams'])
     st.plotly_chart(fig_bi, use_container_width=True)
 
 with tri:
-# frequent trigram
-df['trigrams'].fillna(' ', inplace=True)
-trigram = ''.join(df['trigrams'])
-
-# trigrams lef and right side
-
-#trigrams_left, trigrams_right = st.columns(2)
-
-#with trigrams_left:
-    # wordcloud trigram
     wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
                               random_state=1, background_color='white',colormap='plasma',
                               collocations=False, normalize_plurals=False,
