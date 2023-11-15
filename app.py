@@ -38,18 +38,23 @@ b1.metric("Positive", len(pos), "Komentar")
 b2.metric("Negative", len(neg), "- Komentar")
 b3.metric("Jumlah", count, "4%")
 
-#col1, col2 = st.columns(2)
+col1, col2 = st.columns(2)
 
 #with st.expander('Data'):
     #st.dataframe(df_selection)
     
-#with col2:
-# Visualisasi hasil sentiment
-st.markdown(f'Persentase Hasil Sentiment pada {sumber_data}')
-sentiment = df_selection['sentiment'].value_counts()
-fig_sentiment = px.pie(values=sentiment, names=['positive','negative'])
-fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
-st.plotly_chart(fig_sentiment)
+with col1:
+    # Visualisasi hasil sentiment
+    st.markdown(f'Persentase Hasil Sentiment pada {sumber_data}')
+    sentiment = df_selection['sentiment'].value_counts()
+    fig_sentiment = px.pie(values=sentiment, names=['positive','negative'])
+    fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
+    st.plotly_chart(fig_sentiment)
+
+with col2:
+    kategori = df_selection['Katagori'].value_counts()
+    chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", orientation='h')
+    st.plotly_chart(chart_kategori, use_container_width=True)
 
 
 jk_left, ja_middle, kt_right = st.columns(3)
