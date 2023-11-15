@@ -141,30 +141,26 @@ with trigrams_right:
     fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
     st.plotly_chart(fig_tri, use_container_width=True)
 
-jk_left, kt_right = st.columns(2)
+jk_left, ja_middle, kt_right = st.columns(3)
 
 with jk_left:
     # Visuaisasi jenis kelamin
     jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
     fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], 
-                title=f"Persentase Jenis Kelamin User {sumber_data}", template='plotly')
+                title=f"Persentase Jenis Kelamin User {sumber_data}")
     st.plotly_chart(fig_jk, use_container_width=True)
-    
+
+with ja_middle:
+    # Visualisasi jenis akun
+    jenis_akun = df_selection['Jenis Akun'].value_counts()
+    fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
+    st.plotly_chart(fig_akun, use_container_width=True)
+
 with kt_right:
     # Visualisasi Kategori
     kategori = df_selection['Katagori'].value_counts()
     chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
     st.plotly_chart(chart_kategori, use_container_width=True)
-    
-# Visualisasi jenis akun
-jenis_akun = df_selection['Jenis Akun'].value_counts()
-fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
-
-# Visuaisasi jenis kelamin
-jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
-fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], 
-                title=f"Persentase Jenis Kelamin User {sumber_data}", color=['#E95793', '#39A7FF'])
-st.plotly_chart(fig_akun, use_container_width=True)
 
 # Visualisasi tanggal komentar
 fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
