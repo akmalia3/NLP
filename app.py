@@ -51,6 +51,9 @@ fig_sentiment = px.pie(values=sentiment, names=['positive','negative'])
 fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
 st.plotly_chart(fig_sentiment)
 
+
+n, bi, tri = st.tabs(['ngrams', 'bigrams', 'trigrams'])
+with n:
 # frequents word
 df_selection['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df_selection['ngrams'])
@@ -82,6 +85,7 @@ with right:
             st.subheader('frequent word')
             st.plotly_chart(fig_freq, use_container_width=True)
 
+with bi:
 # frequent bigrams
 df['bigrams'].fillna(' ', inplace=True)
 bigram = ''.join(df['bigrams'])
@@ -114,8 +118,7 @@ with bigram_right:
     st.subheader('frequent bigram')
     st.plotly_chart(fig_bi, use_container_width=True)
 
-# wordcloud bigrams
-
+with tri:
 # frequent trigram
 df['trigrams'].fillna(' ', inplace=True)
 trigram = ''.join(df['trigrams'])
