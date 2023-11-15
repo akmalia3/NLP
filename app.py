@@ -23,7 +23,7 @@ df = df.drop(['Unnamed: 0'], axis=1)
 
 # Sidebar
 st.sidebar.header('Dashboard')
-st.sidebar.subheader('Sumber Data')
+#st.sidebar.subheader('Sumber Data')
 sumber_data = st.sidebar.radio("Pilih Sumber Data", 
                        options=df["Sumber"].unique())
 
@@ -50,6 +50,62 @@ sentiment = df_selection['sentiment'].value_counts()
 fig_sentiment = px.pie(values=sentiment, names=['positive','negative'])
 fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
 st.plotly_chart(fig_sentiment)
+
+
+jk_left, ja_middle, kt_right = st.columns(3)
+
+with jk_left:
+    # Visuaisasi jenis kelamin
+    jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
+    fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], 
+                title=f"Persentase Jenis Kelamin User {sumber_data}")
+    st.plotly_chart(fig_jk, use_container_width=True)
+
+with ja_middle:
+    # Visualisasi jenis akun
+    jenis_akun = df_selection['Jenis Akun'].value_counts()
+    fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
+    st.plotly_chart(fig_akun, use_container_width=True)
+
+with kt_right:
+    # Visualisasi Kategori
+    kategori = df_selection['Katagori'].value_counts()
+    chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
+    st.plotly_chart(chart_kategori, use_container_width=True)
+
+# Visualisasi tanggal komentar
+fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
+st.plotly_chart(fig_tgl, use_container_width=True)
+
+# frequent ngram word positive
+df['ngrams'].fillna(' ', inplace=True)
+df['sentiment'].fillna(' ', inplace=True)
+pos_review = df['ngrams'][df["sentiment"] == 'positive'].tolist()
+pos = ''.join(pos_review)
+
+text_pos = pos.split()
+freq_pos = Counter(text_pos)
+data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
+data2.style.background_gradient(cmap='Blues')
+
+pos_freq = px.bar(data2.head(30), x='frequent', y='word',
+            color='frequent', title="Top 30 Words Positive", template='simple_white')
+pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
+st.plotly_chart(pos_freq, use_container_width=True)
+
+# frequent word negative
+neg_review = df['ngrams'][df["sentiment"] == 'negative'].tolist()
+neg = ''.join(neg_review)
+
+text_neg = neg.split()
+freq_neg = Counter(text_neg)
+data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
+data3.style.background_gradient(cmap='Blues')
+
+neg_freq = px.bar(data3.head(30), x='frequent', y='word', title="Top 30 Words Negative",
+                 color_discrete_sequence= px.colors.sequential.Plasma_r, color='frequent', template='ggplot2')
+neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
+st.plotly_chart(neg_freq, use_container_width=True)
 
 df_selection['ngrams'].fillna(' ', inplace=True)
 ngram = ''.join(df_selection['ngrams'])
@@ -131,59 +187,4 @@ with tri:
             color='frequent', title="Top 40 Words Trigrams", template='plotly')
     fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
     st.plotly_chart(fig_tri, use_container_width=True)
-
-jk_left, ja_middle, kt_right = st.columns(3)
-
-with jk_left:
-    # Visuaisasi jenis kelamin
-    jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
-    fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], 
-                title=f"Persentase Jenis Kelamin User {sumber_data}")
-    st.plotly_chart(fig_jk, use_container_width=True)
-
-with ja_middle:
-    # Visualisasi jenis akun
-    jenis_akun = df_selection['Jenis Akun'].value_counts()
-    fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
-    st.plotly_chart(fig_akun, use_container_width=True)
-
-with kt_right:
-    # Visualisasi Kategori
-    kategori = df_selection['Katagori'].value_counts()
-    chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
-    st.plotly_chart(chart_kategori, use_container_width=True)
-
-# Visualisasi tanggal komentar
-fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
-st.plotly_chart(fig_tgl, use_container_width=True)
-
-# frequent ngram word positive
-df['ngrams'].fillna(' ', inplace=True)
-df['sentiment'].fillna(' ', inplace=True)
-pos_review = df['ngrams'][df["sentiment"] == 'positive'].tolist()
-pos = ''.join(pos_review)
-
-text_pos = pos.split()
-freq_pos = Counter(text_pos)
-data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
-data2.style.background_gradient(cmap='Blues')
-
-pos_freq = px.bar(data2.head(30), x='frequent', y='word',
-            color='frequent', title="Top 30 Words Positive", template='simple_white')
-pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
-st.plotly_chart(pos_freq, use_container_width=True)
-
-# frequent word negative
-neg_review = df['ngrams'][df["sentiment"] == 'negative'].tolist()
-neg = ''.join(neg_review)
-
-text_neg = neg.split()
-freq_neg = Counter(text_neg)
-data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
-data3.style.background_gradient(cmap='Blues')
-
-neg_freq = px.bar(data3.head(30), x='frequent', y='word', title="Top 30 Words Negative",
-                 color_discrete_sequence= px.colors.sequential.Plasma_r, color='frequent', template='ggplot2')
-neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
-st.plotly_chart(neg_freq, use_container_width=True)
 
