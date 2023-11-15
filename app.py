@@ -123,6 +123,8 @@ trigram = ''.join(df['trigrams'])
 
 n, bi, tri = st.tabs(['ngrams', 'bigrams', 'trigrams'])
 with n:
+    left, right = st.columns(2)
+    with left:
     wordcloud = WordCloud(width = 2000, height = 1334,
                           random_state=1, background_color='black',#colormap='Pastel1',
                           collocations=False, normalize_plurals=False, collocation_threshold = 2, mode='RGBA', 
@@ -137,7 +139,7 @@ with n:
     text = ngram.split()
     freq = Counter(text)
     data = pd.DataFrame(freq.most_common(), columns=['word', 'frequent'])
-
+    with right:
     fig_freq = px.bar(data.head(20), x='frequent', y='word',color='frequent', template='gridon', height=500)
     fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
     st.subheader('frequent word')
