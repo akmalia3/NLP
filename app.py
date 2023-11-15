@@ -1,3 +1,4 @@
+
 import pandas as pd
 import streamlit as st
 import plotly.express as px
@@ -178,7 +179,7 @@ st.plotly_chart(neg_freq, use_container_width=True)
 
 # wordcloud trigram
 wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
-                              random_state=1, background_color='black',colormap='Pastel1',
+                              random_state=1, background_color='black',colormap='plasma',
                               collocations=False, normalize_plurals=False,
                               collocation_threshold = 2).generate(trigram)
 
