@@ -124,7 +124,7 @@ with bigram_right:
     data_bi.style.background_gradient(cmap='Blues')
 
     fig_bi = px.bar(data_bi.head(20), x='frequent', y='word',
-            color='frequent', title="Top 20 Words Bigrams")
+            color='frequent')
     fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
     st.subheader('frequent bigram')
     st.plotly_chart(fig_bi, use_container_width=True)
