@@ -29,7 +29,7 @@ sumber_data = st.sidebar.radio("Pilih Sumber Data",
 
 df_selection = df.query("Sumber == @sumber_data")
 
-pos_review = [df_selection["sentiment"] == 'positive'].value_counts()
+pos_review = (df_selection["sentiment"] == 'positive').value_counts()
 
 b1, b2, b3, b4 = st.columns(4)
 b1.metric("Positive", f"{pos_review}%", "1.2 °F")
