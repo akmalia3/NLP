@@ -56,7 +56,7 @@ with col2:
     st.plotly_chart(chart_kategori, use_container_width=True)
 
 # Visualisasi tanggal komentar
-fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
+fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu", template='simple_white')
 st.plotly_chart(fig_tgl, use_container_width=True)
 
 jk_left, ja_middle, kt_right = st.columns(3)
