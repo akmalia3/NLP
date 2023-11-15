@@ -124,7 +124,7 @@ with bigram_right:
     data_bi.style.background_gradient(cmap='Blues')
 
     fig_bi = px.bar(data_bi.head(20), x='frequent', y='word',
-            color='frequent', template='plotly')
+            color='frequent', template='seaborn')
     fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
     st.subheader('frequent bigram')
     st.plotly_chart(fig_bi, use_container_width=True)
@@ -141,7 +141,7 @@ data_tri = pd.DataFrame(freq_tri.most_common(), columns=['word', 'frequent'])
 data_tri.style.background_gradient(cmap='Blues')
 
 fig_tri = px.bar(data_tri.head(40), x='frequent', y='word',
-            color='frequent', title="Top 40 Words Trigrams", template='seaborn')
+            color='frequent', title="Top 40 Words Trigrams", template='plotly')
 fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig_tri, use_container_width=True)
 
