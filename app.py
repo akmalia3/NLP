@@ -52,7 +52,7 @@ with col1:
 
 with col2:
     kategori = df_selection['Katagori'].value_counts()
-    chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", orientation='h')
+    chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", orientation='h', template='simple_white')
     st.plotly_chart(chart_kategori, use_container_width=True)
 
 # Visualisasi tanggal komentar
