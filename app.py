@@ -12,7 +12,7 @@ from collections import Counter
 #st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
 st.set_page_config(
-    page_title="Your Dashboard Title",
+    page_title="Sentiment Analysis",
     page_icon=":chart_with_upwards_trend:",
     layout="wide",  # Use "wide" layout for a full-size dashboard
 )
@@ -22,8 +22,8 @@ df = pd.read_excel(excel_file)
 df = df.drop(['Unnamed: 0'], axis=1)
 
 # Sidebar
-st.sidebar.header('Side Bar')
-sumber_data = st.sidebar.radio("Sumber Data: ", 
+st.sidebar.header('Dashboard')
+sumber_data = st.sidebar.radio("**Sumber Data : **", 
                        options=df["Sumber"].unique())
 
 df_selection = df.query("Sumber == @sumber_data")
