@@ -56,6 +56,9 @@ with col2:
     chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", orientation='h')
     st.plotly_chart(chart_kategori, use_container_width=True)
 
+# Visualisasi tanggal komentar
+fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
+st.plotly_chart(fig_tgl, use_container_width=True)
 
 jk_left, ja_middle, kt_right = st.columns(3)
 
@@ -77,11 +80,7 @@ with kt_right:
     kategori = df_selection['Katagori'].value_counts()
     chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
     st.plotly_chart(chart_kategori, use_container_width=True)
-
-# Visualisasi tanggal komentar
-fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu")
-st.plotly_chart(fig_tgl, use_container_width=True)
-
+    
 # frequent ngram word positive
 df['ngrams'].fillna(' ', inplace=True)
 df['sentiment'].fillna(' ', inplace=True)
