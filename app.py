@@ -51,12 +51,13 @@ fig_sentiment = px.pie(values=sentiment, names=['positive','negative'])
 fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
 st.plotly_chart(fig_sentiment)
 
+df_selection['ngrams'].fillna(' ', inplace=True)
+ngram = ''.join(df_selection['ngrams'])
 
 n, bi, tri = st.tabs(['ngrams', 'bigrams', 'trigrams'])
 with n:
 # frequents word
-df_selection['ngrams'].fillna(' ', inplace=True)
-ngram = ''.join(df_selection['ngrams'])
+
 
 # Display left and right side
 left, right = st.columns([0.45,0.45])
