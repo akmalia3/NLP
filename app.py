@@ -105,6 +105,18 @@ bigram = ''.join(df['bigrams'])
 bigram_left, bigram_right = st.columns(2)
 
 with bigram_left:
+    wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
+                              random_state=1, background_color='black',colormap='Pastel1',
+                              collocations=False, normalize_plurals=False,
+                              collocation_threshold = 2).generate(bigram)
+
+    plt.figure(figsize=(10,10))
+    plt.imshow(wordcloud_bigrams, interpolation='bilinear')
+    plt.axis("off")
+    plt.show()
+    st.pyplot(plt)
+
+with bigram_right:
     text_bi = bigram.split()
     freq_bi = Counter(text_bi)
     data_bi = pd.DataFrame(freq_bi.most_common(), columns=['word', 'frequent'])
@@ -116,17 +128,6 @@ with bigram_left:
     st.plotly_chart(fig_bi, use_container_width=True)
 
 # wordcloud bigrams
-with bigram_right:
-    wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
-                              random_state=1, background_color='black',colormap='Pastel1',
-                              collocations=False, normalize_plurals=False,
-                              collocation_threshold = 2).generate(bigram)
-
-    plt.figure(figsize=(10,10))
-    plt.imshow(wordcloud_bigrams, interpolation='bilinear')
-    plt.axis("off")
-    plt.show()
-    st.pyplot(plt)
 
 # frequent trigram
 df['trigrams'].fillna(' ', inplace=True)
