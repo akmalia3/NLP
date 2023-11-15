@@ -136,15 +136,33 @@ with bigram_right:
 df['trigrams'].fillna(' ', inplace=True)
 trigram = ''.join(df['trigrams'])
 
-text_tri = trigram.split()
-freq_tri = Counter(text_tri)
-data_tri = pd.DataFrame(freq_tri.most_common(), columns=['word', 'frequent'])
-data_tri.style.background_gradient(cmap='Blues')
+# trigrams lef and right side
 
-fig_tri = px.bar(data_tri.head(40), x='frequent', y='word',
+trigrams_left, trigrams_right = st.columns(2)
+
+with trigrams_left:
+    text_tri = trigram.split()
+    freq_tri = Counter(text_tri)
+    data_tri = pd.DataFrame(freq_tri.most_common(), columns=['word', 'frequent'])
+    data_tri.style.background_gradient(cmap='Blues')
+    
+    fig_tri = px.bar(data_tri.head(40), x='frequent', y='word',
             color='frequent', title="Top 40 Words Trigrams", template='plotly')
-fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
-st.plotly_chart(fig_tri, use_container_width=True)
+    fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
+    st.plotly_chart(fig_tri, use_container_width=True)
+
+with trigrams_right:
+    # wordcloud trigram
+    wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
+                              random_state=1, background_color=None,colormap='plasma',
+                              collocations=False, normalize_plurals=False,
+                              collocation_threshold = 2).generate(trigram)
+    # visualisasi dengan matplotlib
+    plt.figure(figsize=(10,10))
+    plt.imshow(wordcloud_trigrams, interpolation='bilinear')
+    plt.axis("off")
+    plt.show()
+    st.pyplot(plt)
 
 # frequent ngram word positive
 df['ngrams'].fillna(' ', inplace=True)
@@ -176,16 +194,3 @@ neg_freq = px.bar(data3.head(30), x='frequent', y='word', title="Top 30 Words Ne
 neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
 st.plotly_chart(neg_freq, use_container_width=True)
 
-
-# wordcloud trigram
-wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
-                              random_state=1, background_color='black',colormap='plasma',
-                              collocations=False, normalize_plurals=False,
-                              collocation_threshold = 2).generate(trigram)
-
-# visualisasi dengan matplotlib
-plt.figure(figsize=(10,10))
-plt.imshow(wordcloud_trigrams, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-st.pyplot(plt)
