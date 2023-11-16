@@ -9,6 +9,12 @@ from collections import Counter
 
 #st.header('Sentiment Analysis')
 #st.subheader('Was the data helpful?')
+st.set_page_config(
+    page_title="Sentiment Analysis",
+    page_icon=":chart_with_upwards_trend:",
+    layout="wide",  # Use "wide" layout for a full-size dashboard
+)
+
 st.markdown(
     """
     <style>
@@ -21,12 +27,6 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True)
-
-st.set_page_config(
-    page_title="Sentiment Analysis",
-    page_icon=":chart_with_upwards_trend:",
-    layout="wide",  # Use "wide" layout for a full-size dashboard
-)
 
 excel_file = "dataset.xlsx"
 df = pd.read_excel(excel_file)
