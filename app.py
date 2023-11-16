@@ -32,6 +32,7 @@ with left:
     st.write(df)
 
 with right:
+    st.markdown('#')
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
     count = len(df_selection)
