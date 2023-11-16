@@ -81,7 +81,11 @@ with right:
         kategori = df_selection['Katagori'].value_counts()
         chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
         st.plotly_chart(chart_kategori, use_container_width=True)
-        
+
+    # frequent ngrams
+    df_selection['ngrams'].fillna(' ', inplace=True)
+    ngram = ''.join(df_selection['ngrams'])
+    
     # frequent bigrams
     df['bigrams'].fillna(' ', inplace=True)
     bigram = ''.join(df['bigrams'])
