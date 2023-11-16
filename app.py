@@ -40,7 +40,8 @@ with right:
     b1.metric("Positive", len(pos), "Komentar")
     b2.metric("Negative", len(neg), "- Komentar")
     b3.metric("Jumlah", count, "4%")
-    
+
+    st.markdown("""---""")
     col1, col2 = st.columns(2)    
     with col1:
     # Visualisasi hasil sentiment
