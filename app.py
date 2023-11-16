@@ -22,6 +22,12 @@ container_style = """
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 """
 
+with st.container(style=container_style):
+    b1, b2, b3 = st.columns(3)
+    b1.metric("Positive", len(pos), "Komentar")
+    b2.metric("Negative", len(neg), "- Komentar")
+    b3.metric("Jumlah", count, "4%")
+
 excel_file = "dataset.xlsx"
 df = pd.read_excel(excel_file)
 df = df.drop(['Unnamed: 0'], axis=1)
@@ -37,12 +43,6 @@ df_selection = df.query("Sumber == @sumber_data")
 pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
 neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
 count = len(df_selection)
-
-with st.container(style=container_style):
-    b1, b2, b3 = st.columns(3)
-    b1.metric("Positive", len(pos), "Komentar")
-    b2.metric("Negative", len(neg), "- Komentar")
-    b3.metric("Jumlah", count, "4%")
 
 
 col1, col2 = st.columns(2)
