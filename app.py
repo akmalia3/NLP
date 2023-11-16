@@ -13,7 +13,6 @@ st.set_page_config(
     layout="wide",  # Use "wide" layout for a full-size dashboard
 )
 
-st.header('Sentiment Analysis')
 #st.subheader('Was the data helpful?')
 
 excel_file = "dataset.xlsx"
@@ -26,8 +25,10 @@ st.sidebar.header('Dashboard')
 sumber_data = st.sidebar.radio("Pilih Sumber Data", options=df["Sumber"].unique())
 df_selection = df.query("Sumber == @sumber_data")
 
-right, left = st.tabs(['Ringkasan', 'Detail Data'])
+st.header(f'Sentiment Analysis Sosial Media {sumber_data} Dinas Kesehatan Kota Semarang')
+st.write('2022-2023')
 
+right, left = st.tabs(['Ringkasan', 'Detail Data'])
 with left:
     st.write(df)
 
