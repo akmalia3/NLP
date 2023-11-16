@@ -27,6 +27,10 @@ sumber_data = st.sidebar.radio("Pilih Sumber Data", options=df["Sumber"].unique(
 df_selection = df.query("Sumber == @sumber_data")
 
 right, left = st.tabs(['Ringkasan', 'Detail Data'])
+
+with left:
+    st.write(df)
+
 with right:
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
@@ -191,6 +195,3 @@ with right:
             color='frequent', title="Top 40 Words Trigrams", template='plotly')
         fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig_tri, use_container_width=True)
-
-with left:
-    st.write(df)
