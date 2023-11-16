@@ -8,11 +8,28 @@ from wordcloud import WordCloud
 from collections import Counter
 
 st.set_page_config(
-    page_title="Sentiment Analysis",
+    page_title="Sentiment Analysis Dashboard",
     page_icon=":thermometer:",
     layout="wide",  # Use "wide" layout for a full-size dashboard
 )
 
+st.markdown(
+    """
+    <style>
+        body {
+            color: #dddddd;
+            background-color: #111111;
+        }
+        .st-cj {
+            background-color: #222222;
+        }
+        .st-eb {
+            color: #dddddd;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 #st.subheader('Was the data helpful?')
 # https://retro-tools.streamlit.app/
 # https://bpmpkalsel-pmm-dashboard-71ttv1.streamlit.app/Platform_Merdeka_Mengajar
