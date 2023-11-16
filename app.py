@@ -81,40 +81,7 @@ with right:
         kategori = df_selection['Katagori'].value_counts()
         chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
         st.plotly_chart(chart_kategori, use_container_width=True)
-    
-    # frequent ngram word positive
-    df['ngrams'].fillna(' ', inplace=True)
-    df['sentiment'].fillna(' ', inplace=True)
-    pos_review = df['ngrams'][df["sentiment"] == 'positive'].tolist()
-    pos = ''.join(pos_review)
-
-    text_pos = pos.split()
-    freq_pos = Counter(text_pos)
-    data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
-    data2.style.background_gradient(cmap='Blues')
-
-    pos_freq = px.bar(data2.head(30), x='frequent', y='word',
-                color='frequent', title="Top 30 Words Positive", template='simple_white')
-    pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
-    st.plotly_chart(pos_freq, use_container_width=True)
-
-    # frequent word negative
-    neg_review = df['ngrams'][df["sentiment"] == 'negative'].tolist()
-    neg = ''.join(neg_review)
-
-    text_neg = neg.split()
-    freq_neg = Counter(text_neg)
-    data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
-    data3.style.background_gradient(cmap='Blues')
-    
-    neg_freq = px.bar(data3.head(30), x='frequent', y='word', title="Top 30 Words Negative",
-                     color_discrete_sequence= px.colors.sequential.Plasma_r, color='frequent', template='ggplot2')
-    neg_freq.update_layout(yaxis={'categoryorder':'total ascending'})
-    st.plotly_chart(neg_freq, use_container_width=True)
-
-    df_selection['ngrams'].fillna(' ', inplace=True)
-    ngram = ''.join(df_selection['ngrams'])
-
+        
     # frequent bigrams
     df['bigrams'].fillna(' ', inplace=True)
     bigram = ''.join(df['bigrams'])
