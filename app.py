@@ -13,28 +13,11 @@ st.set_page_config(
     layout="wide",  # Use "wide" layout for a full-size dashboard
 )
 
-st.markdown(
-    """
-    <style>
-        body {
-            color: #dddddd;
-            background-color: #111111;
-        }
-        .st-cj {
-            background-color: #222222;
-        }
-        .st-eb {
-            color: #dddddd;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 #st.subheader('Was the data helpful?')
 # https://retro-tools.streamlit.app/
 # https://bpmpkalsel-pmm-dashboard-71ttv1.streamlit.app/Platform_Merdeka_Mengajar
 
-excel_file = "dataset.xlsx"
+excel_file = "dataset-sentiment.xlsx"
 df = pd.read_excel(excel_file)
 df = df.drop(['Unnamed: 0'], axis=1)
 
@@ -69,11 +52,12 @@ with right:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
         fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title=f'Persentase Hasil Sentiment pada {sumber_data}')
-        fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
+        fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right',
+                                   color_discrete_map={'positive': '#00ffff', 'negative': '#e74c3c'})
         st.plotly_chart(fig_sentiment)
 
     with col2:
-        kategori = df_selection['Katagori'].value_counts()
+        kategori = df_selection['Kategori'].value_counts()
         chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", orientation='h', template='simple_white')
         st.plotly_chart(chart_kategori, use_container_width=True)
 
@@ -85,7 +69,7 @@ with right:
 
     with jk_left:
     # Visuaisasi jenis kelamin
-        jenis_kelamin = df_selection['Jenis Kelamin '].value_counts()
+        jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
         fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], 
                 title=f"Persentase Jenis Kelamin User {sumber_data}")
         st.plotly_chart(fig_jk, use_container_width=True)
@@ -98,7 +82,7 @@ with right:
 
     with kt_right:
     # Visualisasi Kategori
-        kategori = df_selection['Katagori'].value_counts()
+        kategori = df_selection['Kategori'].value_counts()
         chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
         st.plotly_chart(chart_kategori, use_container_width=True)
 
