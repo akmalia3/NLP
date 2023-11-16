@@ -51,9 +51,9 @@ with right:
     with col1:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
-        fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title=f'Persentase Hasil Sentiment pada {sumber_data}')
-        fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right',
-                                   color_discrete_map={'positive': '#00ffff', 'negative': '#e74c3c'})
+        fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title=f'Persentase Hasil Sentiment pada {sumber_data}',
+                              color_discrete_map={'positive': '#00ffff', 'negative': '#e74c3c'})
+        fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
         st.plotly_chart(fig_sentiment)
 
     with col2:
