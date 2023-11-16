@@ -25,8 +25,8 @@ st.sidebar.header('Dashboard')
 sumber_data = st.sidebar.radio("Pilih Sumber Data", options=df["Sumber"].unique())
 df_selection = df.query("Sumber == @sumber_data")
 
-st.header(f'Sentiment Analysis Sosial Media {sumber_data} Dinas Kesehatan Kota Semarang')
-st.write('2022-2023')
+st.header(f'SENTIMENT ANALYSIS {sumber_data}')
+st.write('Dinas Kesehatan Kota Semarang 2022-2023')
 
 right, left = st.tabs(['Ringkasan', 'Detail Data'])
 with left:
