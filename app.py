@@ -9,7 +9,7 @@ from collections import Counter
 
 st.set_page_config(
     page_title="Sentiment Analysis",
-    page_icon=":chart_with_upwards_trend:",
+    page_icon=":thermometer:",
     layout="wide",  # Use "wide" layout for a full-size dashboard
 )
 
