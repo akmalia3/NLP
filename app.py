@@ -7,20 +7,13 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from collections import Counter
 
-#st.header('Sentiment Analysis')
+st.header('Sentiment Analysis')
 #st.subheader('Was the data helpful?')
 st.set_page_config(
     page_title="Sentiment Analysis",
     page_icon=":chart_with_upwards_trend:",
     layout="wide",  # Use "wide" layout for a full-size dashboard
 )
-
-"""container_style =
-    padding: 10px;
-    border: 1px solid #d6d6d6;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-"""
 
 excel_file = "dataset.xlsx"
 df = pd.read_excel(excel_file)
@@ -29,12 +22,10 @@ df = df.drop(['Unnamed: 0'], axis=1)
 # Sidebar
 st.sidebar.header('Dashboard')
 #st.sidebar.subheader('Sumber Data')
-sumber_data = st.sidebar.radio("Pilih Sumber Data", 
-                       options=df["Sumber"].unique())
+sumber_data = st.sidebar.radio("Pilih Sumber Data", options=df["Sumber"].unique())
 df_selection = df.query("Sumber == @sumber_data")
 
 right, left = st.tabs(['Ringkasan', 'Detail Data'])
-
 with right:
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
@@ -200,5 +191,5 @@ with right:
         fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(fig_tri, use_container_width=True)
 
-with right:
+with left:
     st.dataframe(df_selection)
