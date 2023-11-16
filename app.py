@@ -201,7 +201,4 @@ with right:
         st.plotly_chart(fig_tri, use_container_width=True)
 
 with right:
-    sumber_data = st.sidebar.radio("Pilih Sumber Data", 
-                       options=df["Sumber"].unique())
-    df_selection = df.query("Sumber == @sumber_data")
     st.dataframe(df_selection)
