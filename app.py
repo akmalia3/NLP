@@ -15,18 +15,12 @@ st.set_page_config(
     layout="wide",  # Use "wide" layout for a full-size dashboard
 )
 
-st.markdown(
-    """
-    <style>
-        .container {
-            padding: 10px;
-            border: 1px solid #d6d6d6;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-    """,
-    unsafe_allow_html=True)
+container_style = """
+    padding: 10px;
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+"""
 
 excel_file = "dataset.xlsx"
 df = pd.read_excel(excel_file)
@@ -44,13 +38,14 @@ pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
 neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
 count = len(df_selection)
 
-b1, b2, b3 = st.columns(3)
-b1.metric("Positive", len(pos), "Komentar")
-b2.metric("Negative", len(neg), "- Komentar")
-b3.metric("Jumlah", count, "4%")
+with st.container(style=container_style):
+    b1, b2, b3 = st.columns(3)
+    b1.metric("Positive", len(pos), "Komentar")
+    b2.metric("Negative", len(neg), "- Komentar")
+    b3.metric("Jumlah", count, "4%")
+
 
 col1, col2 = st.columns(2)
-
 #with st.expander('Data'):
     #st.dataframe(df_selection)
     
