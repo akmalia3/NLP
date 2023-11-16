@@ -193,4 +193,4 @@ with right:
         st.plotly_chart(fig_tri, use_container_width=True)
 
 with left:
-    st.dataframe(df_selection)
+    st.write(df)
