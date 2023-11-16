@@ -9,7 +9,18 @@ from collections import Counter
 
 #st.header('Sentiment Analysis')
 #st.subheader('Was the data helpful?')
-#st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+        .container {
+            padding: 10px;
+            border: 1px solid #d6d6d6;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    """,
+    unsafe_allow_html=True)
 
 st.set_page_config(
     page_title="Sentiment Analysis",
