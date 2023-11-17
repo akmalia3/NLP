@@ -18,8 +18,8 @@ st.set_page_config(
 # https://retro-tools.streamlit.app/
 # https://bpmpkalsel-pmm-dashboard-71ttv1.streamlit.app/Platform_Merdeka_Mengajar
 
-excel_file = "dataset-sentiment.xlsx"
-df = pd.read_excel(excel_file)
+file_name = "dataset-sentiment.csv"
+df = pd.read_csv(file_name)
 df = df.drop(['Unnamed: 0'], axis=1)
 
 st.header(f'🌡️ Dashboard Sentiment Analysis Sosmed')
