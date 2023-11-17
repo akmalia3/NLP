@@ -46,7 +46,7 @@ with right:
         default_tgl = a[0]
 
         d = st.date_input("Pilih tanggal",
-                         default_date, start_tgl.min(), finish_tgl.max(),
+                         default_tgl, start_tgl.min(), finish_tgl.max(),
                          format='MM.D.YYYY')
 
     # garis 
