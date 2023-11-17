@@ -61,7 +61,7 @@ with right:
         sentiment = df_selection['sentiment'].value_counts()
         night_colors=['#A7D397', '#FA7070']
         fig_sentiment = go.Figure()
-        fig_sentiment.add_trace(go.Pie(labels=['positive','negative'], values=values, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
+        fig_sentiment.add_trace(go.Pie(labels=['positive','negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
         fig_sentiment.update_layout(title='Sentiment')
         st.plotly_chart(fig_sentiment)
 
