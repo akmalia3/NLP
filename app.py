@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from wordcloud import WordCloud
 from collections import Counter
+from datetime import datetime
 
 st.set_page_config(
     page_title="Sentiment Analysis Dashboard",
@@ -40,6 +41,7 @@ with right:
                                    default=df['sentiment'].unique())
         
     with nav3:
+        df['Tanggal'] = pd.to_datetime(df['Tanggal'])
         d = st.date_input("Pilih tanggal",
                          (df['Tanggal']), format='MM.DD.YYYY')
         
