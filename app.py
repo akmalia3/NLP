@@ -26,6 +26,8 @@ st.header(f'🌡️ Dashboard Sentiment Analysis Sosmed')
 st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 
+df['Tanggal'] = pd.to_datetime(df['Tanggal'])
+
 right, left = st.tabs(['Ringkasan', 'Detail Data'])
 with left:
     st.write(df)
@@ -42,7 +44,6 @@ with right:
     with nav3:
         month = ('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September',
                 'Oktober','November','Desember')
-        df['Tanggal'] = pd.to_datetime(df['Tanggal'])
         data = df['Tanggal'].dt.month
         bulan = st.selectbox("Pilih Bulan", options=month)
         
