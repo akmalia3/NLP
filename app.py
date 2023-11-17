@@ -46,8 +46,10 @@ with right:
         default_tgl = a[0]
 
         d = st.date_input("Pilih tanggal",
-                         default_tgl, default_tgl.min(), default_tgl.max(),
-                         format='MM.D.YYYY')
+                          default_tgl,
+                          start=default_tgl.min(),
+                          end=default_tgl.max(),
+                          format='MM.D.YYYY')
 
     # garis 
     st.markdown("""---""")
