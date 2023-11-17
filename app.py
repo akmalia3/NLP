@@ -91,7 +91,7 @@ with right:
         data2.style.background_gradient(cmap='Blues')
     
         pos_freq = px.bar(data2.head(10), x='frequent', y='word',
-                    color='frequent', title="Top 10 Words Positive", template='ggplot2')
+                    color='frequent', title="Top 10 Words Positive", template='seaborn')
         pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(pos_freq, use_container_width=True)
 
@@ -106,14 +106,14 @@ with right:
         data3.style.background_gradient(cmap='Blues')
     
         neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative",
-                         color='frequent', template='ggplot2')
+                         color='frequent', template='seaborn')
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
         st.plotly_chart(neg_freq, use_container_width=True)
         
     # Visualisasi tanggal komentar
     tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
     tgl_counts.columns = ['Tanggal', 'Count']
-    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", template='seaborn')
+    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", template='ggplot2')
     st.plotly_chart(fig_tgl, use_container_width=True)
     
     jk_left, ja_middle, kt_right = st.columns([1,1,2])
