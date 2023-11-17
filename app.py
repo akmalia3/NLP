@@ -34,8 +34,8 @@ options = st.sidebar.multiselect(
 
 df_selection = df.query("Sumber == @sumber_data")
 
-st.header(f'🌡️ Sentiment Analysis {sumber_data}')
-st.write('Dinas Kesehatan Kota Semarang 2022-2023')
+st.header(f'🌡️ Dashboard Sentiment Analysis Dinas Kesehatan Kota Semarang')
+st.write(f'Dataset {sumber_data} Tahun 2022-2023')
 #st.write(':angry:')
 
 df_selection['ngrams'].fillna(' ', inplace=True)
@@ -52,9 +52,9 @@ with right:
     count = len(df_selection)
     
     b1, b2, b3 = st.columns(3)
-    b1.metric("Positive", len(pos), "Komentar")
-    b2.metric("Negative", len(neg), "- Komentar")
-    b3.metric("Jumlah", count, "4%")
+    b1.metric("Jumlah Komentar", len(pos), "+ Positive")
+    b2.metric("Jumlah Komentar", len(neg), "- Negative")
+    b3.metric("Jumlah", count)
 
     st.markdown("""---""")
     col1, col2, col3 = st.columns([2,1,1])    
