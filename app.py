@@ -101,7 +101,7 @@ with right:
     # Visualisasi tanggal komentar
     tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
     tgl_counts.columns = ['Tanggal', 'Count']
-    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu")
+    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", template='ggplot2')
     st.plotly_chart(fig_tgl, use_container_width=True)
     
     jk_left, ja_middle, kt_right = st.columns(3)
