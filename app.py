@@ -43,18 +43,18 @@ with right:
         month = ('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September',
                 'Oktober','November','Desember')
         df['Tanggal'] = pd.to_datetime(df['Tanggal'], format='ISO8601')
-        data = df['Tanggal'].dt.month
-        bulan = st.selectbox("Pilih Bulan", options=month)
+        #data = df['Tanggal'].dt.month
+        #bulan = st.selectbox("Pilih Bulan", options=month)
         
     with nav4:
         df['Tanggal'] = pd.to_datetime(df['Tanggal'])
-        year = df['Tanggal'].dt.year
-        tahun = st.selectbox("Pilih Tahun", options=year)
+        #year = df['Tanggal'].dt.year
+        #tahun = st.selectbox("Pilih Tahun", options=year)
 
     # garis 
     st.markdown("""---""")
     
-    df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment & Tanggal == @tahun")
+    df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment")
     st.markdown('#')
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
