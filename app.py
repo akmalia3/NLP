@@ -32,6 +32,9 @@ st.header(f'🌡️ Sentiment Analysis {sumber_data}')
 st.write('Dinas Kesehatan Kota Semarang 2022-2023')
 #st.write(':angry:')
 
+df_selection['ngrams'].fillna(' ', inplace=True)
+df_selection['sentiment'].fillna(' ', inplace=True)
+
 right, left = st.tabs(['Ringkasan', 'Detail Data'])
 with left:
     st.write(df)
@@ -48,16 +51,10 @@ with right:
     b3.metric("Jumlah", count, "4%")
 
     st.markdown("""---""")
-    col1, col2 = st.columns(2)    
+    col1, col2, col3 = st.columns([2,1,1])    
+
     with col1:
     # Visualisasi hasil sentiment
-        '''
-        sentiment = df_selection['sentiment'].value_counts()
-        fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title=f'Persentase Hasil Sentiment pada {sumber_data}',
-                              color_discrete_map={'positive': '#00ffff', 'negative': '#e74c3c'})
-        fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
-        st.plotly_chart(fig_sentiment)
-        '''
         sentiment = df_selection['sentiment'].value_counts()
         night_colors=['#A7D397', '#FA7070']
         fig_sentiment = go.Figure()
@@ -66,9 +63,35 @@ with right:
         st.plotly_chart(fig_sentiment)
 
     with col2:
-        kategori = df_selection['Kategori'].value_counts()
-        chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", orientation='h', template='simple_white')
-        st.plotly_chart(chart_kategori, use_container_width=True)
+        # frequent ngram word positive
+        pos_review = df_selection['ngrams'][df_selection["sentiment"] == 'positive'].tolist()
+        pos = ''.join(pos_review)
+    
+        text_pos = pos.split()
+        freq_pos = Counter(text_pos)
+        data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
+        data2.style.background_gradient(cmap='Blues')
+    
+        pos_freq = px.bar(data2.head(30), x='frequent', y='word',
+                    color='frequent', title="Top 30 Words Positive", template='simple_white')
+        pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
+        st.plotly_chart(pos_freq, use_container_width=True)
+
+    with col3:
+        # frequent ngram word negative
+        neg_review = df_selection['ngrams'][df_selection["sentiment"] == 'negative'].tolist()
+        neg = ''.join(neg_review)
+
+        text_neg = neg.split()
+        freq_neg = Counter(text_neg)
+        data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
+        data3.style.background_gradient(cmap='Blues')
+    
+        neg_freq = px.bar(data3.head(30), x='frequent', y='word', title="Top 30 Words Negative",
+                         color_discrete_sequence= px.colors.sequential.Plasma_r, color='frequent', template='ggplot2')
+        neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
+        st.plotly_chart(neg_freq, use_container_width=True)
+        
 
 # Visualisasi tanggal komentar
     fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu", template='simple_white')
