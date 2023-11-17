@@ -40,7 +40,7 @@ with right:
                                    default=df['sentiment'].unique())
         
     with nav3:
-        d = st.date_input("Pilih tanggal"
+        d = st.date_input("Pilih tanggal",
                          (df['Tanggal']), format='MM.DD.YYYY')
         
     with nav4:
