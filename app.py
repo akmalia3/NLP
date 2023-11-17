@@ -73,8 +73,8 @@ with right:
     with col1:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
-        #night_colors=['#2F58CD', '#ED2B2A']
-        night_colors=['#5272F2', '#ED2B2A']
+        night_colors=['#2F58CD', '#ED2B2A']
+        #night_colors=['#5272F2', '#ED2B2A']
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
         fig_sentiment.update_layout(title=f'Sentiment {sumber_data}')
@@ -91,7 +91,7 @@ with right:
         data2.style.background_gradient(cmap='Blues')
     
         pos_freq = px.bar(data2.head(10), x='frequent', y='word',
-                    color='frequent', title="Top 10 Words Positive", template='ggplot2')
+                    color='frequent', title="Top 10 Words Positive", template='gridon)
         pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(pos_freq, use_container_width=True)
 
@@ -106,14 +106,14 @@ with right:
         data3.style.background_gradient(cmap='Blues')
     
         neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative",
-                         color='frequent', template='ggplot2')
+                         color='frequent', template='seaborn')
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
         st.plotly_chart(neg_freq, use_container_width=True)
         
     # Visualisasi tanggal komentar
     tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
     tgl_counts.columns = ['Tanggal', 'Count']
-    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", template='ggplot2')
+    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", template='seaborn')
     st.plotly_chart(fig_tgl, use_container_width=True)
     
     jk_left, ja_middle, kt_right = st.columns([1,1,2])
@@ -138,7 +138,7 @@ with right:
     with kt_right:
     # Visualisasi Kategori
         kategori = df_selection['Kategori'].value_counts()
-        chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color=kategori)
+        chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color=kategori, template='gridon')
         st.plotly_chart(chart_kategori, use_container_width=True)
 
     # frequent ngrams
