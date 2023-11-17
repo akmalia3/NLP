@@ -91,7 +91,7 @@ with right:
         data2.style.background_gradient(cmap='Blues')
     
         pos_freq = px.bar(data2.head(10), x='frequent', y='word',
-                    color='frequent', title="Top 10 Words Positive", template='gridon)
+                    color='frequent', title="Top 10 Words Positive", template='gridon')
         pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(pos_freq, use_container_width=True)
 
