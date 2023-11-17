@@ -87,7 +87,7 @@ with right:
         data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
         data3.style.background_gradient(cmap='Blues')
     
-        neg_freq = px.bar(data3.head(30), x='frequent', y='word', title="Top 10 Words Negative",
+        neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative",
                          color='frequent', template='ggplot2')
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
         st.plotly_chart(neg_freq, use_container_width=True)
