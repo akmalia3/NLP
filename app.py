@@ -42,7 +42,7 @@ with right:
     with nav3:
         month = ('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September',
                 'Oktober','November','Desember')
-        df['Tanggal'] = pd.to_datetime(df['Tanggal'])
+        df['Tanggal'] = pd.to_datetime(df['Tanggal'], format='%Y-%m-%d %H:%M:%S')
         data = df['Tanggal'].dt.month
         bulan = st.selectbox("Pilih Bulan", options=month)
         
