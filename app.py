@@ -22,8 +22,8 @@ file_name = "dataset-sentiment.xlsx"
 df = pd.read_excel(file_name)
 df = df.drop(['Unnamed: 0'], axis=1)
 
-st.header(f'🌡️ Dashboard Sentiment Analysis Sosmed')
-st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
+st.header('Dashboard Sentiment Analysis Sosmed 🌡️')
+st.subheader('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 
 right, left = st.tabs(['Ringkasan', 'Detail Data'])
