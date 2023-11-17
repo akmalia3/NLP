@@ -42,7 +42,7 @@ with right:
         
     with nav3:
         df['Tanggal'] = pd.to_datetime(df['Tanggal'])
-        tanggal = df['Tanggal']
+        tanggal = df['Tanggal'].iloc[0]
         d = st.date_input("Pilih tanggal", value=tanggal, format='MM.DD.YYYY')
 
 
