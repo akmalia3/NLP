@@ -40,7 +40,11 @@ with right:
                                    default=df['sentiment'].unique())
         
     with nav3:
-        tahun = st.selectbox("Pilih Bulan", options=df["Sumber"].unique())
+        month = ('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September',
+                'Oktober','November','Desember')
+        df['Tanggal'] = pd.to_datetime(df['Tanggal'])
+        data = df['Tanggal'].dt.month
+        bulan = st.selectbox("Pilih Bulan", options=month)
         
     with nav4:
         bulan = st.selectbox("Pilih Tahun", options=df["Sumber"].unique())
@@ -48,7 +52,7 @@ with right:
     # garis 
     st.markdown("""---""")
     
-    df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment")
+    df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment & Tanggal == @bulan")
     st.markdown('#')
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
