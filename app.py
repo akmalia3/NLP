@@ -44,10 +44,9 @@ with right:
         df['Tanggal'] = pd.to_datetime(df['Tanggal'])
         a = df['Tanggal'].unique()
         default_tgl = a[0]
-        start_tgl = default_tgl.min()
-        finish_tgl = default_tgl.max()
+
         d = st.date_input("Pilih tanggal",
-                         default_date, start_tgl, finish_tgl,
+                         default_date, start_tgl.min(), finish_tgl.max(),
                          format='MM.D.YYYY')
 
     # garis 
