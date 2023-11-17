@@ -36,15 +36,18 @@ with right:
         sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
         
     with nav2:
-        sentiment = st.selectbox("Pilih Sentiment", options=df["sentiment"].unique())
+        sentiment = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), default=df['sentiment'])
         
     with nav3:
         tahun = st.selectbox("Pilih Bulan", options=df["Sumber"].unique())
         
     with nav4:
         bulan = st.selectbox("Pilih Tahun", options=df["Sumber"].unique())
-        
-    df_selection = df.query("Sumber == @sumber_data")
+
+    # garis 
+    st.markdown("""---""")
+    
+    df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment")
     st.markdown('#')
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
@@ -68,7 +71,7 @@ with right:
         night_colors=['#A7D397', '#FA7070']
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Pie(labels=['positive','negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
-        fig_sentiment.update_layout(title='Sentiment')
+        fig_sentiment.update_layout(title=f'Sentiment {sumber_data}')
         st.plotly_chart(fig_sentiment)
 
     with col2:
