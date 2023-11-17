@@ -45,7 +45,7 @@ with right:
         tanggal = df['Tanggal'].unique()
         default_tgl = tanggal[0]
         d = st.date_input("Pilih tanggal", default_tgl, min_value=default_tgl.min(),
-                          max_value=default_tgl.max(), format='MM.DD.YYYY')
+                          max_value=default_tgl.max())
 
 
     # garis 
