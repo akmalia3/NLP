@@ -4,6 +4,7 @@ import streamlit as st
 import plotly.express as px
 import swifter
 import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 from wordcloud import WordCloud
 from collections import Counter
 
@@ -50,10 +51,18 @@ with right:
     col1, col2 = st.columns(2)    
     with col1:
     # Visualisasi hasil sentiment
+        '''
         sentiment = df_selection['sentiment'].value_counts()
         fig_sentiment = px.pie(values=sentiment, names=['positive','negative'], title=f'Persentase Hasil Sentiment pada {sumber_data}',
                               color_discrete_map={'positive': '#00ffff', 'negative': '#e74c3c'})
         fig_sentiment.update_traces(textposition='auto', textinfo='percent+label', titleposition='bottom right')
+        st.plotly_chart(fig_sentiment)
+        '''
+        sentiment = df_selection['sentiment'].value_counts()
+        night_colors=['#A7D397', '#FA7070']
+        fig_sentiment = go.Figure()
+        fig_sentiment.add_trace(go.Pie(labels=['positive','negative'], values=values, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
+        fig_sentiment.update_layout(title='Sentiment')
         st.plotly_chart(fig_sentiment)
 
     with col2:
