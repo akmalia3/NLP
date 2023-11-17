@@ -36,7 +36,8 @@ with right:
         sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
         
     with nav2:
-        sentiment = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), default=df['sentiment'])
+        sentiment = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
+                                   default=df['sentiment'].unique())
         
     with nav3:
         tahun = st.selectbox("Pilih Bulan", options=df["Sumber"].unique())
