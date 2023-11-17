@@ -155,14 +155,14 @@ with right:
         left, right = st.columns(2)
         with left:
             wordcloud = WordCloud(width = 2000, height = 1334,
-                          random_state=1, background_color='black',#colormap='Pastel1',
+                          random_state=1, background_color='white',#colormap='Pastel1',
                           collocations=False, normalize_plurals=False, collocation_threshold = 2, mode='RGBA', 
                           colormap='viridis').generate(ngram)#'PuBu_r'
             plt.figure(figsize=(10,10))
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis("off")
             plt.show()
-            st.subheader('wordcloud')
+            st.subheader('Wordcloud')
             st.pyplot(plt, use_container_width=True)
             #with right:
         with right:
@@ -172,14 +172,14 @@ with right:
         
             fig_freq = px.bar(data.head(20), x='frequent', y='word',color='frequent', template='gridon', height=500)
             fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
-            st.subheader('frequent word')
+            st.subheader('Word Frequent')
             st.plotly_chart(fig_freq, use_container_width=True)
 
     with bi:
         bi_left, bi_right = st.columns(2)
         with bi_left:
             wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
-                                  random_state=1, background_color='black',colormap='Pastel1',
+                                  random_state=1, background_color='white',colormap='Pastel1',
                                   collocations=False, normalize_plurals=False,
                                   collocation_threshold = 2).generate(bigram)
 
@@ -187,7 +187,7 @@ with right:
             plt.imshow(wordcloud_bigrams, interpolation='bilinear')
             plt.axis("off")
             plt.show()
-            st.subheader('wordcloud')
+            st.subheader('Bigram Wordcloud')
             st.pyplot(plt)
 
         with bi_right:
@@ -200,7 +200,7 @@ with right:
             fig_bi = px.bar(data_bi.head(20), x='frequent', y='word',
                 color='frequent', template='seaborn')
             fig_bi.update_layout(yaxis={'categoryorder':'total ascending'})
-            st.subheader('frequent bigram')
+            st.subheader('Bigram Frequent')
             st.plotly_chart(fig_bi, use_container_width=True)
 
     with tri:
@@ -215,6 +215,7 @@ with right:
             plt.imshow(wordcloud_trigrams, interpolation='bilinear')
             plt.axis("off")
             plt.show()
+            st.subheader('Trigram Wordcloud')
             st.pyplot(plt)
 
         with tri_left:
@@ -226,4 +227,5 @@ with right:
             fig_tri = px.bar(data_tri.head(20), x='frequent', y='word',
                              color='frequent', title="Top 40 Words Trigrams", template='plotly')
             fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
+            st.subheader('Trigram Frequent')
             st.plotly_chart(fig_tri, use_container_width=True)
