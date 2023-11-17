@@ -23,7 +23,7 @@ df = pd.read_excel(excel_file)
 df = df.drop(['Unnamed: 0'], axis=1)
 
 st.header(f'🌡️ Dashboard Sentiment Analysis Sosmed')
-st.write(f'{sumber_data} Dinas Kesehatan Kota Semarang Tahun 2022-2023')
+st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 
 right, left = st.tabs(['Ringkasan', 'Detail Data'])
