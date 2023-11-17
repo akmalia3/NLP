@@ -32,7 +32,7 @@ with left:
     st.write(df)
 
 with right:
-    nav1, nav2, nav3, nav4 = st.columns(4)
+    nav1, nav2, nav3 = st.columns(3)
     with nav1:
         sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
         
@@ -43,13 +43,8 @@ with right:
     with nav3:
         df['Tanggal'] = pd.to_datetime(df['Tanggal'])
         tanggal = df['Tanggal']
-        d = st.date_input("Pilih tanggal", tanggal, format='MM.DD.YYYY')
-        
-    with nav4:
-        #df['Tanggal'] = pd.to_datetime(df['Tanggal'])
-        #year = df['Tanggal'].dt.year
-        year=('2022','2023')
-        tahun = st.selectbox("Pilih Tahun", options=year)
+        d = st.date_input("Pilih tanggal", value=tanggal, format='MM.DD.YYYY')
+
 
     # garis 
     st.markdown("""---""")
