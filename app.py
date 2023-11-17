@@ -40,10 +40,8 @@ with right:
                                    default=df['sentiment'].unique())
         
     with nav3:
-        data_tanggal = df['Tanggal']
-        tanggal = datetime.data(data_tanggal)
         d = st.date_input("Pilih tanggal"
-                         (tanggal), format='MM.DD.YYYY')
+                         (df['Tanggal']), format='MM.DD.YYYY')
         
     with nav4:
         #df['Tanggal'] = pd.to_datetime(df['Tanggal'])
