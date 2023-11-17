@@ -22,7 +22,7 @@ file_name = "dataset-sentiment.xlsx"
 df = pd.read_excel(file_name)
 df = df.drop(['Unnamed: 0'], axis=1)
 
-st.header('🌡️Sentiment Analysis Sosial Media')
+st.header('🌡️Sistem Analysis Sosial Media')
 st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 
@@ -40,12 +40,10 @@ with right:
                                    default=df['sentiment'].unique())
         
     with nav3:
-        month = ('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September',
-                'Oktober','November','Desember')
-        bulan = st.selectbox("Pilih Bulan", options=month)
-        # df['Tanggal'] = pd.to_datetime(df['Tanggal'], format='ISO8601')
-        # data = df['Tanggal'].dt.month
-        # bulan = st.selectbox("Pilih Bulan", options=month)
+        data_tanggal = df['Tanggal']
+        tanggal = datetime.data(data_tanggal)
+        d = st.date_input("Pilih tanggal"
+                         (tanggal), format='MM.DD.YYYY')
         
     with nav4:
         #df['Tanggal'] = pd.to_datetime(df['Tanggal'])
