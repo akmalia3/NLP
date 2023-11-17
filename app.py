@@ -74,7 +74,7 @@ with right:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
         #night_colors=['#2F58CD', '#ED2B2A']
-        night_colors=['#00A9FF', '#ED2B2A']
+        night_colors=['#5272F2', '#ED2B2A']
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
         fig_sentiment.update_layout(title=f'Sentiment {sumber_data}')
@@ -138,7 +138,7 @@ with right:
     with kt_right:
     # Visualisasi Kategori
         kategori = df_selection['Kategori'].value_counts()
-        chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color=kategori, template='seaborn')
+        chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color=kategori)
         st.plotly_chart(chart_kategori, use_container_width=True)
 
     # frequent ngrams
