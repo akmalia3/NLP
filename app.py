@@ -42,13 +42,12 @@ with right:
         
     with nav3:
         df['Tanggal'] = pd.to_datetime(df['Tanggal'])
-        a = df['Tanggal'].unique()
-        default_tgl = a[0]
+        a = df['Tanggal']
 
         d = st.date_input("Pilih tanggal",
-                          default_tgl,
-                          default_tgl.min(),
-                          default_tgl.max(),
+                          a,
+                          a.min(),
+                          a.max(),
                           format='MM.D.YYYY')
 
     # garis 
