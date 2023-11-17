@@ -27,7 +27,7 @@ st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 
 df['Tanggal'].fillna(' ', inplace=True)
-df['Tanggal'] = pd.to_datetime(df['Tanggal'], format='ISO8601')
+df['Tanggal'] = pd.to_datetime(df['Tanggal'], format='mixed')
 
 right, left = st.tabs(['Ringkasan', 'Detail Data'])
 with left:
