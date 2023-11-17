@@ -73,7 +73,7 @@ with right:
     with col1:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
-        night_colors=['#82A0D8', '#FF8080']
+        night_colors=['#2F58CD', '#ED2B2A']
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Pie(labels=['positive','negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
         fig_sentiment.update_layout(title=f'Sentiment {sumber_data}')
