@@ -179,7 +179,7 @@ with right:
         bi_left, bi_right = st.columns(2)
         with bi_left:
             wordcloud_bigrams = WordCloud(width = 2000, height = 1334,
-                                  random_state=1, background_color='white',colormap='Pastel1',
+                                  random_state=1, background_color=None,colormap='Pastel1',
                                   collocations=False, normalize_plurals=False,
                                   collocation_threshold = 2).generate(bigram)
 
