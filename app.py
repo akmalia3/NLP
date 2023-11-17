@@ -57,7 +57,6 @@ with right:
     st.markdown("""---""")
     
     df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment")
-    st.markdown('#')
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
     count = len(df_selection)
