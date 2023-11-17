@@ -22,7 +22,7 @@ file_name = "dataset-sentiment.xlsx"
 df = pd.read_excel(file_name)
 df = df.drop(['Unnamed: 0'], axis=1)
 
-st.header('Dashboard Sentiment Analysis Sosmed 🌡️')
+st.header('🌡️Sentiment Analysis Sosial Media')
 st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 
@@ -61,7 +61,7 @@ with right:
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
     count = len(df_selection)
     
-    b1, b2, b3 = st.columns(3)
+    b1, b2, b3 = st.columns([0.45,0.45,0.45])
     b1.metric("Jumlah Komentar", len(pos), "+ Positive")
     b2.metric("Jumlah Komentar", len(neg), "- Negative")
     b3.metric("Jumlah", count)
@@ -204,24 +204,26 @@ with right:
             st.plotly_chart(fig_bi, use_container_width=True)
 
     with tri:
-        wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
+        tri_right, tri_left = st.columns(2)
+        with tri_right:
+            wordcloud_trigrams = WordCloud(width = 2000, height = 1334,
                               random_state=1, background_color='white',colormap='plasma',
                               collocations=False, normalize_plurals=False,
                               collocation_threshold = 2).generate(trigram)
         # visualisasi dengan matplotlib
-        plt.figure(figsize=(10,10))
-        plt.imshow(wordcloud_trigrams, interpolation='bilinear')
-        plt.axis("off")
-        plt.show()
-        st.pyplot(plt)
+            plt.figure(figsize=(10,10))
+            plt.imshow(wordcloud_trigrams, interpolation='bilinear')
+            plt.axis("off")
+            plt.show()
+            st.pyplot(plt)
 
-    #with trigrams_right:
-        text_tri = trigram.split()
-        freq_tri = Counter(text_tri)
-        data_tri = pd.DataFrame(freq_tri.most_common(), columns=['word', 'frequent'])
-        data_tri.style.background_gradient(cmap='Blues')
-        
-        fig_tri = px.bar(data_tri.head(20), x='frequent', y='word',
-            color='frequent', title="Top 40 Words Trigrams", template='plotly')
-        fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
-        st.plotly_chart(fig_tri, use_container_width=True)
+        with tri_left:
+            text_tri = trigram.split()
+            freq_tri = Counter(text_tri)
+            data_tri = pd.DataFrame(freq_tri.most_common(), columns=['word', 'frequent'])
+            data_tri.style.background_gradient(cmap='Blues')
+            
+            fig_tri = px.bar(data_tri.head(20), x='frequent', y='word',
+                             color='frequent', title="Top 40 Words Trigrams", template='plotly')
+            fig_tri.update_layout(yaxis={'categoryorder':'total ascending'})
+            st.plotly_chart(fig_tri, use_container_width=True)
