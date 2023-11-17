@@ -42,8 +42,8 @@ with right:
         
     with nav3:
         df['Tanggal'] = pd.to_datetime(df['Tanggal'])
-        d = st.date_input("Pilih tanggal",
-                         (df['Tanggal']), format='MM.DD.YYYY')
+        tanggal = df['Tanggal']
+        d = st.date_input("Pilih tanggal", tanggal, format='MM.DD.YYYY')
         
     with nav4:
         #df['Tanggal'] = pd.to_datetime(df['Tanggal'])
