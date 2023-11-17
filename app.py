@@ -26,6 +26,12 @@ df = df.drop(['Unnamed: 0'], axis=1)
 st.sidebar.header('Dashboard')
 #st.sidebar.subheader('Sumber Data')
 sumber_data = st.sidebar.radio("Pilih Sumber Data", options=df["Sumber"].unique())
+age = st.sidebar.slider('How old are you?', 0, 130, 25)
+options = st.sidebar.multiselect(
+    'What are your favorite colors',
+    ['Green', 'Yellow', 'Red', 'Blue'],
+    ['Yellow', 'Red'])
+
 df_selection = df.query("Sumber == @sumber_data")
 
 st.header(f'🌡️ Sentiment Analysis {sumber_data}')
@@ -92,13 +98,13 @@ with right:
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
         st.plotly_chart(neg_freq, use_container_width=True)
         
-
-# Visualisasi tanggal komentar
-    fig_tgl = px.area(df_selection['Tanggal'],  title="Waktu", template='simple_white')
+    # Visualisasi tanggal komentar
+    tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
+    tgl_counts.columns = ['Tanggal', 'Count']
+    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu")
     st.plotly_chart(fig_tgl, use_container_width=True)
-
+    
     jk_left, ja_middle, kt_right = st.columns(3)
-
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
