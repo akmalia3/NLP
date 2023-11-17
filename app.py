@@ -91,7 +91,7 @@ with right:
         data2.style.background_gradient(cmap='Blues')
     
         pos_freq = px.bar(data2.head(10), x='frequent', y='word',
-                    color='frequent', title="Top 10 Words Positive", template='seaborn')
+                    color='frequent', title="Top 10 Words Positive")
         pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(pos_freq, use_container_width=True)
 
@@ -106,7 +106,7 @@ with right:
         data3.style.background_gradient(cmap='Blues')
     
         neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative",
-                         color='frequent', template='seaborn')
+                         color='frequent')
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
         st.plotly_chart(neg_freq, use_container_width=True)
         
