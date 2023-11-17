@@ -27,7 +27,7 @@ st.header('🌡️Sistem Analysis Sosial Media')
 st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 
-right, left = st.tabs(['Ringkasan', 'Detail Data'])
+right, left = st.tabs(['Ringkasan', 'Dataset'])
 with left:
     st.write(df)
 
@@ -73,9 +73,10 @@ with right:
     with col1:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
-        night_colors=['#2F58CD', '#ED2B2A']
+        #night_colors=['#2F58CD', '#ED2B2A']
+        night_colors=['#00A9FF', '#ED2B2A']
         fig_sentiment = go.Figure()
-        fig_sentiment.add_trace(go.Pie(labels=['positive','negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
+        fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
         fig_sentiment.update_layout(title=f'Sentiment {sumber_data}')
         st.plotly_chart(fig_sentiment)
 
@@ -119,14 +120,19 @@ with right:
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
-        fig_jk = px.pie(values=jenis_kelamin, names=['Laki-laki','Perempuan'], 
-                title=f"Persentase Jenis Kelamin User {sumber_data}")
+        color = ['#7071E8','#F875AA']
+        fig_jk = go.Figure()
+        fig_jk.add_trace(go.Pie(labels=['Laki-laki','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
+        fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
         st.plotly_chart(fig_jk, use_container_width=True)
-
+        
     with ja_middle:
-    # Visualisasi jenis akun
+    # Visualisasi jenis akun        
         jenis_akun = df_selection['Jenis Akun'].value_counts()
-        fig_akun = px.pie(values=jenis_akun, names=['Asli','Fake'], title=f"Persentase Jenis Akun {sumber_data}")
+        color = ['#35A29F','#FFC436']
+        fig_akun = go.Figure()
+        fig_akun.add_trace(go.Pie(labels=['Asli','Fake'], values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
+        fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
         st.plotly_chart(fig_akun, use_container_width=True)
 
     with kt_right:
@@ -147,7 +153,7 @@ with right:
     df['trigrams'].fillna(' ', inplace=True)
     trigram = ''.join(df['trigrams'])
     
-    n, bi, tri = st.tabs(['ngrams', 'bigrams', 'trigrams'])
+    n, bi, tri = st.tabs(['Ngram', 'Bigram', 'Trigram'])
     with n:
         left, right = st.columns(2)
         with left:
