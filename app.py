@@ -34,17 +34,17 @@ with right:
     nav1, nav2, nav3, nav4 = st.columns(4)
     with nav1:
         sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
-        df_selection = df.query("Sumber == @sumber_data")
+        
     with nav2:
-        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
-        df_selection = df.query("Sumber == @sumber_data")
+        sentiment = st.selectbox("Pilih Sentiment", options=df["Sentiment"].unique())
+        
     with nav3:
-        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
-        df_selection = df.query("Sumber == @sumber_data")
+        tahun = st.selectbox("Pilih Bulan, options=df["Sumber"].unique())
+        
     with nav4:
-        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
-        df_selection = df.query("Sumber == @sumber_data")
-    
+        bulan = st.selectbox("Pilih Tahun", options=df["Sumber"].unique())
+        
+    df_selection = df.query("Sumber == @sumber_data")
     st.markdown('#')
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
