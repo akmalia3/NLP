@@ -104,7 +104,7 @@ with right:
     fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", template='ggplot2')
     st.plotly_chart(fig_tgl, use_container_width=True)
     
-    jk_left, ja_middle, kt_right = st.columns(3)
+    jk_left, ja_middle, kt_right = st.columns([1,1,2])
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
@@ -121,7 +121,7 @@ with right:
     with kt_right:
     # Visualisasi Kategori
         kategori = df_selection['Kategori'].value_counts()
-        chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}")
+        chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color=kategori, template='seaborn')
         st.plotly_chart(chart_kategori, use_container_width=True)
 
     # frequent ngrams
