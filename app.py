@@ -22,30 +22,29 @@ excel_file = "dataset-sentiment.xlsx"
 df = pd.read_excel(excel_file)
 df = df.drop(['Unnamed: 0'], axis=1)
 
-# Sidebar
-st.sidebar.header('Dashboard')
-#st.sidebar.subheader('Sumber Data')
-sumber_data = st.sidebar.radio("Pilih Sumber Data", options=df["Sumber"].unique())
-age = st.sidebar.slider('How old are you?', 0, 130, 25)
-options = st.sidebar.multiselect(
-    'What are your favorite colors',
-    ['Green', 'Yellow', 'Red', 'Blue'],
-    ['Yellow', 'Red'])
-
-df_selection = df.query("Sumber == @sumber_data")
-
-st.header(f'🌡️ Dashboard Sentiment Analysis Dinas Kesehatan Kota Semarang')
-st.write(f'Dataset {sumber_data} Tahun 2022-2023')
+st.header(f'🌡️ Dashboard Sentiment Analysis Sosmed')
+st.write(f'{sumber_data} Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
-
-df_selection['ngrams'].fillna(' ', inplace=True)
-df_selection['sentiment'].fillna(' ', inplace=True)
 
 right, left = st.tabs(['Ringkasan', 'Detail Data'])
 with left:
     st.write(df)
 
 with right:
+    nav1, nav2, nav3, nav4 = st.columns(4)
+    with nav1:
+        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
+        df_selection = df.query("Sumber == @sumber_data")
+    with nav2:
+        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
+        df_selection = df.query("Sumber == @sumber_data")
+    with nav3:
+        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
+        df_selection = df.query("Sumber == @sumber_data")
+    with nav4:
+        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
+        df_selection = df.query("Sumber == @sumber_data")
+    
     st.markdown('#')
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
@@ -56,9 +55,13 @@ with right:
     b2.metric("Jumlah Komentar", len(neg), "- Negative")
     b3.metric("Jumlah", count)
 
+    # garis 
     st.markdown("""---""")
-    col1, col2, col3 = st.columns([2,1,1])    
 
+    df_selection['ngrams'].fillna(' ', inplace=True)
+    df_selection['sentiment'].fillna(' ', inplace=True)
+    
+    col1, col2, col3 = st.columns([2,1,1])    
     with col1:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
