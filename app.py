@@ -116,7 +116,7 @@ with right:
     # Visualisasi tanggal komentar
     tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
     tgl_counts.columns = ['Tanggal', 'Count']
-    custom_colors = ['#00ACFE']
+    custom_colors = ['#0072FF']
     fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", color_discrete_sequence=custom_colors)
     st.plotly_chart(fig_tgl, use_container_width=True)
     
