@@ -89,9 +89,11 @@ with right:
         freq_pos = Counter(text_pos)
         data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
         data2.style.background_gradient(cmap='Blues')
-    
+
+        custom_colors = [[0, '#CCCCCC'], [1, '#53B9C7']]
         pos_freq = px.bar(data2.head(10), x='frequent', y='word',
-                    color='frequent', title="Top 10 Words Positive")
+                    color='frequent', title="Top 10 Words Positive",
+                         color_continuous_scale=custom_colors)
         pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(pos_freq, use_container_width=True)
 
@@ -104,9 +106,10 @@ with right:
         freq_neg = Counter(text_neg)
         data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
         data3.style.background_gradient(cmap='Blues')
-    
+
+        custom_colors = [[0, '#CCCCCC'], [1, '#BE3144']]
         neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative",
-                         color='frequent')
+                         color='frequent', color_continuous_scale=custom_colors)
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
         st.plotly_chart(neg_freq, use_container_width=True)
         
