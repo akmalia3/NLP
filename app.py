@@ -73,7 +73,7 @@ with right:
     with col1:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
-        night_colors=['#53b9c7', '#ED2B2A']
+        night_colors=['#53b9c7', '#BE3144']
         #night_colors=['#5272F2', '#ED2B2A']
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
@@ -124,7 +124,7 @@ with right:
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
-        color = ['#A23F00','#53B9C7']
+        color = ['#A23F00','#0095B3']
         fig_jk = go.Figure()
         fig_jk.add_trace(go.Pie(labels=['Laki-laki','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
@@ -133,7 +133,7 @@ with right:
     with ja_middle:
     # Visualisasi jenis akun        
         jenis_akun = df_selection['Jenis Akun'].value_counts()
-        color = ['#35A29F','#FFC436']
+        color = ['#35A29F','#F9F871']
         fig_akun = go.Figure()
         fig_akun.add_trace(go.Pie(labels=['Asli','Fake'], values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
