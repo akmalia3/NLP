@@ -73,7 +73,7 @@ with right:
     with col1:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
-        night_colors=['#00C878', '#ED2B2A']
+        night_colors=['#53b9c7', '#ED2B2A']
         #night_colors=['#5272F2', '#ED2B2A']
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
@@ -116,14 +116,15 @@ with right:
     # Visualisasi tanggal komentar
     tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
     tgl_counts.columns = ['Tanggal', 'Count']
-    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", template='ggplot2')
+    custom_colors = ['#FF7C84']
+    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", color_discrete_sequence=custom_colors)
     st.plotly_chart(fig_tgl, use_container_width=True)
     
     jk_left, ja_middle, kt_right = st.columns([1,1,2])
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
-        color = ['#7071E8','#F875AA']
+        color = ['#A23F00','#53B9C7']
         fig_jk = go.Figure()
         fig_jk.add_trace(go.Pie(labels=['Laki-laki','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
