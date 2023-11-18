@@ -124,7 +124,7 @@ with right:
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
-        color = ['#FF874A','#8DA7FF']
+        color = ['#2D7BAB','#3DC08D']
         fig_jk = go.Figure()
         fig_jk.add_trace(go.Pie(labels=['Laki-laki','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
@@ -133,7 +133,8 @@ with right:
     with ja_middle:
     # Visualisasi jenis akun        
         jenis_akun = df_selection['Jenis Akun'].value_counts()
-        color = ['#58BAB9','#FF874A']
+        #color = ['#58BAB9','#FF874A']
+        color = ['#3DC08D','#FFF800']
         fig_akun = go.Figure()
         fig_akun.add_trace(go.Pie(labels=['Asli','Fake'], values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
