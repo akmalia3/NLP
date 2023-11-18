@@ -116,7 +116,7 @@ with right:
     # Visualisasi tanggal komentar
     tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
     tgl_counts.columns = ['Tanggal', 'Count']
-    custom_colors = ['#0072FF']
+    custom_colors = ['#B16C7E']
     fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", color_discrete_sequence=custom_colors)
     st.plotly_chart(fig_tgl, use_container_width=True)
     
@@ -124,7 +124,7 @@ with right:
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
-        color = ['#2D7BAB','#3DC08D']
+        color = ['#53B9C7', '#ED2B2A']
         fig_jk = go.Figure()
         fig_jk.add_trace(go.Pie(labels=['Laki-laki','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
@@ -134,7 +134,8 @@ with right:
     # Visualisasi jenis akun        
         jenis_akun = df_selection['Jenis Akun'].value_counts()
         #color = ['#58BAB9','#FF874A']
-        color = ['#3DC08D','#FFF800']
+        #color = ['#3DC08D','#FFF800']
+        color = ['#ED2B2A','#53B9C7']
         fig_akun = go.Figure()
         fig_akun.add_trace(go.Pie(labels=['Asli','Fake'], values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
@@ -142,8 +143,9 @@ with right:
 
     with kt_right:
     # Visualisasi Kategori
+        custom_colors = [[0, '#CCCCCC'], [1, '#BE3144']]
         kategori = df_selection['Kategori'].value_counts()
-        chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color=kategori, template='gridon')
+        chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color='Kategori', color_continuous_scale=custom_colors) 
         st.plotly_chart(chart_kategori, use_container_width=True)
 
     # frequent ngrams
