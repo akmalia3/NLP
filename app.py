@@ -52,8 +52,8 @@ with right:
             jan_1,
             dec_31,
             format="MM.DD.YYYY")
-        data = df['Tanggal']
-        a = pd.to_datetime(data).dt.tz_localize(None)
+        data = pd.to_datetime(df['Tanggal'])
+        a = data.dt.tz_localize(None)
         start = a.min()
         finish = a.max()
         st.write(start, finish)
