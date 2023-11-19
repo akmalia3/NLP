@@ -32,7 +32,7 @@ with left:
     st.write(df)
 
 with right:
-    nav1, nav2 = st.columns(2)
+    nav1, nav2, nav3 = st.columns(3)
     with nav1:
         sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
         
@@ -40,15 +40,15 @@ with right:
         sentiment = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
                                    default=df['sentiment'].unique())
         
-    #with nav3:
-        #df['Tanggal'] = pd.to_datetime(df['Tanggal'])
-        #a = df['Tanggal']
+    with nav3:
+        df['Tanggal'] = pd.to_datetime(df['Tanggal'])
+        a = df['Tanggal']
 
-        #d = st.date_input("Pilih tanggal",
-                          #a,
-                          #a.min(),
-                          #a.max(),
-                          #format='MM.D.YYYY')
+        d = st.date_input("Pilih tanggal",
+                          a,
+                          a.min(),
+                          a.max(),
+                          format='MM.D.YYYY')
 
     # garis 
     st.markdown("""---""")
