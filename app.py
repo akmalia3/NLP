@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from wordcloud import WordCloud
 from collections import Counter
-import datetime
+from datetime import datetime
 
 st.set_page_config(
     page_title="Sentiment Analysis Dashboard",
@@ -53,7 +53,7 @@ with right:
             dec_31,
             format="MM.DD.YYYY")
         data = pd.to_datetime(df['Tanggal'])
-        a = data.tz_localize(None)
+        a = data.dt.tz_localize(None)
         start = a.min()
         finish = a.max()
         st.write(start, finish)
