@@ -122,7 +122,7 @@ with right:
     # Visualisasi tanggal komentar
     tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
     tgl_counts.columns = ['Tanggal', 'Count']
-    custom_colors = ['#925DB7']
+    custom_colors = ['#F9F871']
     fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", color_discrete_sequence=custom_colors)
     st.plotly_chart(fig_tgl, use_container_width=True)
     
@@ -141,7 +141,7 @@ with right:
         jenis_akun = df_selection['Jenis Akun'].value_counts()
         #color = ['#58BAB9','#FF874A']
         #color = ['#3DC08D','#FFF800']
-        color = ['#009AB0','#925DB7']
+        color = ['#009AB0','#F9F871']
         fig_akun = go.Figure()
         fig_akun.add_trace(go.Pie(labels=['Asli','Fake'], values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
