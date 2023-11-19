@@ -52,6 +52,8 @@ with right:
             jan_1,
             dec_31,
             format="MM.DD.YYYY")
+        data = df['Tanggal']
+        a = pd.to_datetime(data)
 
     # garis 
     st.markdown("""---""")
