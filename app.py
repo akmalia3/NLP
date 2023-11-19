@@ -50,7 +50,7 @@ with right:
         a = df['Tanggal']
         
         # Use the to_pydatetime() method to get a tz-naive datetime series
-        a = a.dt.to_pydatetime()
+        a = a.dt.to_datetime()
 
         d = st.date_input("Pilih tanggal", a, a.min(), a.max(), format='MM.DD.YYYY')
 
