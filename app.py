@@ -46,7 +46,14 @@ with right:
                               errors='coerce').dt.tz_localize(None)
         start = data.min()
         finish = data.max()
-        st.write(start, finish)
+        today = datetime.now()
+
+        tanggal = st.date_input(
+                    "Pilih tanggal",
+                    (today),
+                    start,
+                    finish,
+                    format="MM.DD.YYYY")
 
     # garis 
     st.markdown("""---""")
