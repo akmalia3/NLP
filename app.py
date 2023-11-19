@@ -141,7 +141,7 @@ with right:
         jenis_akun = df_selection['Jenis Akun'].value_counts()
         #color = ['#58BAB9','#FF874A']
         #color = ['#3DC08D','#FFF800']
-        color = ['#009AB0','#F9F871']
+        color = ['#FF968F','#F9F871']
         fig_akun = go.Figure()
         fig_akun.add_trace(go.Pie(labels=['Asli','Fake'], values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
@@ -149,7 +149,7 @@ with right:
 
     with kt_right:
     # Visualisasi Kategori
-        custom_colors = [[0, '#CCCCCC'], [1, '#008ECD']]
+        custom_colors = [[0, '#CCCCCC'], [1, '#FFB573']]
         kategori = df_selection['Kategori'].value_counts()
         chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color=kategori, color_continuous_scale=custom_colors) 
         st.plotly_chart(chart_kategori, use_container_width=True)
