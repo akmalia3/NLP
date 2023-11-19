@@ -41,7 +41,7 @@ with right:
                                    default=df['sentiment'].unique())
         
     with nav3:
-        data = pd.to_datetime(df['Tanggal'])
+        data = pd.to_datetime(df['Tanggal'], errors='coerce')
         a = data.dt.tz_localize(None)
         start = a.min()
         finish = a.max()
