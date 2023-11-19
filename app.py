@@ -54,6 +54,9 @@ with right:
             format="MM.DD.YYYY")
         data = df['Tanggal']
         a = pd.to_datetime(data)
+        start = a.min()
+        finish = a.max()
+        st.write(start, finish)
 
     # garis 
     st.markdown("""---""")
