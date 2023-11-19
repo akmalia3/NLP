@@ -60,7 +60,6 @@ with right:
 
     # dataset filtered
     df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @tanggal")
-    st.write(df_selection)
 
     # count data
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
