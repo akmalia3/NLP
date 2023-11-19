@@ -41,18 +41,16 @@ with right:
                                    default=df['sentiment'].unique())
         
     with nav3:
-        df['Tanggal'] = pd.to_datetime(df['Tanggal'], errors='coerce')
-        min_date = df['Tanggal'].min()
-        max_date = df['Tanggal'].max()
-        # Default range from January 1st to January 7th of the next year
-        default_range = (min_date, min_date + datetime.timedelta(days=6))
+        today = datetime.datetime.now()
+        next_year = today.year + 1
+        jan_1 = datetime.date(next_year, 1, 1)
+        dec_31 = datetime.date(next_year, 12, 31)
 
-        # Streamlit date input
         d = st.date_input(
-            "Select your vacation date",
-            default_range,
-            min_date,
-            max_date,
+            "Select your vacation for next year",
+            (jan_1, datetime.date(next_year, 1, 7)),
+            jan_1,
+            dec_31,
             format="MM.DD.YYYY")
 
     # garis 
