@@ -37,7 +37,7 @@ with right:
         sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
         
     with nav2:
-        sentiment = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
+        sentiment_data = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
                                    default=df['sentiment'].unique())
         
     with nav3:
@@ -53,12 +53,16 @@ with right:
                     (start, datetime.date(today)),
                     start,
                     finish,
-                    format="MM.DD.YYYY")
+                    format="YYYY.MM.DD")
 
     # garis 
     st.markdown("""---""")
-    
-    df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment")
+
+    # dataset filtered
+    df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @tanggal")
+    st.write(df_Selection)
+
+    # count data
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
     count = len(df_selection)
@@ -79,9 +83,9 @@ with right:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
         night_colors=['#53B9C7', '#ED2B2A']
-        #night_colors=['#5272F2', '#ED2B2A']
         fig_sentiment = go.Figure()
-        fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
+        fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, 
+                                       hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
         fig_sentiment.update_layout(title=f'Sentiment {sumber_data}')
         st.plotly_chart(fig_sentiment)
 
@@ -93,7 +97,6 @@ with right:
         text_pos = pos.split()
         freq_pos = Counter(text_pos)
         data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
-        data2.style.background_gradient(cmap='Blues')
 
         custom_colors = [[0, '#CCCCCC'], [1, '#53B9C7']]
         pos_freq = px.bar(data2.head(10), x='frequent', y='word',
@@ -110,7 +113,6 @@ with right:
         text_neg = neg.split()
         freq_neg = Counter(text_neg)
         data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
-        data3.style.background_gradient(cmap='Blues')
 
         custom_colors = [[0, '#CCCCCC'], [1, '#BE3144']]
         neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative",
