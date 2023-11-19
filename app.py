@@ -42,13 +42,18 @@ with right:
         
     with nav3:
         df['Tanggal'] = pd.to_datetime(df['Tanggal'])
-        a = df['Tanggal']
 
-        d = st.date_input("Pilih tanggal",
-                          a,
-                          a.min(),
-                          a.max(),
-                          format='MM.D.YYYY')
+        # Check if the 'Tanggal' column contains timezone information
+        if df['Tanggal'].dt.tz is None:
+            df['Tanggal'] = df['Tanggal'].dt.tz_localize('UTC')
+
+        a = df['Tanggal']
+        
+        # Use the to_pydatetime() method to get a tz-naive datetime series
+        a = a.dt.to_pydatetime()
+
+        d = st.date_input("Pilih tanggal", a, a.min(), a.max(), format='MM.DD.YYYY')
+
 
     # garis 
     st.markdown("""---""")
