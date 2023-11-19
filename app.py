@@ -130,7 +130,7 @@ with right:
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
-        color = ['#4081E8', '#FF82B1']
+        color = ['#A685EA', '#FF82B1']
         fig_jk = go.Figure()
         fig_jk.add_trace(go.Pie(labels=['Laki-laki','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
