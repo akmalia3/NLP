@@ -50,7 +50,7 @@ with right:
 
         tanggal = st.date_input(
                     "Pilih tanggal",
-                    (today),
+                    (start, datetime.date(today)),
                     start,
                     finish,
                     format="MM.DD.YYYY")
