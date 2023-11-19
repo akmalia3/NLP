@@ -53,7 +53,7 @@ with right:
             dec_31,
             format="MM.DD.YYYY")
         data = pd.to_datetime(df['Tanggal'])
-        a = data.dt.tz_localize(None)
+        a = data.tz_localize(None)
         start = a.min()
         finish = a.max()
         st.write(start, finish)
