@@ -41,19 +41,19 @@ with right:
                                    default=df['sentiment'].unique())
         
     with nav3:
-        df['Tanggal'] = pd.to_datetime(df['Tanggal'])
+        df['Tanggal'] = pd.to_datetime(df['Tanggal'], errors='coerce')
+        min_date = df['Tanggal'].min()
+        max_date = df['Tanggal'].max()
+        # Default range from January 1st to January 7th of the next year
+        default_range = (min_date, min_date + datetime.timedelta(days=6))
 
-        # Check if the 'Tanggal' column contains timezone information
-        if df['Tanggal'].dt.tz is None:
-            df['Tanggal'] = df['Tanggal'].dt.tz_localize('UTC')
-
-        a = df['Tanggal']
-        
-        # Use the to_pydatetime() method to get a tz-naive datetime series
-        a = a.dt.to_datetime()
-
-        d = st.date_input("Pilih tanggal", a, a.min(), a.max(), format='MM.DD.YYYY')
-
+        # Streamlit date input
+        d = st.date_input(
+            "Select your vacation date",
+            default_range,
+            min_date,
+            max_date,
+            format="MM.DD.YYYY")
 
     # garis 
     st.markdown("""---""")
