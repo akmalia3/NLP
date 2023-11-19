@@ -149,7 +149,7 @@ with right:
 
     with kt_right:
     # Visualisasi Kategori
-        custom_colors = [[0, '#CCCCCC'], [1, '#FFB573']]
+        custom_colors = [[0, '#CCCCCC'], [1, '#F9F871']]
         kategori = df_selection['Kategori'].value_counts()
         chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color=kategori, color_continuous_scale=custom_colors) 
         st.plotly_chart(chart_kategori, use_container_width=True)
