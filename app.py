@@ -78,7 +78,7 @@ with right:
     with col1:
     # Visualisasi hasil sentiment
         sentiment = df_selection['sentiment'].value_counts()
-        night_colors=['#88eeff', '#ffaaaa']
+        night_colors=['#3ca9ee', '#c33726']
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, 
                                        hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
@@ -94,7 +94,7 @@ with right:
         freq_pos = Counter(text_pos)
         data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
 
-        custom_colors = [[0, '#CCCCCC'], [1, '#88eeff']]
+        custom_colors = [[0, '#CCCCCC'], [1, '#3ca9ee']]
         pos_freq = px.bar(data2.head(10), x='frequent', y='word',
                     color='frequent', title="Top 10 Words Positive",
                          color_continuous_scale=custom_colors)
@@ -110,7 +110,7 @@ with right:
         freq_neg = Counter(text_neg)
         data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
 
-        custom_colors = [[0, '#CCCCCC'], [1, '#ffaaaa']]
+        custom_colors = [[0, '#CCCCCC'], [1, '#c33726']]
         neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative",
                          color='frequent', color_continuous_scale=custom_colors)
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
@@ -119,7 +119,7 @@ with right:
     # Visualisasi tanggal komentar
     tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
     tgl_counts.columns = ['Tanggal', 'Count']
-    custom_colors = ['#aaffaa']
+    custom_colors = ['#dc6e55']
     fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", color_discrete_sequence=custom_colors)
     st.plotly_chart(fig_tgl, use_container_width=True)
     
@@ -127,7 +127,7 @@ with right:
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
-        color = ['#aaffaa', '#ffaaaa']
+        color = ['#61bdee', '#dfa693']
         fig_jk = go.Figure()
         fig_jk.add_trace(go.Pie(labels=['Laki-laki','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
@@ -138,7 +138,7 @@ with right:
         jenis_akun = df_selection['Jenis Akun'].value_counts()
         #color = ['#58BAB9','#FF874A']
         #color = ['#3DC08D','#FFF800']
-        color = ['#88eeff','#ffeeaa']
+        color = ['#dfa693','#e14b32']
         fig_akun = go.Figure()
         fig_akun.add_trace(go.Pie(labels=['Asli','Fake'], values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
@@ -146,7 +146,7 @@ with right:
 
     with kt_right:
     # Visualisasi Kategori
-        custom_colors = [[0, '#CCCCCC'], [1, '#F9F871']]
+        custom_colors = [[0, '#CCCCCC'], [1, '#a5d3eb']]
         kategori = df_selection['Kategori'].value_counts()
         chart_kategori = px.bar(kategori, title=f"Kategori Pertanyaan pada {sumber_data}", color=kategori, color_continuous_scale=custom_colors) 
         st.plotly_chart(chart_kategori, use_container_width=True)
