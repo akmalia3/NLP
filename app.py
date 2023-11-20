@@ -34,7 +34,7 @@ with left:
         sumber_dt = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
         
     with nav2:
-        sentiment_dt = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
+        sentiment = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
                                    default=df['sentiment'].unique())
         
     with nav3:
@@ -54,7 +54,7 @@ with left:
 
     # garis 
     st.markdown("""---""")
-    df_select = df.query("Sumber = @sumber_dt & sentiment = @sentiment_dt")
+    df_select = df.query("Sumber = @sumber_dt & sentiment = @sentiment")
     st.write(df_select)
     st.write(f"Data bersumber dari {sumber_dt} Dinas Kesehatan Kota Semarang")
 
