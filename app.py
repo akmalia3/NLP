@@ -55,9 +55,9 @@ with nav5:
 
     # garis 
     # dataset filtered
-
+output = df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)]
 df_selection = df.query(
-    "Sumber == @sumber_data & sentiment == @sentiment_data"
+    "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @output"
 )
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
