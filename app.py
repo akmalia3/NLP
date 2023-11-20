@@ -57,7 +57,7 @@ with nav5:
     # dataset filtered
 output = df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)]
 df_selection = df.query(
-    "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @output"
+    "Sumber == @sumber_data & sentiment == @sentiment_data"
 )
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
