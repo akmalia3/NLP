@@ -26,6 +26,8 @@ df = df.drop(['Unnamed: 0'], axis=1)
 st.header('🌡️Sistem Analysis Sosial Media')
 st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
+st.markdown("""---""")
+
 nav3, nav4, nav5 = st.columns(3)
 with nav3:
     sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
@@ -46,11 +48,9 @@ with nav5:
                     format="YYYY.MM.DD")
 
     # garis 
-    st.markdown("""---""")
-
     # dataset filtered
-    df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data")
-
+df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data")
+st.markdown("""---""")
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
 with left:
