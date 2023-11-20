@@ -46,8 +46,11 @@ with nav5:
                                start, 
                                finish,
                                format="YYYY.MM.DD")
+    
+    start_date = tgl[0]
+    end_date = tgl[1]
     ##this uses streamlit 'magic'!!!!
-    "Tanggal mulai", tgl
+    "mulai", start_date
     
     
 #df_selection = df[(df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data) & (df['Tanggal'] == tgl)]
