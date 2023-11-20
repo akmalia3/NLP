@@ -51,6 +51,7 @@ with nav5:
 df_selection = df.query(
     "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @tanggal"
 )
+st.write(df_selection)
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
 with left:
