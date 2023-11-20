@@ -29,18 +29,45 @@ st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
 with left:
-    st.write(df)
-
-with right:
     nav1, nav2, nav3 = st.columns(3)
     with nav1:
-        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
+        sumber_dt = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
         
     with nav2:
-        sentiment_data = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
+        sentiment_dt = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
                                    default=df['sentiment'].unique())
         
     with nav3:
+        data = pd.to_datetime(df['Tanggal'], 
+                              format="%Y-%m-%d %H:%M:%S",
+                              errors='coerce').dt.tz_localize(None)
+        start = data.min()
+        finish = data.max()
+        today = datetime.now()
+
+        tgl = st.date_input(
+                    "Pilih tanggal",
+                    (start, datetime.date(today)),
+                    start,
+                    finish,
+                    format="YYYY.MM.DD")
+
+    # garis 
+    st.markdown("""---""")
+    df_select = df.query("Sumber = @sumber_dt & sentiment = @sentiment_dt")
+    st.write(df_select)
+    st.write(f"Data bersumber dari {sumber_dt} Dinas Kesehatan Kota Semarang")
+
+with right:
+    nav3, nav4, nav5 = st.columns(3)
+    with nav3:
+        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
+        
+    with nav4:
+        sentiment_data = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
+                                   default=df['sentiment'].unique())
+        
+    with nav5:
         data = pd.to_datetime(df['Tanggal'], 
                               format="%Y-%m-%d %H:%M:%S",
                               errors='coerce').dt.tz_localize(None)
