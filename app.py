@@ -44,7 +44,7 @@ with nav5:
                     (start, finish),
                     start,
                     finish,
-                    value=(start, finish)
+                    value=(start, finish))
     st.write(tanggal)
 
     # garis 
