@@ -41,13 +41,14 @@ with nav5:
     #df['Tanggal'] = pd.to_datetime(df['Tanggal'])
     start = df['Tanggal'].min()
     finish = df['Tanggal'].max()
-    tgl = st.date_input('Rentang Waktu',
+    start_date, end_date = st.date_input('Rentang Waktu',
                                (start, finish), 
                                start, 
                                finish,
                                format="YYYY.MM.DD")
     ##this uses streamlit 'magic'!!!!
-    "Tanggal mulai", tgl[0]
+    "Tanggal mulai", start_date[0]
+    "Tanggal selesai", end_date[0]
     #tanggal = st.date_input("Pilih tanggal",
                     #(start, finish),
                     #start,
