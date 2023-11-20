@@ -47,7 +47,7 @@ with nav5:
                                finish,
                                format="YYYY.MM.DD")
     ##this uses streamlit 'magic'!!!!
-    "Tanggal mulai", tgl[0]
+    "Tanggal mulai", tgl
     
 
 #output = df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)]
