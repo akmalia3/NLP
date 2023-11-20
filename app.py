@@ -44,13 +44,13 @@ with nav5:
                     (start, finish),
                     start,
                     finish)
-    mask = (df['Tanggal'].between(tanggal))
-    st.write(mask)
+
+    st.write(tanggal)
 
     # garis 
     # dataset filtered
 df_selection = df.query(
-    "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @tanggal"
+    "Sumber == @sumber_data & sentiment == @sentiment_data"
 )
 st.write(df_selection)
 
