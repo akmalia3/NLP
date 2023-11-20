@@ -48,6 +48,12 @@ with nav5:
 
     st.write(tanggal)
 
+start_date = st.date_input(label='Start Date')
+end_date = st.date_input(label='End Date')
+
+df2 = df[(df['Tanggal']>=str(start_date)) & (df['Tanggal']<=str(end_date))]
+st.write(df2)
+
     # garis 
     # dataset filtered
 df_selection = df.query(
