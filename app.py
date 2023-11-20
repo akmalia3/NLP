@@ -40,7 +40,7 @@ with nav5:
     #data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
     start = df['Tanggal'].min()
     finish = df['Tanggal'].max()
-    start_date = st.date_input('Rentang Waktu',
+    tanggal = st.date_input('Rentang Waktu',
                                (start, finish), 
                                start, 
                                finish)
@@ -55,7 +55,7 @@ with nav5:
     # garis 
     # dataset filtered
 df_selection = df.query(
-    "Sumber == @sumber_data & sentiment == @sentiment_data"
+    "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @tanggal"
 )
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
