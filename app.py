@@ -41,7 +41,7 @@ with nav5:
     start = data.min()
     finish = data.max()
     start_date, end_date = st.sidebar.date_input(label='Rentang Waktu', start, finish,
-                                                 value=[start, finish])
+                                                 value=(start, finish))
     #tanggal = st.date_input("Pilih tanggal",
                     #(start, finish),
                     #start,
