@@ -28,8 +28,8 @@ st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 st.markdown("""---""")
 
-start_date = st.slider.date_input(label='Start Date')
-end_date = st.slider.date_input(label='End Date')
+start_date = st.sidebar.date_input(label='Start Date')
+end_date = st.sidebar.date_input(label='End Date')
 
 df2 = df[(df['Tanggal']>=str(start_date)) & (df['Tanggal']<=str(end_date))]
 st.write(df2)
