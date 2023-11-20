@@ -37,8 +37,9 @@ with nav4:
                                    default=df['sentiment'].unique())
         
 with nav5:
-    data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
-    df['Tanggal'] = data.dt.date
+    #data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
+    date = pd.to_datetime(df['Tanggal'])
+    df['Tanggal'] = date.dt.date
     start = df['Tanggal'].min()
     finish = df['Tanggal'].max()
     start_date = st.date_input('Rentang Waktu',
