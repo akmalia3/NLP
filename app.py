@@ -46,6 +46,8 @@ with nav5:
                                start, 
                                finish,
                                format="YYYY.MM.DD")
+    df_selection = df.query(
+    "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal >= start_date & Tanggal <= end_date")
     #tanggal = st.date_input("Pilih tanggal",
                     #(start, finish),
                     #start,
@@ -53,6 +55,7 @@ with nav5:
                     #format="YYYY.MM.DD")
     #tanggal = tanggal.strftime("%Y-%m-%d")
     #st.write(tanggal)
+    
 
     # garis 
     # dataset filtered
