@@ -44,7 +44,7 @@ with nav5:
                     (start, finish),
                     start,
                     finish,
-                    format="%Y-%m-%d %H:%M:%S")
+                    format="%Y-%m-%d")
     st.write(tanggal)
 
     # garis 
