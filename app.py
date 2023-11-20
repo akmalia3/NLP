@@ -51,7 +51,7 @@ with nav5:
     end_date = tgl[1]
     
 #data = pd.to_datetime(df['Tanggal']).dt.date
-output = (df['Tanggal'] >= '2023-01-01') & (df['Tanggal'] <= end_date)
+output = (df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)
 #df_selection = df[(df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data) & (df['Tanggal'] == tgl)]
 df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @output")
 
