@@ -26,57 +26,20 @@ df = df.drop(['Unnamed: 0'], axis=1)
 st.header('🌡️Sistem Analysis Sosial Media')
 st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
-
-right, left = st.tabs(['Ringkasan', 'Dataset'])
-with left:
-    nav1, nav2, nav3 = st.columns(3)
-    with nav1:
-        sumber_dt = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
+nav3, nav4, nav5 = st.columns(3)
+with nav3:
+    sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
         
-    with nav2:
-        sentiment = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
+with nav4:
+    sentiment_data = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
                                    default=df['sentiment'].unique())
         
-    with nav3:
-        data = pd.to_datetime(df['Tanggal'], 
-                              format="%Y-%m-%d %H:%M:%S",
-                              errors='coerce').dt.tz_localize(None)
-        start = data.min()
-        finish = data.max()
-        today = datetime.now()
-
-        tgl = st.date_input(
-                    "Pilih tanggal",
-                    (start, datetime.date(today)),
-                    start,
-                    finish,
-                    format="YYYY.MM.DD")
-
-    # garis 
-    st.markdown("""---""")
-    df_select = df.query("Sumber = @sumber_dt & sentiment = @sentiment")
-    st.write(df_select)
-    st.write(f"Data bersumber dari {sumber_dt} Dinas Kesehatan Kota Semarang")
-
-with right:
-    nav3, nav4, nav5 = st.columns(3)
-    with nav3:
-        sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
-        
-    with nav4:
-        sentiment_data = st.multiselect("Pilih Sentiment", options=df["sentiment"].unique(), 
-                                   default=df['sentiment'].unique())
-        
-    with nav5:
-        data = pd.to_datetime(df['Tanggal'], 
-                              format="%Y-%m-%d %H:%M:%S",
-                              errors='coerce').dt.tz_localize(None)
-        start = data.min()
-        finish = data.max()
-        today = datetime.now()
-
-        tanggal = st.date_input(
-                    "Pilih tanggal",
+with nav5:
+    data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d %H:%M:%S", errors='coerce').dt.tz_localize(None)
+    start = data.min()
+    finish = data.max()
+    today = datetime.now()
+    tanggal = st.date_input("Pilih tanggal",
                     (start, datetime.date(today)),
                     start,
                     finish,
@@ -88,6 +51,13 @@ with right:
     # dataset filtered
     df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data")
 
+
+right, left = st.tabs(['Ringkasan', 'Dataset'])
+with left:
+    st.write(df_selection)
+    st.write(f"Data bersumber dari {sumber_data} Dinas Kesehatan Kota Semarang")
+
+with right:
     # count data
     pos = df_selection['sentiment'].loc[df_selection['sentiment'] == 'positive']
     neg = df_selection['sentiment'].loc[df_selection['sentiment'] == 'negative']
