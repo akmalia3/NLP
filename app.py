@@ -46,7 +46,8 @@ with nav5:
                                start, 
                                finish,
                                format="YYYY.MM.DD")
-
+    ##this uses streamlit 'magic'!!!!
+    "Tanggal mulai", tgl[0]
     #tanggal = st.date_input("Pilih tanggal",
                     #(start, finish),
                     #start,
