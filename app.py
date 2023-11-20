@@ -28,11 +28,13 @@ st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 st.markdown("""---""")
 
-#start_date = st.sidebar.date_input(label='Start Date')
-#end_date = st.sidebar.date_input(label='End Date')
+start_date = st.sidebar.date_input(label='Start Date', df['Tanggal'].min())
+end_date = st.sidebar.date_input(label='End Date', df['Tanggal'].max())
 
-#df2 = df[(df['Tanggal']>=int(start_date)) & (df['Tanggal']<=int(end_date))]
-#st.write(df2)
+start = start_date.strftime("%Y-%m-%d")
+end = end_date.strftime("%Y-%m-%d")
+df2 = df[(df['Tanggal']>=(start)) & (df['Tanggal']<=(end))]
+st.write(df2)
 
 nav3, nav4, nav5 = st.columns(3)
 with nav3:
@@ -51,7 +53,7 @@ with nav5:
                     start,
                     finish,
                     format="YYYY.MM.DD")
-    tanggal = tanggal.strftime("%Y-%m-%d")
+    #tanggal = tanggal.strftime("%Y-%m-%d")
     st.write(tanggal)
 
     # garis 
