@@ -43,8 +43,7 @@ with nav5:
     tanggal = st.date_input("Pilih tanggal",
                     (start, finish),
                     start,
-                    finish,
-                    format="YYY.MM.DD")
+                    finish)
     st.write(tanggal)
 
     # garis 
