@@ -40,10 +40,8 @@ with nav5:
     data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
     start = data.min()
     finish = data.max()
-    start_date, end_date = st.sidebar.date_input(label='Rentang Waktu',
-                                        min_value=start,
-                                        max_value=finish,
-                                        value=[min_value, max_value])
+    start_date, end_date = st.sidebar.date_input(label='Rentang Waktu', start, finish,
+                                                 value=[start, finish])
     #tanggal = st.date_input("Pilih tanggal",
                     #(start, finish),
                     #start,
