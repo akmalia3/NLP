@@ -28,21 +28,6 @@ st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 st.markdown("""---""")
 
-data = pd.DataFrame({"Time":[1, 2, 3, 4]})
-
-start_date = st.date_input('Enter start date', value=datetime.datetime(2019,7,6))
-start_time = st.time_input('Enter start time', datetime.time(8, 45))
-
-start_datetime = datetime.datetime.combine(start_date, start_time)
-
-data["DateTime"] = [start_datetime + datetime.timedelta(seconds=time) for time in df["Time"]]
-
-data["DateTime"] = [date.strftime("%d/%m/%Y %H:%M:%S") for date in data["DateTime"]]
-
-data = data.drop(columns=["Time"])
-
-st.dataframe(data)
-
 nav3, nav4, nav5 = st.columns(3)
 with nav3:
     sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
