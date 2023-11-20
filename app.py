@@ -28,13 +28,20 @@ st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 st.markdown("""---""")
 
-start_date = st.sidebar.date_input(label='Start Date')
-end_date = st.sidebar.date_input(label='End Date')
+data = pd.DataFrame({"Time":[1, 2, 3, 4]})
 
-data = df['Tanggal'].strftime("%Y-%m-%d")
+start_date = st.date_input('Enter start date', value=datetime.datetime(2019,7,6))
+start_time = st.time_input('Enter start time', datetime.time(8, 45))
 
-df2 = df[(data>=(start_date)) & (data<=(end_date))]
-st.write(df2)
+start_datetime = datetime.datetime.combine(start_date, start_time)
+
+data["DateTime"] = [start_datetime + datetime.timedelta(seconds=time) for time in df["Time"]]
+
+data["DateTime"] = [date.strftime("%d/%m/%Y %H:%M:%S") for date in data["DateTime"]]
+
+data = data.drop(columns=["Time"])
+
+st.dataframe(data)
 
 nav3, nav4, nav5 = st.columns(3)
 with nav3:
