@@ -45,6 +45,7 @@ with nav5:
                     start,
                     finish,
                     format="YYYY.MM.DD")
+    st.write(tanggal)
 
     # garis 
     # dataset filtered
