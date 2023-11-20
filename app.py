@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from wordcloud import WordCloud
 from collections import Counter
-from datetime import datetime
+import datetime
 
 st.set_page_config(
     page_title="Sentiment Analysis Dashboard",
