@@ -52,7 +52,7 @@ with nav5:
     ##this uses streamlit 'magic'!!!!
     "mulai", start_date
     
-    
+output = df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)]
 #df_selection = df[(df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data) & (df['Tanggal'] == tgl)]
 df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data")
 
