@@ -43,7 +43,8 @@ with nav5:
     tanggal = st.date_input('Rentang Waktu',
                                (start, finish), 
                                start, 
-                               finish)
+                               finish,
+                               format="YYYY.MM.DD")
     #tanggal = st.date_input("Pilih tanggal",
                     #(start, finish),
                     #start,
@@ -54,6 +55,7 @@ with nav5:
 
     # garis 
     # dataset filtered
+
 df_selection = df.query(
     "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @tanggal"
 )
