@@ -37,14 +37,14 @@ with nav4:
                                    default=df['sentiment'].unique())
         
 with nav5:
-    data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
+    data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d %H:%M:%S", errors='coerce').dt.tz_localize(None)
     start = data.min()
     finish = data.max()
     tanggal = st.date_input("Pilih tanggal",
                     (start, finish),
                     start,
                     finish,
-                    format='YY.MM.DD')
+                    format="YYY.MM.DD")
     st.write(tanggal)
 
     # garis 
