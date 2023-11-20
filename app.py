@@ -67,6 +67,8 @@ right, left = st.tabs(['Ringkasan', 'Dataset'])
 with left:
     st.write(df_selection)
     count = len(df_selection)
+    ##this uses streamlit 'magic'!!!!
+    "Data bersumber dari", sumber_data, "Dinas Kesehatan Kota Semarang, dengan jumlah komentar sebanyak", count
     st.write(f"Data bersumber dari {sumber_data} Dinas Kesehatan Kota Semarang, dengan jumlah komentar sebanyak {count}")
 
 with right:
