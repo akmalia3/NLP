@@ -38,6 +38,7 @@ with nav4:
         
 with nav5:
     #data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
+    df['Tanggal'] = pd.to_datetime(df['Tanggal'])
     start = df['Tanggal'].min()
     finish = df['Tanggal'].max()
     start_date, end_date = st.date_input('Rentang Waktu',
