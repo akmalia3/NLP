@@ -41,13 +41,12 @@ with nav5:
     #df['Tanggal'] = pd.to_datetime(df['Tanggal'])
     start = df['Tanggal'].min()
     finish = df['Tanggal'].max()
-    start_date, end_date = st.date_input('Rentang Waktu',
+    tgl = st.date_input('Rentang Waktu',
                                (start, finish), 
                                start, 
                                finish,
                                format="YYYY.MM.DD")
-    df_selection = df.query(
-    "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal >= start_date & Tanggal <= end_date")
+
     #tanggal = st.date_input("Pilih tanggal",
                     #(start, finish),
                     #start,
@@ -61,7 +60,7 @@ with nav5:
     # dataset filtered
 #output = df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)]
 df_selection = df.query(
-    "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal >= start_date & Tanggal <= end_date"
+    "Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @tgl"
 )
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
