@@ -31,7 +31,7 @@ st.markdown("""---""")
 start_date = st.sidebar.date_input(label='Start Date')
 end_date = st.sidebar.date_input(label='End Date')
 
-df2 = df[(df['Tanggal']>=str(start_date)) & (df['Tanggal']<=str(end_date))]
+df2 = df[(df['Tanggal']>=int(start_date)) & (df['Tanggal']<=int(end_date))]
 st.write(df2)
 
 nav3, nav4, nav5 = st.columns(3)
