@@ -47,10 +47,9 @@ with nav5:
                                finish,
                                format="YYYY.MM.DD")
     ##this uses streamlit 'magic'!!!!
-    "Tanggal mulai", tgl[1]
+    "Tanggal mulai", tgl
     
-
-#output = df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)]
+    
 #df_selection = df[(df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data) & (df['Tanggal'] == tgl)]
 df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data")
 
