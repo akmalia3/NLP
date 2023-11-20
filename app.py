@@ -55,14 +55,7 @@ with nav5:
 #df_selection = df[(df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data) & (df['Tanggal'] == tgl)]
 #df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @output")
 
-# Filter by Date Range
-date_condition = (df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)
-
-# Other Conditions
-other_conditions = (df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data)
-
-# Apply Filters
-df_selection = df[date_condition & other_conditions]
+df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data").loc[output]
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
 with left:
