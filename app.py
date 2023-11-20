@@ -38,7 +38,7 @@ with nav4:
         
 with nav5:
     #data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
-    #df['Tanggal'] = pd.to_datetime(df['Tanggal'])
+    df['Tanggal'] = pd.to_datetime(df['Tanggal']).dt.date
     start = df['Tanggal'].min()
     finish = df['Tanggal'].max()
     tgl = st.date_input('Rentang Waktu',
@@ -49,12 +49,9 @@ with nav5:
     
     start_date = tgl[0]
     end_date = tgl[1]
-    ##this uses streamlit 'magic'!!!!
-    "mulai", start_date
-    'selesai', end_date
     
-data = pd.to_datetime(df['Tanggal']).dt.date
-output = (data >= start_date) & (data <= end_date)
+#data = pd.to_datetime(df['Tanggal']).dt.date
+output = (df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)
 #df_selection = df[(df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data) & (df['Tanggal'] == tgl)]
 df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @output")
 
