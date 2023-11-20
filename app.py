@@ -44,7 +44,7 @@ with nav5:
                     (start, finish),
                     start,
                     finish)
-    mask = (df['Tanggal'].between(*tanggal))
+    mask = (df['Tanggal'].between(tanggal))
     st.write(mask)
 
     # garis 
