@@ -28,12 +28,12 @@ st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 st.markdown("""---""")
 
-start_date = st.sidebar.date_input(label='Start Date', df['Tanggal'].min())
-end_date = st.sidebar.date_input(label='End Date', df['Tanggal'].max())
+start_date = st.sidebar.date_input(label='Start Date')
+end_date = st.sidebar.date_input(label='End Date')
 
-start = start_date.strftime("%Y-%m-%d")
-end = end_date.strftime("%Y-%m-%d")
-df2 = df[(df['Tanggal']>=(start)) & (df['Tanggal']<=(end))]
+data = df['Tanggal'].strftime("%Y-%m-%d")
+
+df2 = df[(data>=(start_date)) & (data<=(end_date))]
 st.write(df2)
 
 nav3, nav4, nav5 = st.columns(3)
