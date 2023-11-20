@@ -56,7 +56,7 @@ with nav5:
 data = pd.to_datetime(df['Tanggal']).dt.date
 output = (data >= start_date) & (data <= end_date)
 #df_selection = df[(df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data) & (df['Tanggal'] == tgl)]
-df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data")
+df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @output")
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
 with left:
