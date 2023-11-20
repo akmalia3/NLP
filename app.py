@@ -49,14 +49,12 @@ with nav5:
     
     start_date = tgl[0]
     end_date = tgl[1]
-    a = print(type(start_date))
-    b = print(type(df['Tanggal']))
     ##this uses streamlit 'magic'!!!!
-    "mulai", a
-    'selesai', b
+    "mulai", start_date
+    'selesai', end_date
     
-
-output = df[(df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)]
+data = pd.to_datetime(df['Tanggal'])
+output = (data >= start_date) & (data <= end_date)
 #df_selection = df[(df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data) & (df['Tanggal'] == tgl)]
 df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data")
 
