@@ -28,8 +28,6 @@ st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 st.markdown("""---""")
 
-right, left = st.tabs(['Ringkasan', 'Dataset'])
-
 nav3, nav4, nav5 = st.columns(3)
 with nav3:
     sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
@@ -52,9 +50,8 @@ with nav5:
     # garis 
     # dataset filtered
 df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data")
-st.markdown("""---""")
 
-
+right, left = st.tabs(['Ringkasan', 'Dataset'])
 with left:
     st.write(df_selection)
     st.write(f"Data bersumber dari {sumber_data} Dinas Kesehatan Kota Semarang")
