@@ -40,7 +40,7 @@ with nav5:
     data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
     start = data.min()
     finish = data.max()
-    start_date, end_date = st.date_input(label='Rentang Waktu', 
+    start_date = st.date_input(label='Rentang Waktu', 
                                                  start,
                                                  finish)
     #tanggal = st.date_input("Pilih tanggal",
@@ -49,7 +49,7 @@ with nav5:
                     #finish,
                     #format="YYYY.MM.DD")
     #tanggal = tanggal.strftime("%Y-%m-%d")
-    st.write(tanggal)
+    #st.write(tanggal)
 
     # garis 
     # dataset filtered
