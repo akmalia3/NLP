@@ -43,9 +43,9 @@ with nav5:
     tanggal = st.date_input("Pilih tanggal",
                     (start, finish),
                     start,
-                    finish,
-                    value=(start, finish))
-    st.write(tanggal)
+                    finish)
+    mask = (df['Tanggal'].between(*tanggal))
+    st.write(mask)
 
     # garis 
     # dataset filtered
