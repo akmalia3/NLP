@@ -28,6 +28,12 @@ st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 st.markdown("""---""")
 
+start_date = st.slider.date_input(label='Start Date')
+end_date = st.slider.date_input(label='End Date')
+
+df2 = df[(df['Tanggal']>=str(start_date)) & (df['Tanggal']<=str(end_date))]
+st.write(df2)
+
 nav3, nav4, nav5 = st.columns(3)
 with nav3:
     sumber_data = st.selectbox("Pilih Sumber Data", options=df["Sumber"].unique())
@@ -47,12 +53,6 @@ with nav5:
                     format="YYYY.MM.DD")
 
     st.write(tanggal)
-
-start_date = st.date_input(label='Start Date')
-end_date = st.date_input(label='End Date')
-
-df2 = df[(df['Tanggal']>=str(start_date)) & (df['Tanggal']<=str(end_date))]
-st.write(df2)
 
     # garis 
     # dataset filtered
