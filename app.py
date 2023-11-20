@@ -19,7 +19,7 @@ st.set_page_config(
 # https://retro-tools.streamlit.app/
 # https://bpmpkalsel-pmm-dashboard-71ttv1.streamlit.app/Platform_Merdeka_Mengajar
 
-file_name = "dataset-sentiment.xlsx"
+file_name = "dataset-sentiment (1).xlsx"
 df = pd.read_excel(file_name)
 df = df.drop(['Unnamed: 0'], axis=1)
 
@@ -38,8 +38,6 @@ with nav4:
         
 with nav5:
     #data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
-    date = pd.to_datetime(df['Tanggal'])
-    df['Tanggal'] = date.dt.date
     start = df['Tanggal'].min()
     finish = df['Tanggal'].max()
     start_date = st.date_input('Rentang Waktu',
