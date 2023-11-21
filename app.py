@@ -86,19 +86,22 @@ with right:
         # Visualisasi hasil sentiment
         color_custom = ['#3ca9ee', '#e14b32']
         sentiment = df_selection['sentiment'].value_counts()
-        st.write(sentiment)
         fig_sentiment = go.Figure()
-        if sentiment == 'negative':
+
+        neg_df = df_selection[df_selection['sentiment'] == 'negative']
+        pos_df = df_selection[df_selection['sentiment'] == 'positive']
+        
+        if not neg_df.empty:
             color = ['#e14b32']
-            fig_sentiment.add_trace(go.Pie(labels=['Negative'], values=sentiment, 
+            fig_sentiment.add_trace(go.Pie(labels=['Negative'], values=neg_df['sentiment'].value_counts(), 
                                            marker_colors=color, textinfo='label+percent', 
                                            hoverinfo='value'))
-        elif sentiment == 'positive':
+        if not pos_df.empty:
             color = ['#3ca9ee']
-            fig_sentiment.add_trace(go.Pie(labels=['Positive'], values=sentiment, 
+            fig_sentiment.add_trace(go.Pie(labels=['Positive'], values=pos_df['sentiment'].value_counts(), 
                                            marker_colors=color, textinfo='label+percent', 
                                            hoverinfo='value'))
-        else:
+        if not neg_df.empty and not pos_df.empty:
             fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment,
                                       marker_colors=color_custom, textinfo='label+percent',
                                       hoverinfo='value'))
