@@ -88,10 +88,10 @@ with right:
         sentiment = df_selection['sentiment'].value_counts()
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment,
-                                      hole=0.3, marker_colors=color_custom, textinfo='label+percent',
+                                      marker_colors=color_custom, textinfo='label+percent',
                                       hoverinfo='value'))
         fig_sentiment.update_layout(title=f"Persentase Sentiment {sumber_data}")
-        st.plotly_chart(fig_sentiment)
+        st.plotly_chart(fig_sentiment, use container_width=True)
 
     with col2:
         # frequent ngram word positive
