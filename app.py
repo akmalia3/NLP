@@ -90,7 +90,14 @@ with right:
         fig_sentiment = go.Figure()
         if sentiment == 'negative':
             color = ['#e14b32']
-            fig_sentiment.add_trace(go.Pie(labels=['Negative'], values=sentiment, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
+            fig_sentiment.add_trace(go.Pie(labels=['Negative'], values=sentiment, 
+                                           marker_colors=color, textinfo='label+percent', 
+                                           hoverinfo='value'))
+        elif sentiment == 'positive':
+            color = ['#3ca9ee']
+            fig_sentiment.add_trace(go.Pie(labels=['Positive'], values=sentiment, 
+                                           marker_colors=color, textinfo='label+percent', 
+                                           hoverinfo='value'))
         else:
             fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment,
                                       marker_colors=color_custom, textinfo='label+percent',
