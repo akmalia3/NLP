@@ -88,9 +88,14 @@ with right:
         sentiment = df_selection['sentiment'].value_counts()
         st.write(sentiment)
         fig_sentiment = go.Figure()
-        fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment,
+        if sentiment == 'negative':
+            color = ['#e14b32']
+            fig_sentiment.add_trace(go.Pie(labels=['Negative'], values=sentiment, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
+        else:
+            fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment,
                                       marker_colors=color_custom, textinfo='label+percent',
                                       hoverinfo='value'))
+        
         fig_sentiment.update_layout(title=f"Persentase Sentiment {sumber_data}")
         st.plotly_chart(fig_sentiment, use_container_width=True)
 
