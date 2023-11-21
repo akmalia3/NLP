@@ -86,6 +86,7 @@ with right:
         # Visualisasi hasil sentiment
         color_custom = ['#3ca9ee', '#e14b32']
         sentiment = df_selection['sentiment'].value_counts()
+        st.write(sentiment)
         fig_sentiment = go.Figure()
         fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment,
                                       marker_colors=color_custom, textinfo='label+percent',
