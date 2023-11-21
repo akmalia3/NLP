@@ -75,25 +75,6 @@ with right:
     b2.metric("Jumlah Komentar", len(neg), "- Negative")
     b3.metric("Jumlah", count)
 
-    st.markdown('''
-    <style>
-    /*center metric delta value*/
-    div[data-testid="metric-container"] > div[data-testid="stMetricDelta"] > div{
-    justify-content: center; 
-    color: #01cefc;
-    }
-    
-    /*center metric delta svg*/
-    [data-testid="stMetricDelta"] > svg {
-    position: absolute;
-    left: 30%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    }
-    </style>
-    ''', unsafe_allow_html=True)
-
     # garis 
     st.markdown("""---""")
 
@@ -102,12 +83,14 @@ with right:
     
     col1, col2, col3 = st.columns([2,1,1])    
     with col1:
-    # Visualisasi hasil sentiment
-        sentiment = df_selection['sentiment'].value_counts()
-        night_colors=['#3ca9ee', '#e14b32']
+        # Visualisasi hasil sentiment
+        color_custom = ['#3ca9ee', '#e14b32']
+        sentiment = df_selection['sentiment'].value_counts().reset_index()
         fig_sentiment = go.Figure()
-        fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
-        fig_sentiment.update_layout(title=f'Persentase Sentiment Sosmed {sumber_data}')
+        fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment,
+                                      hole=0.3, marker_colors=color_custom, textinfo='label+percent',
+                                      hoverinfo='value'))
+        fig_sentiment.update_layout(title=f"Persentase Sentiment {sumber_data}")
         st.plotly_chart(fig_sentiment)
 
     with col2:
