@@ -91,7 +91,7 @@ with right:
                                       marker_colors=color_custom, textinfo='label+percent',
                                       hoverinfo='value'))
         fig_sentiment.update_layout(title=f"Persentase Sentiment {sumber_data}")
-        st.plotly_chart(fig_sentiment, use container_width=True)
+        st.plotly_chart(fig_sentiment, use_container_width=True)
 
     with col2:
         # frequent ngram word positive
