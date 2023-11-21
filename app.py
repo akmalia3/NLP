@@ -62,9 +62,7 @@ with left:
     st.write(df_selection)
     count = len(df_selection)
     ##this uses streamlit 'magic'!!!!
-    "Data bersumber dari", sumber_data
-    "Dinas Kesehatan Kota Semarang, dengan jumlah komentar sebanyak", count
-    st.write(f"Data bersumber dari {sumber_data} Dinas Kesehatan Kota Semarang, dengan jumlah komentar sebanyak {count}")
+    f"Data bersumber dari {sumber_data} Dinas Kesehatan Kota Semarang, dengan jumlah komentar sebanyak", count
 
 with right:
     # count data
@@ -76,6 +74,22 @@ with right:
     b1.metric("Jumlah Komentar", len(pos), "+ Positive")
     b2.metric("Jumlah Komentar", len(neg), "- Negative")
     b3.metric("Jumlah", count)
+
+    st.markdown('''
+    <style>
+    /*center metric delta value*/
+    div[data-testid="metric-container"] > div[data-testid="stMetricDelta"] > div{justify-content: center; color: #01cefc;}
+    
+    /*center metric delta svg*/
+    [data-testid="stMetricDelta"] > svg {
+    position: absolute;
+    left: 30%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    }
+    </style>
+    ''', unsafe_allow_html=True)
 
     # garis 
     st.markdown("""---""")
@@ -89,9 +103,8 @@ with right:
         sentiment = df_selection['sentiment'].value_counts()
         night_colors=['#3ca9ee', '#e14b32']
         fig_sentiment = go.Figure()
-        fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, 
-                                       hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
-        fig_sentiment.update_layout(title=f'Sentiment {sumber_data}')
+        fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment, hole=0.3, marker_colors=night_colors, textinfo='label+percent', hoverinfo='value'))
+        fig_sentiment.update_layout(title=f'Persentase Sentiment Sosmed {sumber_data}')
         st.plotly_chart(fig_sentiment)
 
     with col2:
@@ -104,9 +117,7 @@ with right:
         data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
 
         custom_colors = [[0, '#CCCCCC'], [1, '#3ca9ee']]
-        pos_freq = px.bar(data2.head(10), x='frequent', y='word',
-                    color='frequent', title="Top 10 Words Positive",
-                         color_continuous_scale=custom_colors)
+        pos_freq = px.bar(data2.head(10), x='frequent', y='word', color='frequent', title="Top 10 Words Positive", color_continuous_scale=custom_colors)
         pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(pos_freq, use_container_width=True)
 
@@ -120,8 +131,7 @@ with right:
         data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
 
         custom_colors = [[0, '#CCCCCC'], [1, '#e14b32']]
-        neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative",
-                         color='frequent', color_continuous_scale=custom_colors)
+        neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative", color='frequent', color_continuous_scale=custom_colors)
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
         st.plotly_chart(neg_freq, use_container_width=True)
         
@@ -129,7 +139,7 @@ with right:
     tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
     tgl_counts.columns = ['Tanggal', 'Count']
     custom_colors = ['#dc6e55']
-    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title="Waktu", color_discrete_sequence=custom_colors)
+    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title=f"Rentang Waktu Komentar {sumber_data}", color_discrete_sequence=custom_colors)
     st.plotly_chart(fig_tgl, use_container_width=True)
     
     jk_left, ja_middle, kt_right = st.columns([1,1,2])
