@@ -95,16 +95,16 @@ with right:
             color = ['#e14b32']
             fig_sentiment.add_trace(go.Pie(labels=['Negative'], values=neg_df['sentiment'].value_counts(), 
                                            marker_colors=color, textinfo='label+percent', 
-                                           hoverinfo='value'))
+                                           hoverinfo='value', hole=0.3))
         if not pos_df.empty:
             color = ['#3ca9ee']
             fig_sentiment.add_trace(go.Pie(labels=['Positive'], values=pos_df['sentiment'].value_counts(), 
                                            marker_colors=color, textinfo='label+percent', 
-                                           hoverinfo='value'))
+                                           hoverinfo='value', hole=0.3))
         if not neg_df.empty and not pos_df.empty:
             fig_sentiment.add_trace(go.Pie(labels=['Positive','Negative'], values=sentiment,
                                       marker_colors=color_custom, textinfo='label+percent',
-                                      hoverinfo='value'))
+                                      hoverinfo='value', hole=0.3))
         
         fig_sentiment.update_layout(title=f"Persentase Sentiment {sumber_data}")
         st.plotly_chart(fig_sentiment, use_container_width=True)
