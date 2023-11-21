@@ -78,7 +78,10 @@ with right:
     st.markdown('''
     <style>
     /*center metric delta value*/
-    div[data-testid="metric-container"] > div[data-testid="stMetricDelta"] > div{justify-content: center; color: #01cefc;}
+    div[data-testid="metric-container"] > div[data-testid="stMetricDelta"] > div{
+    justify-content: center; 
+    color: #01cefc;
+    }
     
     /*center metric delta svg*/
     [data-testid="stMetricDelta"] > svg {
