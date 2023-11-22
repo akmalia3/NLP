@@ -1,3 +1,3 @@
 # Sentiment-Analysis
 
-https://sentiment-analysis-sosialmedia.streamlit.app/
+https://sentimentanalysis-sosmed.streamlit.app/
