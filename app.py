@@ -149,7 +149,7 @@ with right:
 
         asli = df_selection[df_selection['Jenis Akun'] == 'Asli']
         tdk = df_selection[df_selection['Jenis Akun'] == 'Tidak diketahui']
-        fake = df_Selection[df_selection['Jenis Akun'] == 'Fake']
+        fake = df_selection[df_selection['Jenis Akun'] == 'Fake']
         
         if not asli.empty:
             color = ['#61bdee']
