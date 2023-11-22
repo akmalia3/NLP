@@ -146,7 +146,33 @@ with right:
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
         color = ['#dc6e55', '#61bdee', '#a5d3eb']
         fig_jk = go.Figure()
-        fig_jk.add_trace(go.Pie(labels=['Laki-laki','Tidak Diketahui', 'Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
+
+        boys = df_selection[df_selection['Jenis Kelamin'] == 'L']
+        girl = df_selection[df_selection['Jenis Kelamin'] == 'P']
+        unknown = df_selection[df_selection['Jenis Kelamin'] == 'Tidak diketahui']
+        
+        # Ubah warna
+        if not boys.empty:
+            color = ['#dc6e55']
+            fig_sentiment.add_trace(go.Pie(labels=['Laki-laki'], values=boys['Jenis Kelamin'].value_counts(), 
+                                           marker_colors=color, textinfo='label+percent', 
+                                           hoverinfo='value'))
+        if not unknown.empty:
+            color = ['#61bdee']
+            fig_sentiment.add_trace(go.Pie(labels=['Tidak Diketahui'], values=unknown['Jenis Kelamin'].value_counts(), 
+                                           marker_colors=color, textinfo='label+percent', 
+                                           hoverinfo='value')
+        if not unknown.empty:
+            color = ['#a5d3eb']
+            fig_sentiment.add_trace(go.Pie(labels=['Tidak Diketahui'], values=girl['Jenis Kelamin'].value_counts(), 
+                                           marker_colors=color, textinfo='label+percent', 
+                                           hoverinfo='value')
+                                    
+        if not boys.empty and not unknown.empty and not girl.empty:
+            fig_sentiment.add_trace(go.Pie(labels=['Laki-laki','Tidak Diketahui', 'Perempuan'], values=jenis_kelamin,
+                                      marker_colors=color_custom, textinfo='label+percent',
+                                      hoverinfo='value'))
+        
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
         st.plotly_chart(fig_jk, use_container_width=True)
         
