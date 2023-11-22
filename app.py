@@ -148,7 +148,6 @@ with right:
         fig_jk = go.Figure()
 
         boys = df_selection[df_selection['Jenis Kelamin'] == 'L']
-        girl = df_selection[df_selection['Jenis Kelamin'] == 'P']
         unknown = df_selection[df_selection['Jenis Kelamin'] == 'Tidak diketahui']
         
         # Ubah warna
@@ -162,13 +161,8 @@ with right:
             fig_sentiment.add_trace(go.Pie(labels=['Tidak Diketahui'], values=unknown['Jenis Kelamin'].value_counts(), 
                                            marker_colors=color, textinfo='label+percent', 
                                            hoverinfo='value')
-        if not girl.empty:
-            color = ['#a5d3eb']
-            fig_sentiment.add_trace(go.Pie(labels=['Perempuan'], values=girl['Jenis Kelamin'].value_counts(), 
-                                           marker_colors=color, textinfo='label+percent', 
-                                           hoverinfo='value')
                                     
-        if not boys.empty and not unknown.empty and not girl.empty:
+        if not boys.empty and not unknown.empty:
             fig_sentiment.add_trace(go.Pie(labels=['Laki-laki','Tidak Diketahui', 'Perempuan'], values=jenis_kelamin,
                                       marker_colors=color_custom, textinfo='label+percent',
                                       hoverinfo='value'))
