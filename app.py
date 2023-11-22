@@ -146,32 +146,10 @@ with right:
         jenis_akun = df_selection['Jenis Akun'].value_counts()
         color = ['#61bdee', '#e14b32', '#dc6e55']
         fig_akun = go.Figure()
-
-        asli = df_selection[df_selection['Jenis Akun'] == 'Asli']
-        tdk = df_selection[df_selection['Jenis Akun'] == 'Tidak diketahui']
-        fake = df_selection[df_selection['Jenis Akun'] == 'Fake']
-
-        if not asli.empty and not tdk.empty and not fake.empty:
-            fig_akun.add_trace(go.Pie(labels=['Asli', 'Tidak Diketahui','Fake'], 
+        fig_akun.add_trace(go.Pie(labels=['Asli', 'Tidak Diketahui','Fake'], 
                                       values=jenis_akun, marker_colors=color, 
                                       textinfo='label+percent', hoverinfo='value'))
-        
-        if not asli.empty:
-            color = ['#61bdee']
-            fig_akun.add_trace(go.Pie(labels=['Asli'], values=asli['Jenis Akun'].value_counts(), 
-                                           marker_colors=color, textinfo='label+percent', 
-                                           hoverinfo='value'))
-        if not tdk.empty:
-            color = ['#e14b32']
-            fig_akun.add_trace(go.Pie(labels=['Tidak Diketahui'], values=tdk['Jenis Akun'].value_counts(), 
-                                           marker_colors=color, textinfo='label+percent', 
-                                           hoverinfo='value'))
-        if not fake.empty:
-            color = ['#dc6e55']
-            fig_akun.add_trace(go.Pie(labels=['Fake'], values=fake['Jenis Akun'].value_counts(), 
-                                           marker_colors=color, textinfo='label+percent', 
-                                           hoverinfo='value'))
-        
+
         fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
         st.plotly_chart(fig_akun, use_container_width=True)
         
