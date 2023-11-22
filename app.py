@@ -162,9 +162,9 @@ with right:
             fig_sentiment.add_trace(go.Pie(labels=['Tidak Diketahui'], values=unknown['Jenis Kelamin'].value_counts(), 
                                            marker_colors=color, textinfo='label+percent', 
                                            hoverinfo='value')
-        if not unknown.empty:
+        if not girl.empty:
             color = ['#a5d3eb']
-            fig_sentiment.add_trace(go.Pie(labels=['Tidak Diketahui'], values=girl['Jenis Kelamin'].value_counts(), 
+            fig_sentiment.add_trace(go.Pie(labels=['Perempuan'], values=girl['Jenis Kelamin'].value_counts(), 
                                            marker_colors=color, textinfo='label+percent', 
                                            hoverinfo='value')
                                     
