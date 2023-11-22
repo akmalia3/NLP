@@ -172,11 +172,11 @@ with right:
     
     # frequent bigrams
     df_selection['bigrams'].fillna(' ', inplace=True)
-    bigram = ''.join(df['bigrams'])
+    bigram = ''.join(df_selection['bigrams'])
     
     # frequent trigram
     df_selection['trigrams'].fillna(' ', inplace=True)
-    trigram = ''.join(df['trigrams'])
+    trigram = ''.join(df_selection['trigrams'])
     
     n, bi, tri = st.tabs(['Ngram', 'Bigram', 'Trigram'])
     with n:
