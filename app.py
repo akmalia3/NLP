@@ -75,9 +75,7 @@ with right:
     # garis 
     st.markdown("""---""")
 
-    df_selection['ngrams'].fillna(' ', inplace=True)
     df_selection['sentiment'].fillna(' ', inplace=True)
-
     
     col1, col2, col3 = st.columns([2,1,1])    
     with col1:
@@ -173,11 +171,11 @@ with right:
     ngram = ''.join(df_selection['ngrams'])
     
     # frequent bigrams
-    df['bigrams'].fillna(' ', inplace=True)
+    df_selection['bigrams'].fillna(' ', inplace=True)
     bigram = ''.join(df['bigrams'])
     
     # frequent trigram
-    df['trigrams'].fillna(' ', inplace=True)
+    df_selection['trigrams'].fillna(' ', inplace=True)
     trigram = ''.join(df['trigrams'])
     
     n, bi, tri = st.tabs(['Ngram', 'Bigram', 'Trigram'])
