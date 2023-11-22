@@ -41,14 +41,14 @@ with nav5:
     df['Tanggal'] = pd.to_datetime(df['Tanggal']).dt.date
     start = df['Tanggal'].min()
     finish = df['Tanggal'].max()
-    tgl = st.date_input('Rentang Waktu',
+    start_date, end_date = st.date_input('Rentang Waktu',
                                (start, finish), 
                                start, 
                                finish,
                                format="YYYY.MM.DD")
     
-    start_date = tgl[0]
-    end_date = tgl[1]
+    #start_date = tgl[0]
+    #end_date = tgl[1]
     
 #data = pd.to_datetime(df['Tanggal']).dt.date
 output = (df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)
