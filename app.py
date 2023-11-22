@@ -149,6 +149,7 @@ with right:
 
         asli = df_selection[df_selection['Jenis Akun'] == 'Asli']
         tdk = df_selection[df_selection['Jenis Akun'] == 'Tidak diketahui']
+        fake = df_Selection[df_selection['Jenis Akun'] == 'Fake']
         
         if not asli.empty:
             color = ['#61bdee']
@@ -160,8 +161,13 @@ with right:
             fig_akun.add_trace(go.Pie(labels=['Tidak Diketahui'], values=tdk['Jenis Akun'].value_counts(), 
                                            marker_colors=color, textinfo='label+percent', 
                                            hoverinfo='value'))
-
-        if not asli.empty and not tdk.empty:
+        if not fake.empty:
+            color = ['#dc6e55']
+            fig_akun.add_trace(go.Pie(labels=['Fake'], values=fake['Jenis Akun'].value_counts(), 
+                                           marker_colors=color, textinfo='label+percent', 
+                                           hoverinfo='value'))
+        
+        if not asli.empty and not tdk.empty and not fake.empty:
             fig_akun.add_trace(go.Pie(labels=['Asli', 'Tidak Diketahui','Fake'], 
                                       values=jenis_akun, marker_colors=color, 
                                       textinfo='label+percent', hoverinfo='value'))
