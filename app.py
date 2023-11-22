@@ -146,7 +146,7 @@ with right:
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
         color = ['#dc6e55', '#61bdee', '#a5d3eb']
         fig_jk = go.Figure()
-        fig_akun.add_trace(go.Pie(labels=['Laki-laki', 'Tidak Diketahui','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
+        fig_jk.add_trace(go.Pie(labels=['Laki-laki', 'Tidak Diketahui','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
         st.plotly_chart(fig_jk, use_container_width=True)
         
