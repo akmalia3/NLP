@@ -19,7 +19,7 @@ st.set_page_config(
 # https://retro-tools.streamlit.app/
 # https://bpmpkalsel-pmm-dashboard-71ttv1.streamlit.app/Platform_Merdeka_Mengajar
 
-file_name = "dataset-sentiment (1).xlsx"
+file_name = "ulasan-komentar-cleaning.xlsx"
 df = pd.read_excel(file_name)
 df = df.drop(['Unnamed: 0'], axis=1)
 
@@ -27,6 +27,8 @@ st.header('🌡️Sistem Analysis Sosial Media')
 st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
 #st.write(':angry:')
 st.markdown("""---""")
+
+df['Jenis Akun'].mask(df['Jenis Akun'] == 'Tidak diketahuai', 'Tidak diketahui', inplace=True)
 
 nav3, nav4, nav5 = st.columns(3)
 with nav3:
@@ -46,15 +48,10 @@ with nav5:
                                start, 
                                finish,
                                format="YYYY.MM.DD")
-    
-    #start_date = tgl[0]
-    #end_date = tgl[1]
-    
-#data = pd.to_datetime(df['Tanggal']).dt.date
-output = (df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)
-#df_selection = df[(df['Sumber'] == sumber_data) & (df['sentiment'] == sentiment_data) & (df['Tanggal'] == tgl)]
-#df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data & Tanggal == @output")
 
+# filter tanggal
+output = (df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)
+# filter sumber, tamggal dan sentiment
 df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data").loc[output]
 
 right, left = st.tabs(['Ringkasan', 'Dataset'])
@@ -80,6 +77,7 @@ with right:
 
     df_selection['ngrams'].fillna(' ', inplace=True)
     df_selection['sentiment'].fillna(' ', inplace=True)
+
     
     col1, col2, col3 = st.columns([2,1,1])    
     with col1:
@@ -148,20 +146,18 @@ with right:
     with jk_left:
     # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
-        color = ['#dc6e55', '#61bdee']
+        color = ['#dc6e55', '#61bdee', '#a5d3eb']
         fig_jk = go.Figure()
-        fig_jk.add_trace(go.Pie(labels=['Laki-laki','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
+        fig_jk.add_trace(go.Pie(labels=['Laki-laki','Tidak Diketahui', 'Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
         st.plotly_chart(fig_jk, use_container_width=True)
         
     with ja_middle:
     # Visualisasi jenis akun        
         jenis_akun = df_selection['Jenis Akun'].value_counts()
-        #color = ['#58BAB9','#FF874A']
-        #color = ['#3DC08D','#FFF800']
-        color = ['#61bdee','#dc6e55']
+        color = ['#61bdee', '#e14b32', '#dc6e55']
         fig_akun = go.Figure()
-        fig_akun.add_trace(go.Pie(labels=['Asli','Fake'], values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
+        fig_akun.add_trace(go.Pie(labels=['Asli', 'Tidak Diketahui','Fake'], values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
         st.plotly_chart(fig_akun, use_container_width=True)
 
