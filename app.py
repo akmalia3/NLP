@@ -144,11 +144,10 @@ with right:
     with jk_left:
         # Visualisasi jenis akun        
         jenis_akun = df_selection['Jenis Akun'].value_counts()
+        labels = jenis_akun.keys()
         color = ['#61bdee', '#e14b32', '#dc6e55']
         fig_akun = go.Figure()
-        fig_akun.add_trace(go.Pie(labels=['Asli', 'Tidak Diketahui','Fake'], 
-                                      values=jenis_akun, marker_colors=color, 
-                                      textinfo='label+percent', hoverinfo='value'))
+        fig_akun.add_trace(go.Pie(labels=labels, values=jenis_akun, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
 
         fig_akun.update_layout(title=f'Persentase Jenis Akun {sumber_data}')
         st.plotly_chart(fig_akun, use_container_width=True)
@@ -157,9 +156,10 @@ with right:
     with ja_middle:
         # Visuaisasi jenis kelamin
         jenis_kelamin = df_selection['Jenis Kelamin'].value_counts()
+        labels2 = jenis_kelamin.keys()
         color = ['#dc6e55', '#61bdee', '#a5d3eb']
         fig_jk = go.Figure()
-        fig_jk.add_trace(go.Pie(labels=['Laki-laki', 'Tidak Diketahui','Perempuan'], values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
+        fig_jk.add_trace(go.Pie(labels=labels2, values=jenis_kelamin, marker_colors=color, textinfo='label+percent', hoverinfo='value'))
         fig_jk.update_layout(title=f'Persentase Jenis Kelamin {sumber_data}')
         st.plotly_chart(fig_jk, use_container_width=True)
 
