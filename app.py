@@ -39,18 +39,18 @@ with nav4:
                                    default=df['sentiment'].unique())
         
 with nav5:
-    #data = pd.to_datetime(df['Tanggal'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
-    df['Tanggal'] = pd.to_datetime(df['Tanggal']).dt.date
-    start = df['Tanggal'].min()
-    finish = df['Tanggal'].max()
+    #data = pd.to_datetime(df['Tgl'], format="%Y-%m-%d", errors='coerce').dt.tz_localize(None)
+    df['Tgl'] = pd.to_datetime(df['Tgl']).dt.date
+    start = df['Tgl'].min()
+    finish = df['Tgl'].max()
     start_date, end_date = st.date_input('Rentang Waktu',
                                (start, finish), 
                                start, 
                                finish,
                                format="YYYY.MM.DD")
 
-# filter tanggal
-output = (df['Tanggal'] >= start_date) & (df['Tanggal'] <= end_date)
+# filter Tgl
+output = (df['Tgl'] >= start_date) & (df['Tgl'] <= end_date)
 # filter sumber, tamggal dan sentiment
 df_selection = df.query("Sumber == @sumber_data & sentiment == @sentiment_data").loc[output]
 
@@ -133,11 +133,11 @@ with right:
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
         st.plotly_chart(neg_freq, use_container_width=True)
         
-    # Visualisasi tanggal komentar
-    tgl_counts = df_selection['Tanggal'].value_counts().reset_index()
-    tgl_counts.columns = ['Tanggal', 'Count']
+    # Visualisasi Tgl komentar
+    tgl_counts = df_selection['Tgl'].value_counts().reset_index()
+    tgl_counts.columns = ['Tgl', 'Count']
     custom_colors = ['#dc6e55']
-    fig_tgl = px.area(tgl_counts, x='Tanggal', y='Count', title=f"Rentang Waktu Komentar {sumber_data}", color_discrete_sequence=custom_colors)
+    fig_tgl = px.area(tgl_counts, x='Tgl', y='Count', title=f"Rentang Waktu Komentar {sumber_data}", color_discrete_sequence=custom_colors)
     st.plotly_chart(fig_tgl, use_container_width=True)
     
     jk_left, ja_middle, kt_right = st.columns([1,1,2])
