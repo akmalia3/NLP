@@ -19,7 +19,7 @@ st.set_page_config(
 # https://retro-tools.streamlit.app/
 # https://bpmpkalsel-pmm-dashboard-71ttv1.streamlit.app/Platform_Merdeka_Mengajar
 
-file_name = "ulasan-komentar-cleaning.xlsx"
+file_name = "ulasan-komentar-cleaning (1).xlsx"
 df = pd.read_excel(file_name)
 df = df.drop(['Unnamed: 0'], axis=1)
 
