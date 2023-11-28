@@ -76,6 +76,9 @@ with right:
     st.markdown("""---""")
 
     df_selection['sentiment'].fillna(' ', inplace=True)
+    df_selection['ngrams'].fillna(' ', inplace=True)
+    df_selection['bigrams'].fillna(' ', inplace=True)
+    df_selection['trigrams'].fillna(' ', inplace=True)
     
     col1, col2, col3 = st.columns([2,1,1])    
     with col1:
