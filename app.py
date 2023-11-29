@@ -10,7 +10,7 @@ from collections import Counter
 from datetime import datetime
 
 st.set_page_config(
-    page_title="Sentiment Analysis Dashboard",
+    page_title="Dashboard Monitoring Sosmed",
     page_icon=":thermometer:",
     layout="wide",  # Use "wide" layout for a full-size dashboard
 )
@@ -23,8 +23,8 @@ file_name = "ulasan-komentar-cleaning.xlsx"
 df = pd.read_excel(file_name)
 df = df.drop(['Unnamed: 0'], axis=1)
 
-st.header('🌡️Sistem Analysis Sosial Media')
-st.write('Dinas Kesehatan Kota Semarang Tahun 2022-2023')
+st.header('🌡️Sistem Pemantauan Media Sosial dan Ulasan Google Maps')
+st.write('Sistem Pemantauan Media Sosial dan Ulasan Google Maps Dinas Kesehatan Kota Semarang')
 #st.write(':angry:')
 st.markdown("""---""")
 
@@ -105,7 +105,7 @@ with right:
                                       marker_colors=color_custom, textinfo='label+percent',
                                       hoverinfo='value', hole=0.3))
         
-        fig_sentiment.update_layout(title=f"Persentase Sentiment {sumber_data}")
+        fig_sentiment.update_layout(title=f"Persentase Sentimen {sumber_data}")
         st.plotly_chart(fig_sentiment, use_container_width=True)
 
     with col2:
@@ -118,7 +118,7 @@ with right:
         data2 = pd.DataFrame(freq_pos.most_common(), columns=['word', 'frequent'])
 
         custom_colors = [[0, '#CCCCCC'], [1, '#3ca9ee']]
-        pos_freq = px.bar(data2.head(10), x='frequent', y='word', color='frequent', title="Top 10 Words Positive", color_continuous_scale=custom_colors)
+        pos_freq = px.bar(data2.head(10), x='frequent', y='word', color='frequent', title="10 Kata Positif Terbanyak", color_continuous_scale=custom_colors)
         pos_freq.update_layout(yaxis={'categoryorder':'total ascending'})
         st.plotly_chart(pos_freq, use_container_width=True)
 
@@ -132,7 +132,7 @@ with right:
         data3 = pd.DataFrame(freq_neg.most_common(), columns=['word', 'frequent'])
 
         custom_colors = [[0, '#CCCCCC'], [1, '#e14b32']]
-        neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="Top 10 Words Negative", color='frequent', color_continuous_scale=custom_colors)
+        neg_freq = px.bar(data3.head(10), x='frequent', y='word', title="10 Kata Negatif Terbanyak", color='frequent', color_continuous_scale=custom_colors)
         neg_freq.update_layout(yaxis={'categoryorder':'total descending'})
         st.plotly_chart(neg_freq, use_container_width=True)
         
@@ -207,7 +207,7 @@ with right:
         
             fig_freq = px.bar(data.head(20), x='frequent', y='word',color='frequent', template='gridon', height=500)
             fig_freq.update_layout(yaxis={'categoryorder':'total ascending'})
-            st.subheader('Word Frequent')
+            st.subheader('Frekuensi Kata')
             st.plotly_chart(fig_freq, use_container_width=True)
 
     with bi:
