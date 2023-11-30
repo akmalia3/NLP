@@ -110,7 +110,7 @@ with right:
 
     with col2:
         # frequent ngram word positive
-        pos_review = df_selection['bigrams'][df_selection["sentiment"] == 'positive'].tolist()
+        pos_review = df_selection['ngrams'].tolist()
         pos = ''.join(pos_review)
     
         text_pos = pos.split()
@@ -124,7 +124,7 @@ with right:
 
     with col3:
         # frequent ngram word negative
-        neg_review = df_selection['bigrams'][df_selection["sentiment"] == 'negative'].tolist()
+        neg_review = df_selection['bigrams'].tolist()
         neg = ''.join(neg_review)
 
         text_neg = neg.split()
