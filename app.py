@@ -23,8 +23,8 @@ file_name = "ulasan-komentar-cleaning.xlsx"
 df = pd.read_excel(file_name)
 df = df.drop(['Unnamed: 0'], axis=1)
 
-st.header('🌡️Sistem Pemantauan Media Sosial dan Ulasan Google Maps')
-st.write('Sistem Pemantauan Media Sosial dan Ulasan Google Maps Dinas Kesehatan Kota Semarang')
+st.header('🌡️Sistem Pemantauan Media Sosial')
+st.write('Sistem Pemantauan Media Sosial Dinas Kesehatan Kota Semarang')
 #st.write(':angry:')
 st.markdown("""---""")
 
@@ -110,7 +110,7 @@ with right:
 
     with col2:
         # frequent ngram word positive
-        pos_review = df_selection['ngrams'][df_selection["sentiment"] == 'positive'].tolist()
+        pos_review = df_selection['bigrams'][df_selection["sentiment"] == 'positive'].tolist()
         pos = ''.join(pos_review)
     
         text_pos = pos.split()
@@ -124,7 +124,7 @@ with right:
 
     with col3:
         # frequent ngram word negative
-        neg_review = df_selection['ngrams'][df_selection["sentiment"] == 'negative'].tolist()
+        neg_review = df_selection['bigrams'][df_selection["sentiment"] == 'negative'].tolist()
         neg = ''.join(neg_review)
 
         text_neg = neg.split()
