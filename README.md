@@ -10,12 +10,8 @@ This repository contains the code for a sentiment analysis project conducted for
 
 - [Project Description](#project-description)
 - [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
 - [Data Sources](#data-sources)
-- [Model](#model)
 - [Results](#results)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Project Description
